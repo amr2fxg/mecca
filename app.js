@@ -30,7 +30,7 @@ mongoose.connect('mongodb://readOnly:readOnly@widmore.mongohq.com:10000/mecca');
 //mongoose.model('YourModelName', require('./models/yourmodelname').YourModelName;
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 app.engine('.html', require('ejs').__express);
 app.set('views', path.join(__dirname, 'views'));
 app.set('path',  path.join(__dirname, '/'));
