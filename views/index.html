@@ -1,0 +1,187 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Mundo MECCA </title>
+	
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/grid_perc.css" />
+    <link rel="stylesheet" type="text/css" href="css/dm.css" />
+    <link rel="stylesheet" type="text/css" href="css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/mecca.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.gritter.css" />
+
+	<script type="text/javascript" src="js/utils/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="js/utils/search.js"></script>
+	
+	<style type="text/css">
+		#results {
+			border:1px solid #CCCCCC;
+			width:500px;
+			display:none;
+			z-index: 300;
+			line-height:0;
+			margin-top:-3px;
+			margin-left: 0px;
+		}
+		#results ul {
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		#results ul li {
+			background-color:#FFFFFF;
+			text-align: left;
+		}
+		#results ul li:hover {
+			background-color:#EBEBEB;
+		}
+		#results ul li a {
+			line-height:20px;
+			text-decoration:none;
+			padding: 5px;
+			display: block;
+			color: #333333;
+		}
+		.search_hover { 
+			background-color:#EBEBEB!important; 
+			color:#232323!important; 
+		}
+
+	</style>
+
+	<script type="text/javascript">
+	
+/*	$.ajaxSetup({
+	  cache: true
+	});  */
+
+    //arrow key navigation 
+    $(document).keydown(function(e){ 
+
+        //jump from search field to search results on keydown 
+        if (e.keyCode == 40) {  
+            $("#s").blur(); 
+              return false; 
+        } 
+
+        //hide search results on ESC 
+        if (e.keyCode == 27) {  
+            $("#results").hide(); 
+            $("#s").blur(); 
+              return false; 
+        } 
+
+        //focus on search field on back arrow or backspace press 
+        if (e.keyCode == 37 || e.keyCode == 8) {  
+            $("#s").focus(); 
+        } 
+
+    }); 
+
+
+    //document ready only scripts
+
+	$(document).ready(function() {
+
+		$.getScript("js/index.js");
+
+
+	// ------------ Busca
+	$('#btn_buscar').click(function() {
+	    if ( $('#search').val().length > 2 ) {
+	    alert('aaaaa');
+	    $('#frm_buscar').submit();
+	    //	window.location='busca/'+ $('#search').val();
+		};	
+	});
+
+
+/*    //clear search field & change search text color 
+    $("input#s").focus(function() { 
+        $("#s").css('color','#333333'); 
+        var sv = $("#s").val(); //get current value of search field 
+        if (sv == 'Search') { 
+            $("#s").val(''); 
+        } 
+    }); 
+  		*/ 
+
+ 
+	$('input#s').keyup(function (e) {
+
+		e.preventDefault();
+
+		var arg = $('#s').val();
+		var palavras =  arg.replace(/[\|&;\$%@"<>\(\)\+,]/g, "");//arg.replace(/[|&;$%@"<>()+,]/g, "");
+				
+		console.log(e.which);
+		console.log(palavras);
+
+
+				if (palavras.length > 1){
+					
+					$.ajax({
+					        type: 'POST',
+					        url: '/instant/' + palavras,
+					        //data: { palavras: palavras},
+					        //dataType: 'json',
+					        success: function (data, status) {
+					            
+					            $('#results').html(data);
+					            $("#results").show();
+					        }
+					});
+				}
+				else
+				{
+
+					$.post('/home',function(data){
+							$('#content').html(data);
+					});
+					
+				}
+
+
+/*					$.post('/busca', function(data, status){
+						console.log(data);
+							$('#content').html(data);
+					}); */
+
+	});  // input#s.keyup
+	}); //document.ready
+
+
+	</script>
+</head>
+<body>
+	<div id="app">
+		
+		<!-- HEADER -->
+		<div id="menuBar" class="row">
+			<div id="menu" class="padH_30">
+				<% include menu.html %>
+			</div>
+		</div>
+		
+		<!-- ANÚNCIOS / HIGHLIGHTS -->
+		<!-- <div id="announceBar" class="row w100p blue">
+			<div id="announce" class="padH_30 padV_26">
+				<?php  // include "announcements.php"; ?>
+			</div>
+		</div> -->
+
+		<!-- CONTENT -->
+		<div id="content" class="row">
+			<% include home.html %>
+		</div>
+
+		<!-- FOOTER -->
+		<div id="footer">
+			<% include footer.html %>
+		</div>
+
+	</div>	
+</body>
+</html>

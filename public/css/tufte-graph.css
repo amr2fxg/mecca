@@ -1,0 +1,11 @@
+.graph {
+  font-family: Arial;
+  font-size: 12px;
+  background-image: url("../i/graphBg.png");
+  background-repeat: repeat-x;
+}
+
+.legend-box {
+  height: 20px;
+  line-height: 20px;
+}

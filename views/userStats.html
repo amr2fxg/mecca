@@ -1,0 +1,87 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#allRating").addClass(overallColor);
+	$("#allRating").empty().append(ratingVal);
+
+	$("#negRating").addClass(qNegociacoesColor);
+	$("#negRating").empty().append(qNegociacoes);
+
+	$("#ateRating").addClass(qAtendimentoColor);
+	$("#ateRating").empty().append(qAtendimento);
+
+	$("#anuRating").addClass(qAnunciosColor);
+	$("#anuRating").empty().append(qAnuncios);
+
+	$("#negTotal").empty().append(negTotal);
+
+	$("#negOk").empty().append(negOk);
+	$("#percOk").empty().append(percOk + "%");
+	$("#percOk").addClass(qNegOkColor);
+
+	$("#negFail").empty().append(negFail);
+	$("#percFail").empty().append(percFail + "%");
+});
+</script>
+<!-- USER PUBLIC STATS  -->
+<div class="row">
+	<div id="userPublicStats">
+		<div class="row alignC">
+			<div id="allRating" class="grid_100 padV_10 font_32"></div>
+		</div>
+		<div class="row marV_20 alignC">
+			<div id="user_name" class="">ElectroSHOP</div>
+			<div id="user_place" class="marT_5">São Paulo, SP</div>
+		</div>
+		<!-- QUALIFICAÇÃO VENDEDOR -->
+		<div class="row">
+			<div class="grid_100 lineH_36 grey alignC">Qualificações do Vendedor</div>
+		</div>
+		<div class="row">
+			<div class="grid_80 padV_10 lightgreyAlt alignL padL_20">Negociações</div>
+			<div id="negRating" class="grid_20 padV_10 alignC"></div>
+		</div>
+		<div class="row">
+			<div class="grid_80 padV_10 lightgrey alignL padL_20">Atendimento</div>
+			<div id="ateRating" class="grid_20 padV_10 alignC"></div>
+		</div>
+		<div class="row">
+			<div class="grid_80 padV_10 lightgreyAlt alignL padL_20">Anúncios</div>
+			<div id="anuRating" class="grid_20 padV_10 alignC"></div>
+		</div>
+		<!-- TOTAL NEGOCIAÇÕES -->
+		<div class="row marT_25">
+			<div class="grid_70 lineH_36 grey alignL padL_20">Negociações</div>
+			<div class="grid_30 lineH_36 grey alignR padR_20" id="negTotal"></div>
+		</div>
+		<div class="row">
+			<div class="grid_60 padV_10 lightgrey alignL padL_20">Concretizadas</div>
+			<div class="grid_20 padV_10 lightgrey alignR padR_20"  id="negOk"><?php echo $negOk ?></div>
+			<div class="grid_20 padV_10 lightgrey alignC <?php echo $qConcretizadas ?>" id="percOk"></div>
+		</div>
+		<div class="row">
+			<div class="grid_60 padV_10 lightgreyAlt alignL padL_20">Canceladas</div>
+			<div class="grid_20 padV_10 lightgreyAlt alignR padR_20"  id="negFail"></div>
+			<div class="grid_20 padV_10 lightgreyAlt alignC" id="percFail"></div>
+		</div>
+		<!-- CHART -->
+		<div class="row marT_25 marB_10">
+			<div class="grid_100 lineH_36 grey alignC  hint--top" data-hint="Satisfação dos Clientes: 12 meses">AVALIAÇÕES: 12 MESES</div>
+		</div>
+		<div class="row">
+			<div class="grid_100">
+				<div id="stacked-graph" class='graph' style='width:100%; height: 80px;'></div>
+			</div>
+			<div class="grid_100 marV_10">
+				<div class="div_3 alignC">
+					<div class="grid_90 legend-box rAll graph_green">Positivo</div>
+				</div>
+				<div class="div_3 alignC">
+					<div class="grid_90 push_5 legend-box rAll graph_yellow">Neutro</div>
+				</div>
+				<div class="div_3 alignC">
+					<div class="grid_90 push_10 legend-box rAll graph_red">Negativo</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
