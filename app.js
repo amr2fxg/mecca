@@ -26,7 +26,7 @@ var express = require('express'),
 	//clientjs = piler.createJSManager(),
 	//clientcss = piler.createCSSManager();
 
-mongoose.connect('mongodb://localhost/mecca');
+mongoose.connect('mongodb://readOnly:readOnly@widmore.mongohq.com:10000/mecca');
 //mongoose.model('YourModelName', require('./models/yourmodelname').YourModelName;
 
 // all environments
