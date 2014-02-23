@@ -5,16 +5,17 @@
 	<meta charset="UTF-8">
 	<title> Mundo MECCA </title>
 	
-	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="css/grid_perc.css" />
-    <link rel="stylesheet" type="text/css" href="css/dm.css" />
-    <link rel="stylesheet" type="text/css" href="css/ui.css" />
-    <link rel="stylesheet" type="text/css" href="css/mecca.css" />
-    <link rel="stylesheet" type="text/css" href="css/jquery.gritter.css" />
+	<link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/grid_perc.css" />
+    <link rel="stylesheet" type="text/css" href="/css/dm.css" />
+    <link rel="stylesheet" type="text/css" href="/css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="/css/mecca.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.gritter.css" />
 
-	<script type="text/javascript" src="js/utils/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="js/utils/search.js"></script>
+	<script type="text/javascript" src="/js/utils/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 	
+	<!-- Estilos para o InstantSearch  -->
 	<style type="text/css">
 		#results {
 			border:1px solid #CCCCCC;
@@ -53,103 +54,21 @@
 
 	<script type="text/javascript">
 	
-/*	$.ajaxSetup({
+	/*	
+	* Habilitar essa opção e iniciar controle de versão dos aquivos .js .css quando entrar em produção (caching p/ performance!) 
+	*
+	$.ajaxSetup({
 	  cache: true
-	});  */
-
-    //arrow key navigation 
-    $(document).keydown(function(e){ 
-
-        //jump from search field to search results on keydown 
-        if (e.keyCode == 40) {  
-            $("#s").blur(); 
-              return false; 
-        } 
-
-        //hide search results on ESC 
-        if (e.keyCode == 27) {  
-            $("#results").hide(); 
-            $("#s").blur(); 
-              return false; 
-        } 
-
-        //focus on search field on back arrow or backspace press 
-        if (e.keyCode == 37 || e.keyCode == 8) {  
-            $("#s").focus(); 
-        } 
-
-    }); 
+	});  
+	*
+	*/
 
 
     //document ready only scripts
-
 	$(document).ready(function() {
 
-		$.getScript("js/index.js");
+		$.getScript("/js/index.js");
 
-
-	// ------------ Busca
-	$('#btn_buscar').click(function() {
-	    if ( $('#search').val().length > 2 ) {
-	    alert('aaaaa');
-	    $('#frm_buscar').submit();
-	    //	window.location='busca/'+ $('#search').val();
-		};	
-	});
-
-
-/*    //clear search field & change search text color 
-    $("input#s").focus(function() { 
-        $("#s").css('color','#333333'); 
-        var sv = $("#s").val(); //get current value of search field 
-        if (sv == 'Search') { 
-            $("#s").val(''); 
-        } 
-    }); 
-  		*/ 
-
- 
-	$('input#s').keyup(function (e) {
-
-		e.preventDefault();
-
-		var arg = $('#s').val();
-		var palavras =  arg.replace(/[\|&;\$%@"<>\(\)\+,]/g, "");//arg.replace(/[|&;$%@"<>()+,]/g, "");
-				
-		console.log(e.which);
-		console.log(palavras);
-
-
-				if (palavras.length > 1){
-					
-					$.ajax({
-					        type: 'POST',
-					        url: '/instant/' + palavras,
-					        //data: { palavras: palavras},
-					        //dataType: 'json',
-					        success: function (data, status) {
-					            
-					            $('#results').html(data);
-					            $("#results").show();
-					        }
-					});
-				}
-				else
-				{
-
-					$.post('/home',function(data){
-							$('#content').html(data);
-					});
-					
-				}
-
-
-/*					$.post('/busca', function(data, status){
-						console.log(data);
-							$('#content').html(data);
-					}); */
-
-	});  // input#s.keyup
 	}); //document.ready
 
 
@@ -174,7 +93,11 @@
 
 		<!-- CONTENT -->
 		<div id="content" class="row">
-			<% include home.html %>
+			<%	if( action == 'busca') { %>
+			<%- results %>
+			<% } else { %>
+			<%		include home.html %>
+			<% } %>
 		</div>
 
 		<!-- FOOTER -->
@@ -183,5 +106,6 @@
 		</div>
 
 	</div>	
+	<span id="lastView" title="<%= lastView %>" />
 </body>
 </html>

@@ -1,17 +1,16 @@
 
-var url = require('url');
-var qs = require('querystring');
-var mongoose = require('mongoose');
+var url = require('url'),
+	qs = require('querystring'),
+	mongoose = require('mongoose'),
+	tools = require('../lib/tools');
 
 
 
 //////////////////////////////////////////////////////////////  Index
-exports.index = function(csstags) {
-
-	return function(req, res){
+exports.index =  function(req, res){
 		
-	  	res.render('index', { csstags: csstags });
-	};
+	req.session.lastView = req.host  + req.url;
+  	res.render('index', { action:'', lastView: req.session.lastView });
 
 };
 
@@ -19,7 +18,9 @@ exports.index = function(csstags) {
 //////////////////////////////////////////////////////////////  Homepage
 exports.home = function(req, res){
   
-  res.render('home');
+  req.session.lastView = req.host + '/home.html';
+  res.render('home', {lastView: req.session.lastView} );
+
 };
 
 
@@ -27,62 +28,78 @@ exports.home = function(req, res){
 exports.busca = function(req, res) {
 		
 	require('../models/anuncios');
-		
+	req.session.lastView = req.host  + req.url;
+	
 	var mAnuncios = mongoose.model('anuncios'),
-		u = req.originalUrl,
-		palavras = url.parse(u).pathname;
-		
-	console.log(qs.parse(palavras, '/'));
-  		
+		palavras = req.query.palavras, // get the terms to search
+  		r = new RegExp("^" + palavras + "" , "i"); // create regex
+
   		
 	//buscar essa array apartir do terceiro elemento que é a palavra
-	mAnuncios.find({}, {titulo:1, valor:1, _id:0}, function(err, products) {
+	mAnuncios.find({ titulo: r }, {titulo:1, valor:1, cleanurl :1, _id:0}, {limit: 15}, function(err, anuncios) {
 
-		res.render('listProducts', { products: products, palavras: palavras });
+		if(req.xhr){
+	
+			if(err || (anuncios=='')){
+				res.send('')
+				res.end();
+			}
+
+			res.render('listProducts', { anuncios: anuncios, palavras: palavras, caminho: __dirname + '/compre/', lastView: req.session.lastView });
+
+		}
+		else{
+			
+
+			res.render('index', {  action: 'busca', results: '<p>aaaaaaaaaaaaaaahhhh!!</p>', lastView: req.session.lastView})
+
+		}
+
 	});
+
 
 };
 
 
 //////////////////////////////////////////////////////////////   Instant Search
 exports.instant = function(req, res) {
-		
-	require('../models/instant');
-		
-	var mInstant = mongoose.model('instant'),
-		u = req.originalUrl;
-		palavras = url.parse(u).pathname;
-		
-	//console.log(qs.parse(palavras, '/'));
-  	//console.log(u);
-  	var r = new RegExp("^" + palavras.slice(9) + "");
-	
-/*	i = new mInstant;
-	i.palavras = 'ipad';
-	i.score=1000;
-	i.save();  */
+			
+		require('../models/instant');
+
+		var mInstant = mongoose.model('instant'),
+			palavras = req.body.palavras, // get the terms to search
+			palavras = tools.str_to_slug(palavras), // escape unwanted characters
+	  		r = new RegExp("^" + palavras + ""); // create regex
+	  		//html ='',
+	  		//itens = [];
+
+	/*	i = new mInstant;
+		i.palavras = 'ipad';
+		i.score=1000;
+		i.save();  */
 
 
-	mInstant.find({ palavra: r } , { palavra:1, _id:0 }, {limit: 3}, function(err, results) {
+		mInstant.find({ palavra: r }, { palavra:1, _id:0 }, {limit: 4}, function(err, results) {
 
-		console.log(r);
-		console.log(results);
 
-		if(err){
-			console.log(err);
-			res.send('Sem resultados');
-			res.end();
-		}
+			if(err || (results=='')){
+				res.send('')
+				res.end();
+			}
 
-		if(results){
-			res.render('listInstant', { palavras: results });
-		}
-		else
-		{
-			res.send('Sem resultados');
-			res.end();
-		}
+			/*   Fazer por sockets.io um dia
+			itens.push('<li><a class="link" href="/busca/' + palavras + '">' + palavras + '</a></li>');
 
-	}).sort({score: -1});
+			results.forEach( function(i) {
+				itens.push('<li><a class="link" href="/busca/' + i.palavra + '">' + i.palavra + '</a></li>');
+			});
+
+			html = '<ul>' + itens.join('') + '</ul>'; 
+			return html 
+			*/
+
+			res.render('listInstant', { results: results, termo: palavras });
+
+		}).sort({score: -1});
 
 };

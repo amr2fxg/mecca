@@ -6,6 +6,7 @@ var anunciosSchema = new mongoose.Schema({
 	id_anuncios: Number,
 	id_usuarios: Number,
 	id_anunciostipo: Number,
+	id_categorias: String,
 	renovado: Boolean,
 	titulo: String,
 	subtitulo: String,
@@ -20,7 +21,8 @@ var anunciosSchema = new mongoose.Schema({
 	pagtodeposito: Boolean,
 	retiraemmaos: Boolean,
 	garantia: Boolean,
-	fretegratis: Boolean
+	fretegratis: Boolean,
+	cleanurl: String
 
 },{collection: 'anuncios'})
 

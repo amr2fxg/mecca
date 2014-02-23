@@ -8,25 +8,20 @@ var express = require('express'),
 	user 	= require('./routes/user'),
 	http 	= require('http'),
 	path 	= require('path'),
-	//piler	= require('piler'),
-	//util 	= require('lib'),
 	app 	= express(),
-
 	events 	= require('events'),
 	eventEmitter = new events.EventEmitter(),
 
 	server 	= http.createServer(app),
-	io 		= require('socket.io').listen(server),
+	io 		= require('./lib/sockets').listen(server),
 
-	mongoose  = require('mongoose')
+	mongoose  = require('mongoose'),
 
 	oneDay = 86400, //24 * 60 * 60
 	oneYear = 315576000; // 365 * 24 * 60 * 60
 
-	//clientjs = piler.createJSManager(),
-	//clientcss = piler.createCSSManager();
 
-mongoose.connect('mongodb://readOnly:readOnly@widmore.mongohq.com:10000/mecca');
+mongoose.connect('mongodb://readOnly:readOnly@ds063218.mongolab.com:63218/mecca');
 //mongoose.model('YourModelName', require('./models/yourmodelname').YourModelName;
 
 // all environments
@@ -43,37 +38,26 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
+app.use(express.cookieParser('M3CC41S4W3S0M3'));
 app.use(express.session());
-app.use(express.static(path.join(__dirname, 'public'))); // , { maxAge: oneYear } ));
+
+// Development & Production Settings
+if ('development' == app.get('env')) {
+	
+	app.use(express.errorHandler());
+	app.use(express.static(path.join(__dirname, 'public')));
+}
+else {  // Production Settings
+	app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneYear } ));  // Use .js .css versioning
+	console.log('<<< Using MaxAge Caching >>>');
+}
+	
 app.use(app.router);
 
-/*
-app.configure(function(){
 
-    clientjs.bind(app, server);
-    clientcss.bind(app, server);
-
-    clientcss.addFile(__dirname + "/public/css/normalize.css");
-    clientcss.addFile(__dirname + "/public/css/grid_perc.css");
-    clientcss.addFile(__dirname + "/public/css/dm.css");
-    clientcss.addFile(__dirname + "/public/css/ui.css");
-    clientcss.addFile(__dirname + "/public/css/mecca.css");
-    clientcss.addFile(__dirname + "/public/css/jquery.gritter.css");
-
-    //clientjs.addUrl("http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js");
-    //clientjs.addFile(__dirname + "/client/hello.js");
-});
-*/
-
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
-
-
-app.get('/', routes.index( { csstags: 'helloooo'} ));
-app.post('/busca/*', routes.busca);
+// Routes
+app.get('/', routes.index);
+app.get('/busca/*', routes.busca);
 app.post('/home', routes.home);
 app.post('/instant/*', routes.instant);
 
@@ -83,6 +67,21 @@ app.post('/instant/*', routes.instant);
 }) */
 
 
-server.listen(app.get('port'), function(){
+server.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+//IO connections 
+/*
+io.on('connection', function(client) {
+	console.log('Novo cliente conectado.');
+
+	client.on('instantSearch', function(palavras) {
+		
+		routes.instant(client);
+
+		client.emit('instantResult', {data: 'aaaaaaaaa'} );
+	});
+
+});*/	

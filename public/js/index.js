@@ -1,10 +1,11 @@
 
 // ---------- General
-$.getScript("js/utils/jstorage.min.js");
-$.getScript("js/utils/resizeControl.js");
+$.getScript("/js/utils/jstorage.min.js");
+$.getScript("/js/utils/resizeControl.js");
+$.getScript("/js/utils/search.js");
 
 // ---------- gritter
-$.getScript("js/utils/jquery.gritter.min.js", function() {
+$.getScript("/js/utils/jquery.gritter.min.js", function() {
 
 	$('.menuBtnNotify').click( function() {
 		$.gritter.add({
@@ -16,9 +17,9 @@ $.getScript("js/utils/jquery.gritter.min.js", function() {
 });
 
 // ---------- TweenLite
-$.getScript("js/utils/CSSPlugin.min.js");
-$.getScript("js/utils/EasePack.min.js");
-$.getScript("js/utils/TweenLite.min.js", function() {
+$.getScript("/js/utils/CSSPlugin.min.js");
+$.getScript("/js/utils/EasePack.min.js");
+$.getScript("/js/utils/TweenLite.min.js", function() {
 
 	$('.menuBtnAcc').click( function() {
 		var menuAcc = $('#menuAcc');
@@ -45,4 +46,15 @@ $.getScript("js/utils/TweenLite.min.js", function() {
 
 });
 
+// ---------- Socket Io
+/*		var socket = io.connect(document.URL);
 
+		socket.on('instantResult', function (data) {
+			console.log('recebi:' + data.data);
+
+			if(data){
+				$('#results').html(data);
+				$('#results').show();
+			}
+
+		}); */

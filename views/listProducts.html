@@ -1,7 +1,5 @@
 <ul>
-	<% products.forEach(function( p ){ %>
-	<li> <%= p.titulo %> - Preço: <%= p.valor %></li>
+	<% anuncios.forEach(function( a ){ %>
+	<li><a href="compre/<%= a.cleanurl%>"><%= a.titulo %></a> <b><%= a.valor %></b></li>
 	<% }); %>
 </ul>
-
-<%= decodeURI(palavras)	%>	

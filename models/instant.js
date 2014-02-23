@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var instantSchema = new mongoose.Schema({
 
-	palavras: String,
+	palavra: String,
 	score: Number
 
 }, {collection: 'instant'})

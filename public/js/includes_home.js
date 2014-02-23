@@ -1,5 +1,5 @@
 // ---------- distribute
-$.getScript("js/utils/distribute.js", function() {
+$.getScript("/js/utils/distribute.js", function() {
 	$("#categories").find("ul").distribute();
 	$("#last_searches").find("#results").distribute();
 });

@@ -1,5 +1,5 @@
 // ---------- Produtos
-$.getScript("js/utils/jquery.anuncioBox.js", function() {
+$.getScript("/js/utils/jquery.anuncioBox.js", function() {
 
 	var anuncioData = [
 	["Celular Motorola", "produtoA.png"],
@@ -20,10 +20,10 @@ $.getScript("js/utils/jquery.anuncioBox.js", function() {
 
 // ---------- userStats Graph
 $.when(
-	$.getScript("js/utils/jquery.enumerable.js"),
-	$.getScript("js/utils/raphael.js"),
-	$.getScript("js/utils/jquery.tufte-graph.js"),
-	$.getScript("js/includes/userStats.js"),
+	$.getScript("/js/utils/jquery.enumerable.js"),
+	$.getScript("/js/utils/raphael.js"),
+	$.getScript("/js/utils/jquery.tufte-graph.js"),
+	$.getScript("/js/includes/userStats.js"),
     $.Deferred(function( deferred ){
         $( deferred.resolve );
     })
