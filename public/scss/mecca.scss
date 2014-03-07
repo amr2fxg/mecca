@@ -79,8 +79,8 @@ $grey30: #e1e6ed;
 	font: {
 		family: 'Oswald';
 		size: 14px;
-		text-transform: uppercase;
 	}
+	text-transform: uppercase;
 	font-smoothing: antialiased;
   	-webkit-font-smoothing: antialiased;
   	-moz-font-smoothing: antialiased;
@@ -119,6 +119,10 @@ html {
 
 #app {
 	width: 100%;
+}
+
+.max_1280 {
+	max-width: 1280px;
 }
 
 #perfil {
@@ -333,6 +337,7 @@ html {
 			height: 120px;
 		}
 	}
+
 }
 
 /* --------------------------------------------------------- */
