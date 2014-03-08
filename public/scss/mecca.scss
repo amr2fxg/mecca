@@ -16,12 +16,17 @@
 /* COLORS                                                    */
 /* --------------------------------------------------------- */
 
-$blue: #377ae7;
 $salmao: #ff666b;
 
 $grey10: #f5f6f9;
 $grey25: #e1e6ed; // menu
 $grey30: #e1e6ed;
+
+$bgBlue: #357ae8;
+$bgLightGrey: #c8d0dd;
+$bgDarkGrey: #8795a9;
+
+$txtGrey: #8795a9;
 
 @mixin gGrey {
 	background-color: #f5f5f5;
@@ -84,7 +89,10 @@ $grey30: #e1e6ed;
 	font-smoothing: antialiased;
   	-webkit-font-smoothing: antialiased;
   	-moz-font-smoothing: antialiased;
+  	letter-spacing: 0.25px;
 }
+
+
 
 @mixin txtTitulo {
 	color: #686f82;
@@ -176,7 +184,7 @@ html {
 				}
 				.menuAccBar {
 					height: 5px;
-					background-color: $blue;
+					background-color: $bgBlue;
 				}
 				.menuAccItem {
 					height: 45px;
@@ -322,19 +330,87 @@ html {
 	padding: 40px 0px;
 	background-color: $grey10;
 
-	#last_product { @include txtOswald14; }
+	#last_product {
+		@include txtOswald14;
+		img { 
+			width: 240px;
+			heigth: 240px;
+		}
+	}
 
 	#categories {
-		@include txtTitulo;
-		li img {
-			// height: 150px;
+		width: 380px;
+		.titulo {
+			font: {
+				family: 'Oswald';
+				size: 22px;
+			}
+			color: $txtGrey;
+			text-transform: uppercase;
+			font-smoothing: antialiased;
+		  	-webkit-font-smoothing: antialiased;
+		  	-moz-font-smoothing: antialiased;
+		  	letter-spacing: 0.25px;
+		}
+		.preco {
+			font: {
+				family: 'Oswald';
+				size: 14px;
+			}
+			color: #fff;
+			text-transform: uppercase;
+			font-smoothing: antialiased;
+		  	-webkit-font-smoothing: antialiased;
+		  	-moz-font-smoothing: antialiased;
+		  	letter-spacing: 0.5px;
+		  	text-align: center;
+		  	width: 90px;
+		  	height: 35px;
+		  	line-height: 35px;
+		  	background-color: $bgDarkGrey;
+		}
+		.preco:hover {
+			background-color: $bgBlue;
+		}
+		.similares {
+			font: {
+				family: 'Oswald';
+				size: 18px;
+			}
+			color: $txtGrey;
+			text-transform: uppercase;
+			font-smoothing: antialiased;
+		  	-webkit-font-smoothing: antialiased;
+		  	-moz-font-smoothing: antialiased;
+			letter-spacing: 0.25px;
+		}
+		.similares_results {
+			ul li {
+				display: inline-block;
+				margin-right: 2px;
+				img {
+					width: 90px;
+					height: 90px;
+				}
+				img:after {
+					content:"\a";
+		    		white-space: pre;
+				}
+			}
 		}
 	}
 
 	#last_searches {
-		@include txtTitulo;
-		#results li img {
-			height: 120px;
+		div ul li {
+			width: 200px;
+			height: 35px;
+			line-height: 35px;
+			display: block;
+			margin-bottom: 5px;
+			background-color: $bgLightGrey;
+			@include txtOswald14;
+			color: #fff;
+			text-align: center;
 		}
 	}
 

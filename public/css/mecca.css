@@ -11,144 +11,158 @@
 /* --------------------------------------------------------- */
 /* GERAL                                                     */
 /* --------------------------------------------------------- */
-/* line 116, ../scss/mecca.scss */
+/* line 124, ../scss/mecca.scss */
 html { background-color: #f9f9f9; }
 
-/* line 120, ../scss/mecca.scss */
+/* line 128, ../scss/mecca.scss */
 #app { width: 100%; }
 
-/* line 124, ../scss/mecca.scss */
+/* line 132, ../scss/mecca.scss */
 .max_1280 { max-width: 1280px; }
 
-/* line 128, ../scss/mecca.scss */
+/* line 136, ../scss/mecca.scss */
 #perfil { padding-top: 30px; }
 
 /* --------------------------------------------------------- */
 /* MENU BAR                                                  */
 /* --------------------------------------------------------- */
-/* line 138, ../scss/mecca.scss */
+/* line 146, ../scss/mecca.scss */
 #app #menuBar { height: 60px; background-color: #e1e6ed; }
-/* line 142, ../scss/mecca.scss */
-#app #menuBar #menu { display: flex; flex-flow: inline; height: 60px; }
-/* line 147, ../scss/mecca.scss */
-#app #menuBar #menu #logo { height: 60px; line-height: 60px; }
 /* line 150, ../scss/mecca.scss */
+#app #menuBar #menu { display: flex; flex-flow: inline; height: 60px; }
+/* line 155, ../scss/mecca.scss */
+#app #menuBar #menu #logo { height: 60px; line-height: 60px; }
+/* line 158, ../scss/mecca.scss */
 #app #menuBar #menu #logo img { vertical-align: middle; }
-/* line 156, ../scss/mecca.scss */
+/* line 164, ../scss/mecca.scss */
 #app #menuBar #menu #menuIcons .menuAccBtn { cursor: pointer; }
-/* line 161, ../scss/mecca.scss */
+/* line 169, ../scss/mecca.scss */
 #app #menuBar #menu #menuAcc { position: absolute; width: 180px; right: 30px; top: 45px; }
-/* line 166, ../scss/mecca.scss */
-#app #menuBar #menu #menuAcc.closed { opacity: 0; display: none; }
-/* line 170, ../scss/mecca.scss */
-#app #menuBar #menu #menuAcc.open { opacity: 1; display: block; }
 /* line 174, ../scss/mecca.scss */
+#app #menuBar #menu #menuAcc.closed { opacity: 0; display: none; }
+/* line 178, ../scss/mecca.scss */
+#app #menuBar #menu #menuAcc.open { opacity: 1; display: block; }
+/* line 182, ../scss/mecca.scss */
 #app #menuBar #menu #menuAcc .menuAccSeta { height: 7px; }
-/* line 177, ../scss/mecca.scss */
-#app #menuBar #menu #menuAcc .menuAccBar { height: 5px; background-color: #377ae7; }
-/* line 181, ../scss/mecca.scss */
+/* line 185, ../scss/mecca.scss */
+#app #menuBar #menu #menuAcc .menuAccBar { height: 5px; background-color: #357ae8; }
+/* line 189, ../scss/mecca.scss */
 #app #menuBar #menu #menuAcc .menuAccItem { height: 45px; background-color: #f5f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#e5e5e5)); background-image: -webkit-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -moz-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -ms-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -o-linear-gradient(top, whitesmoke, #e5e5e5); background-image: linear-gradient(top, #f5f5f5, #e5e5e5); }
-/* line 184, ../scss/mecca.scss */
+/* line 192, ../scss/mecca.scss */
 #app #menuBar #menu #menuAcc .menuAccItem .icon { width: 45px; height: 100%; float: left; border-right: 1px solid #dcdcdc; padding: 10px; }
-/* line 191, ../scss/mecca.scss */
+/* line 199, ../scss/mecca.scss */
 #app #menuBar #menu #menuAcc .menuAccItem .text { height: 100%; float: left; border-left: 1px solid #fff; padding: 15px 0px 15px 10px; color: #000; font-family: 'Arial'; font-size: 14px; }
-/* line 206, ../scss/mecca.scss */
-#app.l_1280 #menuBar #menu logo, #app.l_1024 #menuBar #menu logo { min-width: 190px; align-self: center; }
-/* line 210, ../scss/mecca.scss */
-#app.l_1280 #menuBar #menu #busca, #app.l_1024 #menuBar #menu #busca { flex: 1 0 auto; align-self: center; }
 /* line 214, ../scss/mecca.scss */
+#app.l_1280 #menuBar #menu logo, #app.l_1024 #menuBar #menu logo { min-width: 190px; align-self: center; }
+/* line 218, ../scss/mecca.scss */
+#app.l_1280 #menuBar #menu #busca, #app.l_1024 #menuBar #menu #busca { flex: 1 0 auto; align-self: center; }
+/* line 222, ../scss/mecca.scss */
 #app.l_1280 #menuBar #menu #menuIcons, #app.l_1024 #menuBar #menu #menuIcons { min-width: 100px; align-self: center; }
-/* line 225, ../scss/mecca.scss */
+/* line 233, ../scss/mecca.scss */
 #app.l_768 #menuBar #menu #logo { min-width: 150px; align-self: center; }
-/* line 229, ../scss/mecca.scss */
+/* line 237, ../scss/mecca.scss */
 #app.l_768 #menuBar #menu #busca { flex: 1 0 auto; align-self: center; }
-/* line 232, ../scss/mecca.scss */
+/* line 240, ../scss/mecca.scss */
 #app.l_768 #menuBar #menu #busca .txtSearch { min-width: 200px; }
-/* line 236, ../scss/mecca.scss */
+/* line 244, ../scss/mecca.scss */
 #app.l_768 #menuBar #menu #menuIcons { min-width: 75px; align-self: center; }
-/* line 247, ../scss/mecca.scss */
+/* line 255, ../scss/mecca.scss */
 #app.l_480 #menuBar #menu #logo { flex: 1 0 auto; align-self: center; }
-/* line 251, ../scss/mecca.scss */
+/* line 259, ../scss/mecca.scss */
 #app.l_480 #menuBar #menu #busca { flex: 1 0 auto; align-self: center; }
-/* line 254, ../scss/mecca.scss */
+/* line 262, ../scss/mecca.scss */
 #app.l_480 #menuBar #menu #busca .txtSearch { min-width: 200px; }
-/* line 258, ../scss/mecca.scss */
+/* line 266, ../scss/mecca.scss */
 #app.l_480 #menuBar #menu #menuIcons { min-width: 75px; align-self: center; }
 
 /* --------------------------------------------------------- */
 /* ANNOUNCEMENT BAR                                          */
 /* --------------------------------------------------------- */
-/* line 276, ../scss/mecca.scss */
+/* line 284, ../scss/mecca.scss */
 #announceBar #announce #announce_title { font: 22px Arial,sans-serif; }
-/* line 277, ../scss/mecca.scss */
+/* line 285, ../scss/mecca.scss */
 #announceBar #announce #announce_desc { font: 14px Arial,sans-serif; }
-/* line 278, ../scss/mecca.scss */
+/* line 286, ../scss/mecca.scss */
 #announceBar #announce #announce_close { position: absolute; right: 10px; top: 70px; }
 
 /* --------------------------------------------------------- */
 /* FOOTER     				                                       */
 /* --------------------------------------------------------- */
-/* line 290, ../scss/mecca.scss */
+/* line 298, ../scss/mecca.scss */
 #footer { z-index: 1000000; position: fixed; width: 100%; background-color: #fff; height: 0px; bottom: -1px; border-top: 1px solid #ccc; color: #999; font-family: 'PTMono'; font-size: 14px; }
-/* line 300, ../scss/mecca.scss */
+/* line 308, ../scss/mecca.scss */
 #footer #handler { float: right; width: auto; height: 30px; line-height: 30px; padding: 0 10px; border: 1px solid #ccc; border-width: 1px 1px 0 1px; background-color: #fff; margin: -30px 30px 0 0; border-radius: 3px 3px 0 0; text-align: center; cursor: pointer; }
 
 /* --------------------------------------------------------- */
 /* HOME PAGE: 				                                       */
 /* --------------------------------------------------------- */
-/* line 320, ../scss/mecca.scss */
+/* line 328, ../scss/mecca.scss */
 #history { height: 360px; padding: 40px 0px; background-color: #f5f6f9; }
-/* line 325, ../scss/mecca.scss */
-#history #last_product { font-family: 'Oswald'; font-size: 14px; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
-/* line 327, ../scss/mecca.scss */
-#history #categories { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
-/* line 334, ../scss/mecca.scss */
-#history #last_searches { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
-/* line 336, ../scss/mecca.scss */
-#history #last_searches #results li img { height: 120px; }
+/* line 333, ../scss/mecca.scss */
+#history #last_product { font-family: 'Oswald'; font-size: 14px; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.25px; }
+/* line 335, ../scss/mecca.scss */
+#history #last_product img { width: 240px; heigth: 240px; }
+/* line 341, ../scss/mecca.scss */
+#history #categories { width: 380px; }
+/* line 343, ../scss/mecca.scss */
+#history #categories .titulo { font-family: 'Oswald'; font-size: 22px; color: #8795a9; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.25px; }
+/* line 355, ../scss/mecca.scss */
+#history #categories .preco { font-family: 'Oswald'; font-size: 14px; color: #fff; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.5px; text-align: center; width: 90px; height: 35px; line-height: 35px; background-color: #8795a9; }
+/* line 372, ../scss/mecca.scss */
+#history #categories .preco:hover { background-color: #357ae8; }
+/* line 375, ../scss/mecca.scss */
+#history #categories .similares { font-family: 'Oswald'; font-size: 18px; color: #8795a9; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.25px; }
+/* line 388, ../scss/mecca.scss */
+#history #categories .similares_results ul li { display: inline-block; margin-right: 2px; }
+/* line 391, ../scss/mecca.scss */
+#history #categories .similares_results ul li img { width: 90px; height: 90px; }
+/* line 395, ../scss/mecca.scss */
+#history #categories .similares_results ul li img:after { content: "\a"; white-space: pre; }
+/* line 404, ../scss/mecca.scss */
+#history #last_searches div ul li { width: 200px; height: 35px; line-height: 35px; display: block; margin-bottom: 5px; background-color: #c8d0dd; font-family: 'Oswald'; font-size: 14px; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.25px; color: #fff; text-align: center; }
 
 /* --------------------------------------------------------- */
 /* PERFIL   			                                           */
 /* --------------------------------------------------------- */
-/* line 349, ../scss/mecca.scss */
+/* line 425, ../scss/mecca.scss */
 #app #content #perfil { display: flex; justify-content: center; align-content: flex-start; align-items: flex-start; }
-/* line 355, ../scss/mecca.scss */
-#app #content #perfil #produtos { padding-left: 30px; padding-right: 30px; }
-/* line 359, ../scss/mecca.scss */
-#app #content #perfil #produtos .titulo { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
-/* line 360, ../scss/mecca.scss */
-#app #content #perfil #produtos .filters { color: #999; font-family: 'PTMono'; font-size: 14px; }
-/* line 362, ../scss/mecca.scss */
-#app #content #perfil #produtos .filters img { margin-left: 5px; }
-/* line 367, ../scss/mecca.scss */
-#app #content #perfil #produtos .anuncioBox a { font-family: 'Arial'; text-decoration: none; }
-/* line 373, ../scss/mecca.scss */
-#app #content #perfil #produtos .anuncioBox .nome { color: #367be9; font-family: 'Arial'; }
-/* line 382, ../scss/mecca.scss */
-#app #content #perfil #stats { padding-left: 30px; padding-right: 30px; text-align: center; }
-/* line 387, ../scss/mecca.scss */
-#app #content #perfil #stats #user_avatar img { width: 100%; }
-/* line 391, ../scss/mecca.scss */
-#app #content #perfil #stats #user_name { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
-/* line 392, ../scss/mecca.scss */
-#app #content #perfil #stats #user_place { color: #999; font-family: 'PTMono'; font-size: 14px; }
-/* line 393, ../scss/mecca.scss */
-#app #content #perfil #stats #user_stats { color: #999; font-family: 'PTMono'; font-size: 14px; }
-/* line 401, ../scss/mecca.scss */
-#app.l_1280 #content #perfil, #app.l_1024 #content #perfil { flex-direction: row; flex-wrap: nowrap; }
-/* line 404, ../scss/mecca.scss */
-#app.l_1280 #content #perfil #produtos, #app.l_1024 #content #perfil #produtos { flex: 1; }
-/* line 407, ../scss/mecca.scss */
-#app.l_1280 #content #perfil #stats, #app.l_1024 #content #perfil #stats { flex: 0 0 360px; }
-/* line 416, ../scss/mecca.scss */
-#app.l_768 #content #perfil { flex-direction: row; flex-wrap: nowrap; }
-/* line 419, ../scss/mecca.scss */
-#app.l_768 #content #perfil #produtos { flex: 1; }
-/* line 422, ../scss/mecca.scss */
-#app.l_768 #content #perfil #stats { flex: 0 0 320px; }
 /* line 431, ../scss/mecca.scss */
+#app #content #perfil #produtos { padding-left: 30px; padding-right: 30px; }
+/* line 435, ../scss/mecca.scss */
+#app #content #perfil #produtos .titulo { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
+/* line 436, ../scss/mecca.scss */
+#app #content #perfil #produtos .filters { color: #999; font-family: 'PTMono'; font-size: 14px; }
+/* line 438, ../scss/mecca.scss */
+#app #content #perfil #produtos .filters img { margin-left: 5px; }
+/* line 443, ../scss/mecca.scss */
+#app #content #perfil #produtos .anuncioBox a { font-family: 'Arial'; text-decoration: none; }
+/* line 449, ../scss/mecca.scss */
+#app #content #perfil #produtos .anuncioBox .nome { color: #367be9; font-family: 'Arial'; }
+/* line 458, ../scss/mecca.scss */
+#app #content #perfil #stats { padding-left: 30px; padding-right: 30px; text-align: center; }
+/* line 463, ../scss/mecca.scss */
+#app #content #perfil #stats #user_avatar img { width: 100%; }
+/* line 467, ../scss/mecca.scss */
+#app #content #perfil #stats #user_name { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
+/* line 468, ../scss/mecca.scss */
+#app #content #perfil #stats #user_place { color: #999; font-family: 'PTMono'; font-size: 14px; }
+/* line 469, ../scss/mecca.scss */
+#app #content #perfil #stats #user_stats { color: #999; font-family: 'PTMono'; font-size: 14px; }
+/* line 477, ../scss/mecca.scss */
+#app.l_1280 #content #perfil, #app.l_1024 #content #perfil { flex-direction: row; flex-wrap: nowrap; }
+/* line 480, ../scss/mecca.scss */
+#app.l_1280 #content #perfil #produtos, #app.l_1024 #content #perfil #produtos { flex: 1; }
+/* line 483, ../scss/mecca.scss */
+#app.l_1280 #content #perfil #stats, #app.l_1024 #content #perfil #stats { flex: 0 0 360px; }
+/* line 492, ../scss/mecca.scss */
+#app.l_768 #content #perfil { flex-direction: row; flex-wrap: nowrap; }
+/* line 495, ../scss/mecca.scss */
+#app.l_768 #content #perfil #produtos { flex: 1; }
+/* line 498, ../scss/mecca.scss */
+#app.l_768 #content #perfil #stats { flex: 0 0 320px; }
+/* line 507, ../scss/mecca.scss */
 #app.l_480 #content #perfil { flex-direction: column; flex-wrap: nowrap; }
-/* line 434, ../scss/mecca.scss */
+/* line 510, ../scss/mecca.scss */
 #app.l_480 #content #perfil #produtos { width: 100%; }
-/* line 437, ../scss/mecca.scss */
+/* line 513, ../scss/mecca.scss */
 #app.l_480 #content #perfil #stats { width: 100%; margin-top: 50px; }
