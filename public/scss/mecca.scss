@@ -27,6 +27,17 @@ $bgLightGrey: #c8d0dd;
 $bgDarkGrey: #8795a9;
 
 $txtGrey: #8795a9;
+$txtBlue: #357ae8;
+
+@mixin gGreen {
+	background-color: #61c109;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#61c109),to(#349e4c));
+	background-image: -webkit-linear-gradient(top,#61c109,#349e4c);
+	background-image: -moz-linear-gradient(top,#61c109,#349e4c);
+	background-image: -ms-linear-gradient(top,#61c109,#349e4c);
+	background-image: -o-linear-gradient(top,#61c109,#349e4c);
+	background-image: linear-gradient(top,#61c109,#349e4c);
+}
 
 @mixin gGrey {
 	background-color: #f5f5f5;
@@ -62,7 +73,6 @@ $txtGrey: #8795a9;
 /* --------------------------------------------------------- */
 /* MIXINS                                                    */
 /* --------------------------------------------------------- */
-
 
 @mixin txtMenuAcc {
 	color: #000;
@@ -131,6 +141,7 @@ html {
 
 .max_1280 {
 	max-width: 1280px;
+	padding: 0 20px;
 }
 
 #perfil {
@@ -322,7 +333,7 @@ html {
 }
 
 /* --------------------------------------------------------- */
-/* HOME PAGE: 				                                       */
+/* HOME PAGE	    			                             */
 /* --------------------------------------------------------- */
 
 #history {
@@ -340,6 +351,20 @@ html {
 
 	#categories {
 		width: 380px;
+		a {
+			text-decoration: none;
+		}
+		a:hover {
+			.titulo {
+				color: $txtBlue;
+			}
+			.preco {
+				background-color: $bgBlue;
+			}
+			.preco--last_product {
+				@include gGreen;
+			}
+		}
 		.titulo {
 			font: {
 				family: 'Oswald';
@@ -352,27 +377,7 @@ html {
 		  	-moz-font-smoothing: antialiased;
 		  	letter-spacing: 0.25px;
 		}
-		.preco {
-			font: {
-				family: 'Oswald';
-				size: 14px;
-			}
-			color: #fff;
-			text-transform: uppercase;
-			font-smoothing: antialiased;
-		  	-webkit-font-smoothing: antialiased;
-		  	-moz-font-smoothing: antialiased;
-		  	letter-spacing: 0.5px;
-		  	text-align: center;
-		  	width: 90px;
-		  	height: 35px;
-		  	line-height: 35px;
-		  	background-color: $bgDarkGrey;
-		}
-		.preco:hover {
-			background-color: $bgBlue;
-		}
-		.similares {
+		.similar {
 			font: {
 				family: 'Oswald';
 				size: 18px;
@@ -384,7 +389,7 @@ html {
 		  	-moz-font-smoothing: antialiased;
 			letter-spacing: 0.25px;
 		}
-		.similares_results {
+		.similar_results {
 			ul li {
 				display: inline-block;
 				margin-right: 2px;
@@ -396,25 +401,108 @@ html {
 					content:"\a";
 		    		white-space: pre;
 				}
+				a {
+					text-decoration: none;
+				}
+				a:hover .preco {
+					background-color: $bgBlue;
+				}
 			}
 		}
 	}
 
 	#last_searches {
-		div ul li {
-			width: 200px;
-			height: 35px;
-			line-height: 35px;
-			display: block;
-			margin-bottom: 5px;
-			background-color: $bgLightGrey;
-			@include txtOswald14;
-			color: #fff;
-			text-align: center;
+		div ul {
+			a {
+				text-decoration: none;
+			}
+			a:hover li {
+				background-color: $bgDarkGrey;
+			}
+			li {
+				width: 200px;
+				height: 35px;
+				line-height: 35px;
+				display: block;
+				margin-bottom: 5px;
+				background-color: $bgLightGrey;
+				@include txtOswald14;
+				color: #fff;
+				text-align: center;
+			}
 		}
 	}
 
+	#last_searches_results {
+		width: 300px;
+		height: 280px;
+		ul li {
+			display: inline-block;
+			// margin-right: 10px;
+			img {
+				width: 90px;
+				height: 90px;
+			}
+			img:after {
+				content:"\a";
+	    		white-space: pre;
+			}
+			a {
+				text-decoration: none;
+			}
+			a:hover .preco {
+				background-color: $bgBlue;
+			}
+		}
+		// ul li:nth-child(3n+3) {
+		// 	margin-right: 0px;
+		// }
+	}
+
 }
+
+.area_title {
+	color: #fff;
+	@include gGreen;
+	font: {
+		family: 'Oswald';
+		size: 14px;
+	}
+	text-transform: uppercase;
+	font-smoothing: antialiased;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-font-smoothing: antialiased;
+  	letter-spacing: 0.25px;
+  	text-align: center;
+  	width: 100%;
+  	height: 35px;
+  	line-height: 35px;
+  	margin-top: 5px;
+}
+
+.preco {
+	font: {
+		family: 'Oswald';
+		size: 14px;
+	}
+	color: #fff;
+	text-transform: uppercase;
+	font-smoothing: antialiased;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-font-smoothing: antialiased;
+  	letter-spacing: 0.5px;
+  	text-align: center;
+  	width: 90px;
+  	height: 35px;
+  	line-height: 35px;
+  	margin-top: 5px;
+  	background-color: $bgDarkGrey;
+  	text-shadow: 1px 1px 0px rgba(0,0,0,0.25);
+}
+.preco--last_product {
+		@extend .preco;
+		background-color: $bgBlue;
+	}
 
 /* --------------------------------------------------------- */
 /* PERFIL   			                                           */
