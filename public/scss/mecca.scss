@@ -16,58 +16,7 @@
 /* COLORS                                                    */
 /* --------------------------------------------------------- */
 
-$salmao: #ff666b;
-
-$grey10: #f5f6f9;
-$grey25: #e1e6ed; // menu
-$grey30: #e1e6ed;
-
-$bgBlue: #357ae8;
-$bgLightGrey: #c8d0dd;
-$bgDarkGrey: #8795a9;
-
-$txtGrey: #8795a9;
-$txtBlue: #357ae8;
-
-@mixin gGreen {
-	background-color: #61c109;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#61c109),to(#349e4c));
-	background-image: -webkit-linear-gradient(top,#61c109,#349e4c);
-	background-image: -moz-linear-gradient(top,#61c109,#349e4c);
-	background-image: -ms-linear-gradient(top,#61c109,#349e4c);
-	background-image: -o-linear-gradient(top,#61c109,#349e4c);
-	background-image: linear-gradient(top,#61c109,#349e4c);
-}
-
-@mixin gGrey {
-	background-color: #f5f5f5;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#e5e5e5));
-	background-image: -webkit-linear-gradient(top,#f5f5f5,#e5e5e5);
-	background-image: -moz-linear-gradient(top,#f5f5f5,#e5e5e5);
-	background-image: -ms-linear-gradient(top,#f5f5f5,#e5e5e5);
-	background-image: -o-linear-gradient(top,#f5f5f5,#e5e5e5);
-	background-image: linear-gradient(top,#f5f5f5,#e5e5e5);
-}
-
-@mixin gBlue {
-	background-color: #5b92ee;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#5b92ee),to(#3f78d4));
-	background-image: -webkit-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: -moz-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: -ms-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: -o-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: linear-gradient(top,#5b92ee,#3f78d4);
-} 
-
-@mixin gGreyBlue {
-	background-color: #889ab6;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#889ab6),to(#7b8da9));
-	background-image: -webkit-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: -moz-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: -ms-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: -o-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: linear-gradient(top,#889ab6,#7b8da9);
-} 
+@import "colors.scss";
 
 
 /* --------------------------------------------------------- */
@@ -168,6 +117,16 @@ html {
 				line-height: 60px;
 				img {
 					vertical-align: middle;
+				}
+			}
+
+			#busca {
+				.btnSearch {
+					vertical-align: middle;
+					background-color: $bgBlue;
+				}
+				.btnSearch:hover {
+					background-color: $bgDarkGrey;
 				}
 			}
 
@@ -362,7 +321,7 @@ html {
 				background-color: $bgBlue;
 			}
 			.preco--last_product {
-				@include gGreen;
+				@include q95;
 			}
 		}
 		.titulo {
@@ -417,7 +376,7 @@ html {
 				text-decoration: none;
 			}
 			a:hover li {
-				background-color: $bgDarkGrey;
+				background-color: $bgMidGrey;
 			}
 			li {
 				width: 200px;
@@ -438,7 +397,6 @@ html {
 		height: 280px;
 		ul li {
 			display: inline-block;
-			// margin-right: 10px;
 			img {
 				width: 90px;
 				height: 90px;
@@ -454,11 +412,24 @@ html {
 				background-color: $bgBlue;
 			}
 		}
-		// ul li:nth-child(3n+3) {
-		// 	margin-right: 0px;
-		// }
 	}
 
+}
+
+#categorias {
+	background-color: $grey30;
+}
+
+#mais_buscados {
+	background-color: $grey10;
+}
+
+#anuncios {
+	background-color: $grey30;
+}
+
+#campanha {
+	background-color: $grey10;
 }
 
 .area_title {
@@ -496,7 +467,7 @@ html {
   	height: 35px;
   	line-height: 35px;
   	margin-top: 5px;
-  	background-color: $bgDarkGrey;
+  	background-color: $bgMidGrey;
   	text-shadow: 1px 1px 0px rgba(0,0,0,0.25);
 }
 .preco--last_product {
