@@ -29,7 +29,11 @@ html { background-color: #f9f9f9; }
 #app #menuBar #menu #logo img { vertical-align: middle; }
 #app #menuBar #menu #busca .btnSearch { vertical-align: middle; background-color: #357ae8; }
 #app #menuBar #menu #busca .btnSearch:hover { background-color: #3e3e3e; }
-#app #menuBar #menu #menuIcons .menuAccBtn { cursor: pointer; }
+#app #menuBar #menu #menuIcons { height: 60px; line-height: 60px; }
+#app #menuBar #menu #menuIcons .notifications { position: relative; float: right; width: 36px; height: 36px; margin: 12.5px 10px; cursor: pointer; }
+#app #menuBar #menu #menuIcons .notifications .icon { width: 36px; height: 36px; position: absolute; }
+#app #menuBar #menu #menuIcons .notifications .number { position: relative; z-index: 10; text-align: center; font-family: 'Oswald'; font-size: 14px; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.25px; color: #fff; margin: -12.5px 0px; }
+#app #menuBar #menu #menuIcons .menuBtnAcc { position: relative; float: right; width: 36px; height: 36px; margin: 12.5px 0px; right: 0; cursor: pointer; }
 #app #menuBar #menu #menuAcc { position: absolute; width: 180px; right: 30px; top: 45px; }
 #app #menuBar #menu #menuAcc.closed { opacity: 0; display: none; }
 #app #menuBar #menu #menuAcc.open { opacity: 1; display: block; }
