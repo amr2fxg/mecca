@@ -160,11 +160,78 @@ html {
 						color: #fff;
 						margin: -12.5px 0px;
 					}
+					//  DROP MENU NOTIFICATIONS
+					#menuNotifications {
+						position: absolute;
+						z-index: 10;
+						width: 400px;
+						right: 0px;
+						top: 45px;
+						&.closed {
+							opacity: 0;
+							display: none;
+						}
+						&.open {
+							opacity: 1;
+							display: block;
+						}
+						.menuNotificationsSeta {
+							height: 7px;
+							text-align: right;
+							margin-right: 11px;
+							margin-top: -33px;
+						}
+						.menuNotificationsBar {
+							height: 5px;
+							background-color: $bgBlue;
+						}
+						.menuNotificationsItem {
+							height: 60px;
+							@include gGrey;
+							.thumb {
+								width: 60px;
+								height: 100%;
+								float: left;
+								border-right: 1px solid #dcdcdc;
+								padding: 5px;
+								text-align: center;
+							}
+							.infos {
+								float: left;
+								height: 100%;
+								padding: 0px 0px 0px 10px;
+								.titulo {
+									height: 50%;
+									line-height: 30px;
+									margin-top: 5px;
+									font: {
+										family: "Oswald";
+										size: 14px;
+									}
+									color: $txtBlue;
+									text-transform: uppercase;
+									@extend .antialiased;
+								  	letter-spacing: 0.25px;
+								}
+								.action {
+									height: 50%;
+									margin-top: -25px;
+									font: {
+										family: "PTMono";
+										size: 12px;
+										color: #ccc;
+									}
+									text-transform: uppercase;
+									@extend .antialiased;
+								}
+							}
+						}
+					}
 				}
 				.notifications:hover .icon .menuNotificationsSVG path{
 					fill: $bgDarkGrey;
 				}
-				.menuBtnAcc {
+				.menuBtnSettings {
 					position: relative;
 					float: right;
 					width: 36px;
@@ -172,52 +239,59 @@ html {
 					margin: 12.5px 0px;
 					right: 0;
 					cursor: pointer;
-					.menuAccSVG:hover path {
+					.menuSettingsSVG:hover path {
 						@extend .transitions;
 					    fill: $bgDarkGrey;
+					}
+					// DROP MENU SETTINGS
+					#menuSettings {
+						position: absolute;
+						z-index: 10;
+						width: 180px;
+						right: 0px;
+						top: 45px;
+						&.closed {
+							opacity: 0;
+							display: none;
+						}
+						&.open {
+							opacity: 1;
+							display: block;
+						}
+						.menuSettingsSeta {
+							height: 7px;
+							text-align: right;
+							margin-right: 11px;
+							margin-top: -33px;
+						}
+						.menuSettingsBar {
+							height: 5px;
+							background-color: $bgBlue;
+						}
+						.menuSettingsItem {
+							height: 45px;
+							@include gGrey;
+							.icon {
+								width: 45px;
+								height: 100%;
+								float: left;
+								border-right: 1px solid #dcdcdc;
+								padding: 0 10px;
+							}
+							.text {
+								height: 100%;
+								line-height: 45px;
+								float: left;
+								border-left: 1px solid #fff;
+								padding: 0px 0px 0px 10px;
+								@include txtMenuAcc;
+							}
+						}
 					}
 				}
 			}
 
-			#menuAcc {
-				position: absolute;
-				width: 180px;
-				right: 30px;
-				top: 45px;
-				&.closed {
-					opacity: 0;
-					display: none;
-				}
-				&.open {
-					opacity: 1;
-					display: block;
-				}
-				.menuAccSeta {
-					height: 7px;
-				}
-				.menuAccBar {
-					height: 5px;
-					background-color: $bgBlue;
-				}
-				.menuAccItem {
-					height: 45px;
-					@include gGrey;
-					.icon {
-						width: 45px;
-						height: 100%;
-						float: left;
-						border-right: 1px solid #dcdcdc;
-						padding: 10px;
-					}
-					.text {
-						height: 100%;
-						float: left;
-						border-left: 1px solid #fff;
-						padding: 15px 0px 15px 10px;
-						@include txtMenuAcc;
-					}
-				}
-			}
+
 		}
 	}
 

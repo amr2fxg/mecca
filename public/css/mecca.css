@@ -70,11 +70,11 @@ hr.vertSep { background-image: url("../i/hr_vert.png"); background-repeat: repea
 
 /* STYLE PROPERTIES */
 /* -------------------------------------------*/
-.transitions, .btn, #categorias .btnCategories, #categorias .btnCategoriesMore, #app #menuBar #menu #busca .btnSearch, #app #menuBar #menu #menuIcons .notifications .icon .menuNotificationsSVG path, #app #menuBar #menu #menuIcons .menuBtnAcc .menuAccSVG:hover path, #history #last_searches div ul li, .preco, .preco--last_product { transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; }
+.transitions, .btn, #categorias .btnCategories, #categorias .btnCategoriesMore, #app #menuBar #menu #busca .btnSearch, #app #menuBar #menu #menuIcons .notifications .icon .menuNotificationsSVG path, #app #menuBar #menu #menuIcons .menuBtnSettings .menuSettingsSVG:hover path, #history #last_searches div ul li, .preco, .preco--last_product { transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; }
 
 .noSelection, .btn, #categorias .btnCategories, #categorias .btnCategoriesMore, #app #menuBar #menu #menuIcons .notifications .number, .area_title { user-select: none; -webkit-user-select: none; -moz-user-select: none; }
 
-.antialiased, .btn, #categorias .btnCategories, #categorias .btnCategoriesMore, #app #menuBar #menu #menuIcons .notifications .number, #history #last_product, #history #categories .titulo, #history #categories .similar, #history #last_searches div ul li, .area_title, .preco, .preco--last_product, #app #content #perfil #produtos .titulo, #app #content #perfil #stats #user_name { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
+.antialiased, .btn, #categorias .btnCategories, #categorias .btnCategoriesMore, #app #menuBar #menu #menuIcons .notifications .number, #app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsItem .infos .titulo, #app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsItem .infos .action, #history #last_product, #history #categories .titulo, #history #categories .similar, #history #last_searches div ul li, .area_title, .preco, .preco--last_product, #app #content #perfil #produtos .titulo, #app #content #perfil #stats #user_name { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
 
 /* BUTTONS */
 /* -------------------------------------------*/
@@ -326,17 +326,27 @@ html { background-color: #f9f9f9; }
 #app #menuBar #menu #menuIcons .notifications .icon { width: 36px; height: 36px; position: absolute; }
 #app #menuBar #menu #menuIcons .notifications .icon .menuNotificationsSVG path { fill: #f1592a; }
 #app #menuBar #menu #menuIcons .notifications .number { position: relative; z-index: 10; text-align: center; font-family: 'Oswald'; font-size: 14px; text-transform: uppercase; letter-spacing: 0.25px; color: #fff; margin: -12.5px 0px; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications { position: absolute; z-index: 10; width: 400px; right: 0px; top: 45px; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications.closed { opacity: 0; display: none; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications.open { opacity: 1; display: block; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsSeta { height: 7px; text-align: right; margin-right: 11px; margin-top: -33px; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsBar { height: 5px; background-color: #357ae8; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsItem { height: 60px; background-color: #f5f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#e5e5e5)); background-image: -webkit-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -moz-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -ms-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -o-linear-gradient(top, whitesmoke, #e5e5e5); background-image: linear-gradient(top, whitesmoke, #e5e5e5); }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsItem .thumb { width: 60px; height: 100%; float: left; border-right: 1px solid #dcdcdc; padding: 5px; text-align: center; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsItem .infos { float: left; height: 100%; padding: 0px 0px 0px 10px; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsItem .infos .titulo { height: 50%; line-height: 30px; margin-top: 5px; font-family: "Oswald"; font-size: 14px; color: #357ae8; text-transform: uppercase; letter-spacing: 0.25px; }
+#app #menuBar #menu #menuIcons .notifications #menuNotifications .menuNotificationsItem .infos .action { height: 50%; margin-top: -25px; font-family: "PTMono"; font-size: 12px; font-color: #ccc; text-transform: uppercase; }
 #app #menuBar #menu #menuIcons .notifications:hover .icon .menuNotificationsSVG path { fill: #3e3e3e; }
-#app #menuBar #menu #menuIcons .menuBtnAcc { position: relative; float: right; width: 36px; height: 36px; margin: 12.5px 0px; right: 0; cursor: pointer; }
-#app #menuBar #menu #menuIcons .menuBtnAcc .menuAccSVG:hover path { fill: #3e3e3e; }
-#app #menuBar #menu #menuAcc { position: absolute; width: 180px; right: 30px; top: 45px; }
-#app #menuBar #menu #menuAcc.closed { opacity: 0; display: none; }
-#app #menuBar #menu #menuAcc.open { opacity: 1; display: block; }
-#app #menuBar #menu #menuAcc .menuAccSeta { height: 7px; }
-#app #menuBar #menu #menuAcc .menuAccBar { height: 5px; background-color: #357ae8; }
-#app #menuBar #menu #menuAcc .menuAccItem { height: 45px; background-color: #f5f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#e5e5e5)); background-image: -webkit-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -moz-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -ms-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -o-linear-gradient(top, whitesmoke, #e5e5e5); background-image: linear-gradient(top, whitesmoke, #e5e5e5); }
-#app #menuBar #menu #menuAcc .menuAccItem .icon { width: 45px; height: 100%; float: left; border-right: 1px solid #dcdcdc; padding: 10px; }
-#app #menuBar #menu #menuAcc .menuAccItem .text { height: 100%; float: left; border-left: 1px solid #fff; padding: 15px 0px 15px 10px; color: #000; font-family: 'Arial'; font-size: 14px; }
+#app #menuBar #menu #menuIcons .menuBtnSettings { position: relative; float: right; width: 36px; height: 36px; margin: 12.5px 0px; right: 0; cursor: pointer; }
+#app #menuBar #menu #menuIcons .menuBtnSettings .menuSettingsSVG:hover path { fill: #3e3e3e; }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings { position: absolute; z-index: 10; width: 180px; right: 0px; top: 45px; }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings.closed { opacity: 0; display: none; }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings.open { opacity: 1; display: block; }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings .menuSettingsSeta { height: 7px; text-align: right; margin-right: 11px; margin-top: -33px; }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings .menuSettingsBar { height: 5px; background-color: #357ae8; }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings .menuSettingsItem { height: 45px; background-color: #f5f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#e5e5e5)); background-image: -webkit-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -moz-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -ms-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -o-linear-gradient(top, whitesmoke, #e5e5e5); background-image: linear-gradient(top, whitesmoke, #e5e5e5); }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings .menuSettingsItem .icon { width: 45px; height: 100%; float: left; border-right: 1px solid #dcdcdc; padding: 0 10px; }
+#app #menuBar #menu #menuIcons .menuBtnSettings #menuSettings .menuSettingsItem .text { height: 100%; line-height: 45px; float: left; border-left: 1px solid #fff; padding: 0px 0px 0px 10px; color: #000; font-family: 'Arial'; font-size: 14px; }
 #app.l_1280 #menuBar #menu logo, #app.l_1024 #menuBar #menu logo { min-width: 190px; align-self: center; }
 #app.l_1280 #menuBar #menu #busca, #app.l_1024 #menuBar #menu #busca { flex: 1 0 auto; align-self: center; }
 #app.l_1280 #menuBar #menu #menuIcons, #app.l_1024 #menuBar #menu #menuIcons { min-width: 100px; align-self: center; }
