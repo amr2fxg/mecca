@@ -135,6 +135,28 @@ hr.vertSep {
 	border: 0;	
 }
 
+/* STYLE PROPERTIES */
+/* -------------------------------------------*/
+.transitions {
+	transition: all 0.150s;
+	-webkit-transition: all 0.150s;
+	-moz-transition: all 0.150s;
+	-ms-transition: all 0.150s;
+	-o-transition: all 0.150s;
+}
+
+.noSelection {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+.antialiased {
+	font-smoothing: antialiased;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-font-smoothing: antialiased;
+}
+
 /* BUTTONS */
 /* -------------------------------------------*/
 
@@ -144,9 +166,8 @@ hr.vertSep {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-smoothing: antialiased;
-  	-webkit-font-smoothing: antialiased;
-  	-moz-font-smoothing: antialiased;
+	@extend .antialiased;
+
   	letter-spacing: 1px;
 
 	display: inline-block;
@@ -155,16 +176,9 @@ hr.vertSep {
 	padding: 0 15px;
 
 	border: none;
-	
-	transition: all 0.150s;
-	-webkit-transition: all 0.150s;
-	-moz-transition: all 0.150s;
-	-ms-transition: all 0.150s;
-	-o-transition: all 0.150s;
-	
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
+
+	@extend .transitions;
+	@extend .noSelection;
 
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;

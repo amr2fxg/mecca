@@ -57,9 +57,13 @@ hr.menuLeft { background-image: url("../i/hr_menuLeft.png"); background-repeat: 
 
 hr.vertSep { background-image: url("../i/hr_vert.png"); background-repeat: repeat-y; background-position: top left; width: 2px; border: 0; }
 
+/* TRANSITIONS */
+/* -------------------------------------------*/
+.transitions, .btn { transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; }
+
 /* BUTTONS */
 /* -------------------------------------------*/
-.btn { font-family: "Oswald"; font-size: 13px; text-align: center; text-decoration: none; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 1px; display: inline-block; height: 35px; line-height: 35px; padding: 0 15px; border: none; transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; user-select: none; -webkit-user-select: none; -moz-user-select: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; cursor: pointer; }
+.btn { font-family: "Oswald"; font-size: 13px; text-align: center; text-decoration: none; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 1px; display: inline-block; height: 35px; line-height: 35px; padding: 0 15px; border: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; cursor: pointer; }
 
 .circle { border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; vertical-align: baseline; font-family: "Arial"; font-weight: bold; text-align: center; text-decoration: none; display: inline-block; padding: 0 8px; transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; user-select: none; -webkit-user-select: none; -moz-user-select: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; }
 
