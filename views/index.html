@@ -63,11 +63,29 @@
 	*
 	*/
 
+	// Resolution Control
+	var vpWidth = window.innerWidth;
+	var pixelRatio = window.devicePixelRatio;
+	alert("width: " + vpWidth + " | pixelRatio: " + pixelRatio);
+
+	
+
+	if( vpWidth >= 1280 ) {
+		$("#app").addClass("l_1280");
+	} else if( vpWidth >= 1024 && vpWidth < 1280 ) {
+		$("#app").addClass("l_1024");
+	} else if( vpWidth >= 768 && vpWidth < 1024 ) {
+		$("#app").addClass("l_768");
+	} else if( vpWidth < 768 ) {
+		$("#app").addClass("l_480");
+	}
+
 
     //document ready only scripts
 	$(document).ready(function() {
 
 		$.getScript("/js/index.js");
+
 
 	}); //document.ready
 
