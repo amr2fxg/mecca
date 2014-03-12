@@ -65,10 +65,12 @@
 
 	// Resolution Control
 	var vpWidth = window.innerWidth;
+	var vpHeight = window.innerHeight;
 	var pixelRatio = window.devicePixelRatio;
-	alert("width: " + vpWidth + " | pixelRatio: " + pixelRatio);
+	var orientation = window.orientation;
+	alert("width: " + vpWidth + " | height: " + vpHeight + " | pixelRatio: " + pixelRatio  + " | orientation: " + orientation);
 
-	
+
 
 	if( vpWidth >= 1280 ) {
 		$("#app").addClass("l_1280");
