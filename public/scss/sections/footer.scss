@@ -29,7 +29,7 @@
 
 	#content {
 		// text-align: center;
-		@extend .max_1280;
-		@extend .boxC;
+		@include max_1280;
+		@include boxC;
 	}
 }

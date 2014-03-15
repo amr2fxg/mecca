@@ -135,38 +135,18 @@ hr.vertSep {
 	border: 0;	
 }
 
-/* STYLE PROPERTIES */
-/* -------------------------------------------*/
-.transitions {
-	transition: all 0.150s;
-	-webkit-transition: all 0.150s;
-	-moz-transition: all 0.150s;
-	-ms-transition: all 0.150s;
-	-o-transition: all 0.150s;
-}
 
-.noSelection {
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-}
-
-.antialiased {
-	font-smoothing: antialiased;
-  	-webkit-font-smoothing: antialiased;
-  	-moz-font-smoothing: antialiased;
-}
 
 /* BUTTONS */
 /* -------------------------------------------*/
 
-.botao {
+@mixin botao {
 	font-family: "Oswald";
 	font-size: 13px;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	@extend .antialiased;
+	@include antialiased;
 
   	letter-spacing: 1px;
 
@@ -177,8 +157,8 @@ hr.vertSep {
 
 	border: none;
 
-	@extend .transitions;
-	@extend .noSelection;
+	@include transitions;
+	@include noSelection;
 
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -497,7 +477,7 @@ input[type=text], input[type=password], textarea {
 	line-height: normal;
 	// margin: 0 0 0 0;
 	padding: 6px 10px;
-	min-width: 300px;
+	// min-width: 300px;
 
 }
 

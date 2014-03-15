@@ -2,15 +2,16 @@
 /* IMPORTS                                                   */
 /* --------------------------------------------------------- */
 @import "vendor/bootstrap";
-// @import "vendor/dmarchi";
 @import "vendor/dmarchi/normalize";
 // @import "vendor/dmarchi/dm";
-@import "vendor/dmarchi/grid_perc";
-@import "vendor/dmarchi/ui";
+// @import "vendor/dmarchi/grid_perc";
 
+@import "lib/variables";
 @import "lib/fonts";
 @import "lib/colors";
 @import "lib/mixins";
+
+@import "vendor/dmarchi/ui";
 
 @import "sections/menu";
 @import "sections/announcement";
@@ -29,10 +30,5 @@ html {
 	width: 100%;
 }
 
-.max_1280 {
-	max-width: 1280px;
-	padding: 0 20px;
-}
-
-.boxC { margin: auto; }
-.alignC { text-align: center; }
+.r { outline: 1px solid red ;}
+.b { outline: 1px solid blue ;}
