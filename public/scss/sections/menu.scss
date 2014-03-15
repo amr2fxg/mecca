@@ -1,0 +1,269 @@
+/* --------------------------------------------------------- */
+/* MENU BAR                                                  */
+/* --------------------------------------------------------- */
+
+#app {
+
+	#menuBg {
+		height: 60px;
+		background-color: $grey25;
+
+		#menu {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			height: 60px;
+			@extend .max_1280;
+			@extend .boxC;
+
+			#logo {
+				flex: 1;
+				height: 60px;
+				line-height: 60px;
+				img {
+					vertical-align: middle;
+				}
+			}
+
+			#busca {
+				margin-right: 10px;
+				.btnSearch {
+					@extend .transitions;
+					vertical-align: middle;
+					background-color: $bgBlue;
+				}
+				.btnSearch:hover {
+					background-color: $bgDarkGrey;
+				}
+			}
+
+			#menuIcons {
+				height: 60px;
+				line-height: 60px;
+				.notifications {
+					position: relative;
+					float: right;
+					width: 36px;
+					height: 36px;
+					margin: 12.5px 10px;
+					cursor: pointer;
+					.icon {
+						width: 36px;
+						height: 36px;
+						position: absolute;
+						.menuNotificationsSVG path {
+							@extend .transitions;
+							fill: $bgDarkOrange;
+						}
+					}
+					.number {
+						@extend .noSelection;
+						position: relative;
+						z-index: 10;
+						text-align: center;
+						@include txtOswald14;
+						color: #fff;
+						margin: -12.5px 0px;
+					}
+					//  DROP MENU NOTIFICATIONS
+					#menuNotifications {
+						display: flex;
+						// flex-direction: column;
+
+						position: absolute;
+						z-index: 10;
+						width: 400px;
+						right: 0px;
+						// top: 45px;
+						&.closed {
+							opacity: 0;
+							display: none;
+						}
+						&.open {
+							opacity: 1;
+							display: block;
+						}
+						.menuNotificationsSeta {
+							height: 7px;
+							text-align: right;
+							// margin-right: 11px;
+							// margin-top: -33px;
+						}
+						.menuNotificationsBar {
+							height: 5px;
+							background-color: $bgBlue;
+						}
+						.menuNotificationsItem {
+							height: 60px;
+							@include gWhiteGrey;
+							.thumb {
+								width: 60px;
+								height: 100%;
+								float: left;
+								border-right: 1px solid #dcdcdc;
+								padding: 5px;
+								text-align: center;
+							}
+							.infos {
+								float: left;
+								height: 100%;
+								padding: 0px 0px 0px 10px;
+								.titulo {
+									height: 50%;
+									line-height: 30px;
+									margin-top: 5px;
+									font: {
+										family: "Oswald";
+										size: 14px;
+									}
+									color: $txtBlue;
+									text-transform: uppercase;
+									@extend .antialiased;
+								  	letter-spacing: 0.25px;
+								}
+								.action {
+									height: 50%;
+									margin-top: -25px;
+									font: {
+										family: "PTMono";
+										size: 12px;
+										color: #ccc;
+									}
+									text-transform: uppercase;
+									@extend .antialiased;
+								}
+							}
+						}
+					}
+				}
+				.notifications:hover .icon .menuNotificationsSVG path{
+					fill: $bgDarkGrey;
+				}
+				.menuBtnSettings {
+					position: relative;
+					float: right;
+					width: 36px;
+					height: 36px;
+					margin: 12.5px 0px;
+					right: 0;
+					cursor: pointer;
+					.menuSettingsSVG:hover path {
+						@extend .transitions;
+					    fill: $bgDarkGrey;
+					}
+					// DROP MENU SETTINGS
+					#menuSettings {
+						position: absolute;
+						z-index: 10;
+						width: 180px;
+						right: 0px;
+						top: 45px;
+						&.closed {
+							opacity: 0;
+							display: none;
+						}
+						&.open {
+							opacity: 1;
+							display: block;
+						}
+						.menuSettingsSeta {
+							height: 7px;
+							text-align: right;
+							margin-right: 11px;
+							margin-top: -33px;
+						}
+						.menuSettingsBar {
+							height: 5px;
+							background-color: $bgBlue;
+						}
+						.menuSettingsItem {
+							height: 45px;
+							@include gWhiteGrey;
+							.icon {
+								width: 45px;
+								height: 100%;
+								float: left;
+								border-right: 1px solid #dcdcdc;
+								padding: 0 10px;
+							}
+							.text {
+								height: 100%;
+								line-height: 45px;
+								float: left;
+								border-left: 1px solid #fff;
+								padding: 0px 0px 0px 10px;
+								@include txtMenuAcc;
+							}
+						}
+					}
+				}
+			}
+
+
+		}
+	}
+
+	&.l_1280, &.l_1024 {
+		#menuBar {
+			#menu {
+				logo {
+					min-width: 190px;
+					align-self: center;
+				}
+				#busca {
+					flex: 1 0 auto;
+					align-self: center;
+				}
+				#menuIcons {
+					min-width: 100px;
+					align-self: center;
+				}
+			}
+		}
+	}
+
+	&.l_768 {
+		#menuBar {
+			#menu {
+				#logo {
+					min-width: 150px;
+					align-self: center;
+				}
+				#busca {
+					flex: 1 0 auto;
+					align-self: center;
+					.txtSearch {
+						min-width: 200px;
+					}
+				}
+				#menuIcons {
+					min-width: 75px;
+					align-self: center;
+				}
+			}
+		}
+	}
+
+	&.l_480 {
+		#menuBar {
+			#menu {
+				#logo {
+					flex: 1 0 auto;
+					align-self: center;
+				}
+				#busca {
+					flex: 1 0 auto;
+					align-self: center;
+					.txtSearch {
+						min-width: 200px;
+					}
+				}
+				#menuIcons {
+					min-width: 75px;
+					align-self: center;
+				}
+			}
+		}
+	}
+
+}

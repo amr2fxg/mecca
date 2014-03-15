@@ -1,20 +1,24 @@
 
 // ---------- General
-$.getScript("/js/utils/jstorage.min.js");
-$.getScript("/js/utils/resizeControl.js");
+// $.getScript("/js/utils/jstorage.min.js");
+// $.getScript("/js/utils/resizeControl.js");
+$.getScript("/js/vendor/bootstrap.js");
 $.getScript("/js/utils/search.js");
 
+// $("[rel='tooltip']").tooltip();
+
+
 // ---------- gritter
-$.getScript("/js/utils/jquery.gritter.min.js", function() {
+// $.getScript("/js/utils/jquery.gritter.min.js", function() {
 
-	$('.menuBtnNotify').click( function() {
-		$.gritter.add({
-			title: 'Título da notificação',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, ipsa, ducimus, tempora corporis tenetur a illo perspiciatis voluptate ex similique molestiae in obcaecati hic ut at. Aspernatur, quisquam quas ratione?'
-		});
-	});
+// 	$('.menuBtnNotify').click( function() {
+// 		$.gritter.add({
+// 			title: 'Título da notificação',
+// 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, ipsa, ducimus, tempora corporis tenetur a illo perspiciatis voluptate ex similique molestiae in obcaecati hic ut at. Aspernatur, quisquam quas ratione?'
+// 		});
+// 	});
 
-});
+// });
 
 // ---------- TweenLite
 $.getScript("/js/utils/CSSPlugin.min.js");

@@ -1,0 +1,51 @@
+/* --------------------------------------------------------- */
+/* MIXINS                                                    */
+/* --------------------------------------------------------- */
+
+@mixin txtMenuAcc {
+	color: #000;
+  font: {
+    family: 'Arial';
+    size: 14px;
+  }
+}
+
+@mixin txtNormal {
+  color: #999;
+  font: {
+    family: 'PTMono';
+    size: 14px;
+  }
+}
+
+@mixin txtOswald14 {
+	font: {
+		family: 'Oswald';
+		size: 14px;
+	}
+	text-transform: uppercase;
+	@extend .antialiased;
+  	letter-spacing: 0.25px;
+}
+
+
+
+@mixin txtTitulo {
+	color: #686f82;
+  letter-spacing:-1px;
+  // text-shadow: 0px 0px 1px rgba(54, 123, 233, 0.25);
+  @extend .antialiased;
+  line-height: 32px;
+  font: {
+    family: 'Oswald';
+    size: 28px;
+  }
+}
+
+@mixin txtLink {
+	color: #000;
+  font: {
+    family: 'PTMono';
+    size: 14px;
+  }
+}

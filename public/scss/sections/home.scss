@@ -1,0 +1,245 @@
+/* --------------------------------------------------------- */
+/* HOME PAGE	    			                             */
+/* --------------------------------------------------------- */
+
+#historyBg {
+	height: 360px;
+	padding: 40px 0px;
+	background-color: $grey10;
+
+	#history {
+		display: flex;
+		justify-content: space-between;
+		@extend .max_1280;
+		@extend .boxC;
+
+		#last_product {
+			@include txtOswald14;
+			img { 
+				width: 240px;
+				heigth: 240px;
+			}
+		}
+
+		#categories {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			width: 380px;
+			a {
+				text-decoration: none;
+			}
+			a:hover {
+				.titulo {
+					color: $txtBlue;
+				}
+				.preco {
+					background-color: $bgBlue;
+				}
+				.preco--last_product {
+					background-color: $bgDarkGrey;
+				}
+			}
+			.titulo {
+				font: {
+					family: 'Oswald';
+					size: 22px;
+				}
+				color: $txtGrey;
+				text-transform: uppercase;
+				@extend .antialiased;
+			  	letter-spacing: 0.25px;
+			}
+			.similar {
+				font: {
+					family: 'Oswald';
+					size: 18px;
+				}
+				color: $txtGrey;
+				text-transform: uppercase;
+				@extend .antialiased;
+				letter-spacing: 0.25px;
+				margin-bottom: 10px;
+			}
+			.similar_results {
+				ul {
+					display: flex;
+					justify-content: space-between;
+					li {
+						img {
+							width: 90px;
+							height: 90px;
+						}
+						img:after {
+							content:"\a";
+				    		white-space: pre;
+						}
+						a {
+							text-decoration: none;
+						}
+						a:hover .preco {
+							background-color: $bgBlue;
+						}
+					}
+				}
+			}
+		}
+
+		#last_searches {
+			div ul {
+				width: 200px;
+				height: 280px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				a {
+					text-decoration: none;
+				}
+				a:hover li {
+					background-color: $bgMidGrey;
+				}
+				li {
+					@extend .transitions;
+					height: 35px;
+					line-height: 35px;
+					background-color: $bgLightGrey;
+					@include txtOswald14;
+					color: #fff;
+					text-align: center;
+				}
+			}
+		}
+
+		#last_searches_results {
+			width: 300px;
+			height: 280px;
+			overflow: hidden;
+			ul {
+				width: 300px;
+				height: 280px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				align-content: space-between;
+				li {
+					img {
+						width: 90px;
+						height: 90px;
+					}
+					img:after {
+						content:"\a";
+			    		white-space: pre;
+					}
+					a {
+						text-decoration: none;
+					}
+					a:hover .preco {
+						background-color: $bgBlue;
+					}
+				}
+			}
+		}
+		
+	}
+
+	
+}
+
+#categoriasBg {
+	background-color: $grey30;
+	padding: 20px 0px;
+
+	#categorias {
+		display: flex;
+		justify-content: space-between;
+		@extend .max_1280;
+		@extend .boxC;
+
+		.btnCategories {
+			@extend .botao;
+			color: #fff;
+			background-color: $bgBlue;
+		}
+		.btnCategoriesMore {
+			@extend .botao;
+			color: #fff;
+			background-color: $bgDarkGreen;
+		}
+		.btnCategories:hover, .btnCategoriesMore:hover {
+			background-color: $bgDarkGrey;
+		}
+	}
+}
+
+#mais_buscadosBg {
+	background-color: $grey10;
+	padding: 30px 0px;
+	#mais_buscados {
+		@extend .max_1280;
+		@extend .boxC;
+	}
+}
+
+#anunciosBg {
+	background-color: $grey30;
+	padding: 30px 0px;
+	#anuncios {
+		@extend .max_1280;
+		@extend .boxC;
+	}
+}
+
+#campanhaBg {
+	background-color: $grey10;
+	padding: 30px 0px;
+	#campanha {
+		@extend .max_1280;
+		@extend .boxC;
+	}
+}
+
+/* --------------------------------------------------------- */
+/* GERAL		    			                             */
+/* --------------------------------------------------------- */
+
+.area_title {
+	color: #fff;
+	background-color: $bgDarkGreen !important;
+	font: {
+		family: 'Oswald';
+		size: 14px;
+	}
+	text-transform: uppercase;
+	@extend .antialiased;
+	@extend .noSelection;
+  	letter-spacing: 0.25px;
+  	text-align: center;
+  	width: 100%;
+  	height: 35px;
+  	line-height: 35px;
+  	margin-top: 5px;
+}
+
+.preco {
+	font: {
+		family: 'Oswald';
+		size: 14px;
+	}
+	color: #fff;
+	text-transform: uppercase;
+	@extend .antialiased;
+  	letter-spacing: 0.5px;
+  	text-align: center;
+  	width: 90px;
+  	height: 35px;
+  	line-height: 35px;
+  	margin-top: 5px;
+  	background-color: $bgMidGrey;
+  	text-shadow: 1px 1px 0px rgba(0,0,0,0.25);
+  	@extend .transitions;
+}
+
+.preco--last_product {
+	@extend .preco;
+	background-color: $bgBlue;
+}

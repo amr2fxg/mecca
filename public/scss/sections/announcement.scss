@@ -1,0 +1,15 @@
+/* --------------------------------------------------------- */
+/* ANNOUNCEMENT BAR                                          */
+/* --------------------------------------------------------- */
+
+#announceBar {
+	#announce {
+		#announce_title { font: 22px Arial,sans-serif; }
+		#announce_desc  { font: 14px Arial,sans-serif; }
+		#announce_close {
+			position: absolute;
+			right: 10px;
+			top: 70px;
+		}
+	}
+}

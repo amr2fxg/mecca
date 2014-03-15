@@ -5,12 +5,7 @@
 	<meta charset="UTF-8">
 	
 	<title> Mundo MECCA </title>
-	
-	<link rel="stylesheet" type="text/css" href="/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/css/grid_perc.css" />
-    <link rel="stylesheet" type="text/css" href="/css/dm.css" />
-    <link rel="stylesheet" type="text/css" href="/css/mecca.css" />
-    <link rel="stylesheet" type="text/css" href="/css/jquery.gritter.css" />
+	<link rel="stylesheet" type="text/css" href="/css/mecca.css" />
 
 	<script type="text/javascript" src="/js/utils/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
@@ -65,23 +60,19 @@
 
 	// Resolution Control
 	var vpWidth = window.innerWidth;
-	var vpHeight = window.innerHeight;
 	var pixelRatio = window.devicePixelRatio;
-	var orientation = window.orientation;
-	alert("width: " + vpWidth + " | height: " + vpHeight + " | pixelRatio: " + pixelRatio  + " | orientation: " + orientation);
+	var realWidth = vpWidth / pixelRatio;
+	// var vpHeight = window.innerHeight;
+	// var orientation = window.orientation;
+	//alert("width: " + vpWidth + " | height: " + vpHeight + " | pixelRatio: " + pixelRatio  + " | orientation: " + orientation);
 
-
-
-	if( vpWidth >= 1280 ) {
-		$("#app").addClass("l_1280");
-	} else if( vpWidth >= 1024 && vpWidth < 1280 ) {
-		$("#app").addClass("l_1024");
-	} else if( vpWidth >= 768 && vpWidth < 1024 ) {
-		$("#app").addClass("l_768");
-	} else if( vpWidth < 768 ) {
-		$("#app").addClass("l_480");
+	if( realWidth >= 1280 ) {
+		$("#app").addClass("desk_1280");
+		// alert("1280 +");
+	} else if( realWidth < 1280 ) {
+		$("#app").addClass("tablet");
+		// alert("1280 -");
 	}
-
 
     //document ready only scripts
 	$(document).ready(function() {
@@ -98,8 +89,8 @@
 	<div id="app">
 		
 		<!-- HEADER -->
-		<div id="menuBar" class="row">
-			<div id="menu" class="max_1280 boxC">
+		<div id="menuBg" class="row">
+			<div id="menu">
 				<% include menu.html %>
 			</div>
 		</div>
@@ -107,7 +98,7 @@
 		<!-- ANÚNCIOS / HIGHLIGHTS -->
 		<!-- <div id="announceBar" class="row w100p blue">
 			<div id="announce" class="padH_30 padV_26">
-				<?php  // include "announcements.php"; ?>
+				<% // include announcement.html %>
 			</div>
 		</div> -->
 

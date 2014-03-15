@@ -1,108 +1,92 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.getScript("/js/includes_home.js");
-		for(var i = 0; i < $("#last_searches_results div ul li").length + 1; i++) {
-			if(i < 4) {
-				if(i % 3 != 0) {
-					$('#last_searches_results div ul li:nth-child(' + i + ')').css({'margin-right':10, 'margin-top':0});
-				} else if(i % 3 == 0) {
-					$('#last_searches_results div ul li:nth-child(' + i + ')').css({'margin-right':0, 'margin-top':0});
-				}
-			} else {
-				if(i % 3 != 0) {
-					$('#last_searches_results div ul li:nth-child(' + i + ')').css({'margin-right':10, 'margin-top':20});
-				} else if(i % 3 == 0) {
-					$('#last_searches_results div ul li:nth-child(' + i + ')').css({'margin-right':0, 'margin-top':20});
-				}
-			}
-		}
 	});
 </script>
-</head>
-<body>
 <div id="home">
-	<div id="history" class="row">
-		<div class="max_1280 boxC">
-			<div id="last_product" class="floatL">
+	<div id="historyBg" class="row">
+		<div id="history">
+			<div id="last_product">
 				<div class="row"><a href=""><img src="/i/produtoA.png"></a></div>
 				<div class="row area_title">Visita recente</div>
 			</div>
-			<div id="categories" class="floatL marL_40">
+			<div id="categories">
 				<a href="">
 					<div class="row titulo">mouse gamer razer deathadder</div>
 					<div class="row preco preco--last_product">R$ 259,99</div>
 				</a>
-				<div class="row similar marT_42">ofertas similares</div>
-				<div class="row similar_results marT_10">
+				<div class="row">
+					<div class="row similar">ofertas similares</div>
+					<div class="row similar_results">
+						<ul>
+							<li><a href=""><img src="/i/produtoB.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
+							<li><a href=""><img src="/i/produtoC.png" alt=""><div class="preco">R$ 480,00</div></a></li>
+							<li><a href=""><img src="/i/produtoD.png" alt=""><div class="preco">R$ 144,96</div></a></li>
+							<li><a href=""><img src="/i/produtoA.png" alt=""><div class="preco">R$ 95,45</div></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="last_searches">
+				<div class="row">
 					<ul>
-						<li><a href=""><img src="/i/produtoB.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
-						<li><a href=""><img src="/i/produtoC.png" alt=""><div class="preco">R$ 480,00</div></a></li>
-						<li><a href=""><img src="/i/produtoD.png" alt=""><div class="preco">R$ 144,96</div></a></li>
-						<li><a href=""><img src="/i/produtoA.png" alt=""><div class="preco">R$ 95,45</div></a></li>
+						<a href=""><li>iphone5</li></a>
+						<a href=""><li>hd externo 200gb</li></a>
+						<a href=""><li>nikon d3200</li></a>
+						<a href=""><li>nexus 4 16gb</li></a>
+						<a href=""><li>lanterna led 200w</li></a>
+						<a href=""><li>razer deathadder</li></a>
+						<li class="area_title">Últimas buscas</li>
 					</ul>
 				</div>
 			</div>
-			<div id="last_searches" class="floatL marL_40 marR_20">
-				<div class="row">
-					<ul>
-						<a href=""><li class="">iphone5</li></a>
-						<a href=""><li class="">hd externo 200gb</li></a>
-						<a href=""><li class="">nikon d3200</li></a>
-						<a href=""><li class="">nexus 4 16gb</li></a>
-						<a href=""><li class="">lanterna led 200w</li></a>
-						<a href=""><li class="">razer deathadder</li></a>
-					</ul>
-				</div>
-				<div class="row area_title">Últimas buscas</div>
-			</div>
-			<div id="last_searches_results" class="floatL marL_20">
-				<div class="row">
-					<ul>
-						<li><a href=""><img src="/i/produtoA.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
-						<li><a href=""><img src="/i/produtoB.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
-						<li><a href=""><img src="/i/produtoC.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
-						<li><a href=""><img src="/i/produtoD.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
-						<li><a href=""><img src="/i/produtoE.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
-						<li><a href=""><img src="/i/produtoF.png" alt=""><div class="preco">R$ 2392,00</div></a></li>
-					</ul>
-				</div>
+			<div id="last_searches_results">
+				<ul>
+					<li><a href=""><img src="/i/produtoA.png" alt=""><div class="preco">R$ 1,00</div></a></li>
+					<li><a href=""><img src="/i/produtoB.png" alt=""><div class="preco">R$ 1,00</div></a></li>
+					<li><a href=""><img src="/i/produtoC.png" alt=""><div class="preco">R$ 1,00</div></a></li>
+					<li><a href=""><img src="/i/produtoD.png" alt=""><div class="preco">R$ 1,00</div></a></li>
+					<li><a href=""><img src="/i/produtoE.png" alt=""><div class="preco">R$ 1,00</div></a></li>
+					<li><a href=""><img src="/i/produtoF.png" alt=""><div class="preco">R$ 1,00</div></a></li>
+				</ul>
+				<ul>
+					<li><a href=""><img src="/i/produtoF.png" alt=""><div class="preco">R$ 2,00</div></a></li>
+					<li><a href=""><img src="/i/produtoE.png" alt=""><div class="preco">R$ 2,00</div></a></li>
+					<li><a href=""><img src="/i/produtoD.png" alt=""><div class="preco">R$ 2,00</div></a></li>
+					<li><a href=""><img src="/i/produtoC.png" alt=""><div class="preco">R$ 2,00</div></a></li>
+					<li><a href=""><img src="/i/produtoB.png" alt=""><div class="preco">R$ 2,00</div></a></li>
+					<li><a href=""><img src="/i/produtoA.png" alt=""><div class="preco">R$ 2,00</div></a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
-	<div id="categorias" class="row pad_20">
-		<div class="max_1280 boxC">
-			<ul>
-				<li class="btnCategories">Brinquedos</li>
-				<li class="btnCategories">Celulares e Telefones</li>
-				<li class="btnCategories">Eletrodomésticos</li>
-				<li class="btnCategories">Eletrônicos, Áudio e Vídeo</li>
-				<li class="btnCategories">Filmes e Seriados</li>
-				<li class="btnCategories">Informática</li>
-				<li class="btnCategories">Saúde e Beleza</li>
-				<li class="btnCategoriesMore floatR">MAIS CATEGORIAS</li>
-			</ul>
-		</div>
+	<div id="categoriasBg" class="row">
+		<ul id="categorias">
+			<li class="btnCategories">Brinquedos</li>
+			<li class="btnCategories">Celulares e Telefones</li>
+			<li class="btnCategories">Eletrodomésticos</li>
+			<li class="btnCategories">Eletrônicos, Áudio e Vídeo</li>
+			<li class="btnCategories">Filmes e Seriados</li>
+			<li class="btnCategories">Informática</li>
+			<li class="btnCategories">Saúde e Beleza</li>
+			<li class="btnCategoriesMore">MAIS CATEGORIAS</li>
+		</ul>
 	</div>
-	<div id="mais_buscados" class="row pad_30">
-		<div class="max_1280 boxC">
+	<div id="mais_buscadosBg" class="row">
+		<div id="mais_buscados">
 			Mais Buscados
 		</div>
 	</div>
-	<div id="anuncios" class="row pad_30">
-		<div class="max_1280 boxC">
+	<div id="anunciosBg" class="row">
+		<div id="anuncios">
 			Principais Anúncios
 		</div>
 	</div>
-	<div id="campanha" class="row pad_30">
-		<div class="max_1280 boxC">
+	<div id="campanhaBg" class="row">
+		<div id="campanha">
 			Campanha Especial: Produtos + vendidos da campanha
 			ou
 			Promoções / Facilidades: Produtos c/ Frete Grátis, Brindes, etc.
 		</div>
 	</div>
 </div>
-</body>
-</html>

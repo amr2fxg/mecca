@@ -1,0 +1,104 @@
+/* --------------------------------------------------------- */
+/* PERFIL   			                                           */
+/* --------------------------------------------------------- */
+
+#app {
+	#content {
+		#perfil {
+			display: flex;
+			justify-content: center;
+			align-content: flex-start;
+			align-items: flex-start;
+			padding-top: 30px;
+
+			#produtos {
+				padding-left: 30px;
+				padding-right: 30px;
+
+				.titulo {	@include txtTitulo;	}
+				.filters {
+					@include txtNormal;
+					img {
+						margin-left: 5px;
+					}
+				}
+				.anuncioBox {
+					a {
+						font: {
+							family: 'Arial';
+						}
+						text-decoration: none;
+					}
+					.nome {
+						color: #367be9;
+						font: {
+							family: 'Arial';
+						}
+					}
+				}
+			}
+
+			#stats {
+				padding-left: 30px;
+				padding-right: 30px;
+				text-align: center;
+				#user_avatar {
+					img {
+						width: 100%;
+					}
+				}
+				#user_name  { @include txtTitulo; }
+				#user_place { @include txtNormal; }
+				#user_stats { @include txtNormal;	}
+			}
+
+		}
+	}
+
+	&.l_1280, &.l_1024 {
+		#content {
+			#perfil {
+				flex-direction: row;
+			  flex-wrap: nowrap;
+				#produtos {
+					flex: 1;
+				}
+				#stats {
+					flex: 0 0 360px;
+				}		
+			}
+		}
+	}
+
+	&.l_768 {
+		#content {
+			#perfil {
+				flex-direction: row;
+			  flex-wrap: nowrap;
+				#produtos {
+					flex: 1;
+				}
+				#stats {
+					flex: 0 0 320px;
+				}
+			}
+		}
+	}
+
+	&.l_480 {
+		#content {
+			#perfil {
+				flex-direction: column;
+			  flex-wrap: nowrap;
+				#produtos {
+					width: 100%;
+				}
+				#stats {
+					width: 100%;
+					margin-top: 50px;
+				}
+			}
+		}
+	}
+
+}

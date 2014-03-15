@@ -1,0 +1,35 @@
+/* --------------------------------------------------------- */
+/* FOOTER     				                                       */
+/* --------------------------------------------------------- */
+
+#footer {
+	z-index: 1000000;
+	position: fixed;
+	width: 100%;
+	background-color: #fff;
+	height: 0px;
+	bottom: -1px;
+	border-top: 1px solid #ccc;
+	@include txtNormal;
+
+	#handler {
+		float: right;
+		width: auto;
+		height: 30px;
+		line-height: 30px;
+		padding: 0 10px;
+		border: 1px solid #ccc;
+		border-width: 1px 1px 0 1px;
+		background-color: #fff;
+		margin: -30px 30px 0 0;
+		border-radius: 3px 3px 0 0;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	#content {
+		// text-align: center;
+		@extend .max_1280;
+		@extend .boxC;
+	}
+}
