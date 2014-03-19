@@ -70,6 +70,9 @@
 						@include txtOswald14;
 						@include antialiased;
 					}
+					.menuNotificationsBar:hover {
+						background-color: $bgDarkGrey;
+					}
 					.menuNotificationsItem {
 						display: flex;
 						@include gWhiteGrey;
