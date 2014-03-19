@@ -3,29 +3,17 @@
 /* --------------------------------------------------------- */
 
 #historyBg {
-	height: 360px;
 	padding: 40px 0px;
 	background-color: $grey10;
 
 	#history {
 		display: flex;
 		justify-content: space-between;
-		@include max_1280;
-		@include boxC;
-
-		#last_product {
-			@include txtOswald14;
-			img { 
-				width: 240px;
-				heigth: 240px;
-			}
-		}
 
 		#categories {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			width: 380px;
 			a {
 				text-decoration: none;
 			}
@@ -87,8 +75,6 @@
 
 		#last_searches {
 			ul {
-				width: 200px;
-				height: 280px;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
@@ -111,12 +97,7 @@
 		}
 
 		#last_searches_results {
-			width: 300px;
-			height: 280px;
-			overflow: hidden;
 			ul {
-				width: 300px;
-				height: 280px;
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
@@ -242,4 +223,128 @@
 .preco--last_product {
 	@extend .preco;
 	background-color: $bgBlue;
+}
+
+
+/* -------------------------------------------------------- */
+/* phone/tablet 992-										*/
+/* -------------------------------------------------------- */
+@media (max-width: $screen-sm-max) {
+	#historyBg {
+		#history {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			@include max_100p;
+			@include boxC;
+		}
+	}
+
+	#categoriasBg {
+		#categorias {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			.btnCategories {
+				margin-bottom: 5px;
+			}
+		}
+	}
+}
+
+/* -------------------------------------------------------- */
+/* netbook	992-1280			 							*/
+/* -------------------------------------------------------- */
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+	#historyBg {
+		height: 360px;
+		#history {
+			display: flex;
+			justify-content: space-between;
+			@include max_100p;
+
+			#last_product {
+				margin-right: 10px;
+				@include txtOswald14;
+				img { 
+					width: 240px;
+					heigth: 240px;
+				}
+			}
+
+			#categories {
+				flex: 1;
+				margin: 0px 10px;
+				.similar_results {
+					ul {
+						display: flex;
+						justify-content: flex-start;
+						li {
+							margin-right: 10px;
+						}
+					}
+				}
+			}
+
+			#last_searches {
+				margin: 0px 10px;
+				ul {
+					width: 180px;
+					height: 280px;
+				}
+			}
+
+			#last_searches_results {
+				margin-left: 10px;
+				height: 280px;
+				ul {
+					width: 200px;
+					height: 280px;
+				}
+			}
+		}
+	}
+}
+
+/* -------------------------------------------------------- */
+/* desktop 1280+											*/
+/* -------------------------------------------------------- */
+@media (min-width: $screen-lg-min) {
+	#historyBg {
+		height: 360px;
+		#history {
+			display: flex;
+			justify-content: space-between;
+			@include max_1280;
+			@include boxC;
+
+			#last_product {
+				@include txtOswald14;
+				img { 
+					width: 240px;
+					heigth: 240px;
+				}
+			}
+
+			#categories {
+				width: 380px;
+			}
+
+			#last_searches {
+				ul {
+					width: 200px;
+					height: 280px;
+				}
+			}
+
+			#last_searches_results {
+				width: 300px;
+				height: 280px;
+				ul {
+					width: 300px;
+					height: 280px;
+				}
+			}
+		}
+	}
 }

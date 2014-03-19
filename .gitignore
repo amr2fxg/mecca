@@ -220,9 +220,16 @@ node_modules/
 #MongoDB
 data/
 
+# RAFA STUFF
+# -------------------------
 #Illustrator
 *.ai
 
 #cmd lnk
 *.lnk
 
+#css old
+public/css/old/
+
+#flexbox guide
+public/scss/flexbox_guide.txt
