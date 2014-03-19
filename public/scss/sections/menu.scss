@@ -62,8 +62,13 @@
 						display: flex;
 					}
 					.menuNotificationsBar {
-						height: 5px;
+						height: 40px;
 						background-color: $bgBlue;
+						color: #fff;
+						text-align: center;
+						line-height: 40px;
+						@include txtOswald14;
+						@include antialiased;
 					}
 					.menuNotificationsItem {
 						display: flex;
