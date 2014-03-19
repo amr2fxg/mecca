@@ -189,6 +189,9 @@ function navigate(direction) {
 	} else if (direction == 'down') {
 		if(currentSelection != $("#results ul li").size() -1) {
 			currentSelection++;
+		} else if(currentSelection == $("#results ul li").size() -1) {
+			currentSelection = -1;
+			$("#s").focus();
 		}
 	}
 	setSelected(currentSelection);
@@ -229,7 +232,7 @@ function goSearch(palavras) {
 	        },
 	        error: function(err, status){
 
-	        	console.log('Search EngineError. Task Undone!');
+	        	console.log('Search Engine Error. Task Undone!');
 	        }
 
 	});

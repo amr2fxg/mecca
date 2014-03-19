@@ -1,5 +1,9 @@
 <ul>
 	<% results.forEach( function(entry) { %>
-    <li><a class="link" href="/busca/<%= entry.palavra %>" title="<%= entry.palavra %>"><%= entry.palavra %></a></li> 
+    <li>
+    	<a class="link" href="/busca/<%= entry.palavra %>" title="<%= entry.palavra %>">
+    		<span><%= entry.palavra %></span><!-- <b>zilla</b> -->
+    	</a>
+    </li> 
 	<% }); %>
 </ul>

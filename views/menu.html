@@ -3,7 +3,9 @@
 <div id="busca">
 	<form name="search" id="search" method="GET" action="localhost:5000/busca" autocomplete="off">
 		<div id="form_container">
-			<input type="text" class="txtSearch" autofocus="autofocus" placeholder="" tabIndex=1 id="s" name="s"><input type="button" value="" class="btnSearch rR" id="btn_search" name="btn_search">
+			<input type="text" class="txtSearch" autofocus="autofocus" autocomplete="off" placeholder="" tabIndex=1 id="s" name="s">
+			<input type="text" class="txtSearch" id="ss" disabled autocomplete="off" aria-hidden="true">
+			<input type="button" value="" class="btnSearch rR" id="btn_search" name="btn_search">
 		</div>
 		<div id="results"></div>
 	</form>

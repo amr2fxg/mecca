@@ -13,6 +13,53 @@
 			}
 		}
 
+		#busca {
+			position: relative;
+
+			#form_container {
+				#s {
+					z-index: $zindex-navbar-fixed + 1;
+					background-color: transparent;
+				}
+				#ss {
+					z-index: $zindex-navbar-fixed;
+					color: #ccc;
+					width: 100%;
+					position: absolute;
+					left: 0px;
+				}
+				#btn_search {
+					z-index: $zindex-navbar-fixed + 2;
+				}
+
+			}
+
+			#results {
+				// start hidden
+				display:none;
+
+				position: absolute;
+				width: 100%;
+				top: 50px;
+				z-index: $zindex-navbar-fixed;
+
+				border: 1px solid #ddd;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+				-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+				ul li a {
+					padding: 0px 7px;
+					line-height: 28px;
+					height: 28px;
+					font: {
+						family: "Arial";
+						size: 13px;
+					}
+				}
+
+			}
+		}
+
 		#menuIcons {
 			height: 60px;
 			line-height: 60px;
@@ -348,6 +395,10 @@
 				margin-right: 20px;
 
 				#form_container {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
 					input[type=text] {
 						min-width: 300px;
 					}
@@ -355,6 +406,7 @@
 						@include transitions;
 						vertical-align: middle;
 						background-color: $bgBlue;
+						border: 0;
 					}
 					.btnSearch:hover {
 						background-color: $bgDarkGrey;
