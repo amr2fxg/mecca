@@ -89,6 +89,11 @@
 		<div id="content" class="row">
 			<%	if( action == 'busca') { %>
 			<%- results %>
+	
+			<% ufs.forEach( function(entry) { %>
+		    <%= entry %>
+			<% }); %>
+
 			<% } else { %>
 			<%		include home.html %>
 			<% } %>

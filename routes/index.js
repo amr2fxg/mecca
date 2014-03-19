@@ -10,7 +10,7 @@ var url = require('url'),
 exports.index =  function(req, res){
 		
 	req.session.lastView = req.host  + req.url;
-  	res.render('index', { action:'', lastView: req.session.lastView });
+  	res.render('index', { action: 'XXXXX', lastView: req.session.lastView });
 
 };
 
@@ -51,7 +51,7 @@ exports.busca = function(req, res) {
 		else{
 			
 
-			res.render('index', {  action: 'busca', results: '<p>aaaaaaaaaaaaaaahhhh!!</p>', lastView: req.session.lastView})
+			res.render('index', {  action: 'busca', results: '<p>aaaaaaaaaaaaaaahhhh!!</p>', ufs: [ 'Rio Grande do Sul', 'São Paulo', 'Rio de Janeiro' ],  lastView: req.session.lastView})
 
 		}
 
