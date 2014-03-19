@@ -2,7 +2,14 @@
 // ---------- General
 // $.getScript("/js/utils/jstorage.min.js");
 // $.getScript("/js/utils/resizeControl.js");
-$.getScript("/js/vendor/bootstrap.js");
+$.getScript("/js/vendor/bootstrap/modal.js", function() {
+	$('#login').modal("hide");
+	$('#cadastro').modal("hide");
+	$('.menuSettingsItem').click(function() {
+		$('#login').modal("show");
+	});
+});
+
 $.getScript("/js/utils/search.js");
 
 // $("[rel='tooltip']").tooltip();
@@ -27,14 +34,15 @@ $.getScript("/js/utils/TweenLite.min.js", function() {
 
 	$('.notifications').click( function() {
 		var menuNotifications = $('#menuNotifications');
-		var menuSettings = $('#menuSettings');
+		var menuSettings_auth = $('#menuSettings-auth');
+		var menuSettings_noauth = $('#menuSettings-noauth');
 
 		if( menuNotifications.hasClass('closed') ) {
 			menuNotifications.removeClass('closed').addClass('open');
 			TweenLite.to( menuNotifications, 0.5, { opacity:1 } );
-			// close the other
-			menuSettings.removeClass('open').addClass('closed');
-			TweenLite.to( menuSettings, 0.5, { opacity:0 } );
+			// close menu auto or noauth
+			menuSettings_noauth.removeClass('open').addClass('closed');
+			TweenLite.to( menuSettings_noauth, 0.5, { opacity:0 } );
 		} else if( menuNotifications.hasClass('open') ) {
 			menuNotifications.removeClass('open').addClass('closed');
 			TweenLite.to( menuNotifications, 0.5, { opacity:0 } );
@@ -43,18 +51,19 @@ $.getScript("/js/utils/TweenLite.min.js", function() {
 	});
 
 	$('.menuBtnSettings').click( function() {
-		var menuSettings = $('#menuSettings');
+		var menuSettings_auth = $('#menuSettings-auth');
+		var menuSettings_noauth = $('#menuSettings-noauth');
 		var menuNotifications = $('#menuNotifications');
 
-		if( menuSettings.hasClass('closed') ) {
-			menuSettings.removeClass('closed').addClass('open');
-			TweenLite.to( menuSettings, 0.5, { opacity:1 } );
-			// close the other
+		if( menuSettings_noauth.hasClass('closed') ) {
+			menuSettings_noauth.removeClass('closed').addClass('open');
+			TweenLite.to( menuSettings_noauth, 0.5, { opacity:1 } );
+			// close notifications
 			menuNotifications.removeClass('open').addClass('closed');
 			TweenLite.to( menuNotifications, 0.5, { opacity:0 } );
-		} else if( menuSettings.hasClass('open') ) {
-			menuSettings.removeClass('open').addClass('closed');
-			TweenLite.to( menuSettings, 0.5, { opacity:0 } );
+		} else if( menuSettings_noauth.hasClass('open') ) {
+			menuSettings_noauth.removeClass('open').addClass('closed');
+			TweenLite.to( menuSettings_noauth, 0.5, { opacity:0 } );
 		}
 
 	});

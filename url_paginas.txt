@@ -1,0 +1,13 @@
+
+/								home
+/compre							produto
+/busca							listagem dos resultados
+/usuario						resumão da conta
+/usuario/minha-conta			dados cadastrais
+/usuario/minhas-ofertas			lances feitos
+/usuario/favoritos				produtos/lojas favoritos
+/usuario/historico				historico compras/vendas/ações no site (follow)
+/usuario/meus-anuncios			meus anuncios (produtos a venda)
+/vender							novo produto
+/perfil							resumão do vendedor + produtos a venda (loja)
+/notificacoes					notificações sobre produtos e lojas que segue

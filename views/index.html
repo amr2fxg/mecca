@@ -58,27 +58,10 @@
 	*
 	*/
 
-	// Resolution Control
-	var vpWidth = window.innerWidth;
-	var pixelRatio = window.devicePixelRatio;
-	var realWidth = vpWidth / pixelRatio;
-	// var vpHeight = window.innerHeight;
-	// var orientation = window.orientation;
-	//alert("width: " + vpWidth + " | height: " + vpHeight + " | pixelRatio: " + pixelRatio  + " | orientation: " + orientation);
-
-	if( realWidth >= 1280 ) {
-		$("#app").addClass("desk_1280");
-		// alert("1280 +");
-	} else if( realWidth < 1280 ) {
-		$("#app").addClass("tablet");
-		// alert("1280 -");
-	}
-
     //document ready only scripts
 	$(document).ready(function() {
 
-		$.getScript("/js/index.js");
-
+		$.getScript("/js/includes_index.js");
 
 	}); //document.ready
 
@@ -117,6 +100,6 @@
 		</div>
 
 	</div>	
-	<span id="lastView" title="<%= lastView %>" />
+	<div id="user_info" class="hidden"></div>
 </body>
 </html>
