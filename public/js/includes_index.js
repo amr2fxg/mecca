@@ -5,8 +5,15 @@
 $.getScript("/js/vendor/bootstrap/modal.js", function() {
 	$('#login').modal("hide");
 	$('#cadastro').modal("hide");
-	$('.menuSettingsItem').click(function() {
+	$('#menuSettingsLogin').click(function() {
 		$('#login').modal("show");
+	});
+	$('#menuSettingsCadastro').click(function() {
+		$('#cadastro').modal("show");
+	});
+	$('#login_novo').click(function() {
+		$('#login').modal("hide");
+		$('#cadastro').modal("show");
 	});
 });
 

@@ -1,0 +1,6 @@
+Ao iniciar o trabalho		git pull
+Ao finalizar				git add -A
+							git commit -m "titulo"
+							git push
+Se der erro					git pull
+							git push

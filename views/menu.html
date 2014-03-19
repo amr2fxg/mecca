@@ -21,8 +21,8 @@
 			<div class="menuSettingsBar"></div>
 		</div>
 		<div id="menuSettings-noauth" class="closed">
-			<div class="menuSettingsItem"><div class="icon"><img src="/i/menu_myacc.png" alt=""></div><div class="text">Login</div></div>
-			<div class="menuSettingsItem"><div class="icon"><img src="/i/menu_mybids.png" alt=""></div><div class="text">Novo usuário</div></div>
+			<div class="menuSettingsItem" id="menuSettingsLogin"><div class="icon"><img src="/i/menu_myacc.png" alt=""></div><div class="text">Login</div></div>
+			<div class="menuSettingsItem" id="menuSettingsCadastro"><div class="icon"><img src="/i/menu_mybids.png" alt=""></div><div class="text">Novo usuário</div></div>
 			<div class="menuSettingsBar"></div>
 		</div>
 	</div>
@@ -32,7 +32,6 @@
 		</div>
 		<div class="number">22</div>
 		<div id="menuNotifications" class="closed">
-			<!-- <div class="menuNotificationsBar"></div> -->
 			<div class="menuNotificationsItem">
 				<div class="thumb"><img src="/i/thumb.png" alt=""></div>
 				<div class="infos">
@@ -64,10 +63,10 @@
 		<div class="modal-content">
 			<div class="modalBar"></div>
 			<div class="fields">
-				<div><input type="text" placeholder="Usuário" id="login_user"></div>
-				<div><input type="password" placeholder="Senha" id="login_senha"></div>
-				<div><a href="javascript:void(0)" class="botao" id="login_btn">Entrar</a></div>
-				<div><a href="javascript:void(0)" id="login_novo">Novo Usuário</a></div>
+				<input type="text" placeholder="Usuário" id="login_user">
+				<input type="password" placeholder="Senha" id="login_senha">
+				<a href="javascript:void(0)" class="botao" id="login_btn">Entrar</a>
+				<a href="javascript:void(0)" id="login_novo">Novo Usuário</a>
 			</div>
 			<div class="modalBar"></div>
 		</div>
@@ -79,9 +78,15 @@
 		<div class="modal-content">
 			<div class="modalBar"></div>
 			<div class="fields">
-				<div><input type="text" placeholder="Usuário" id="login_user"></div>
-				<div><input type="password" placeholder="Senha" id="login_senha"></div>
-				<div><a href="javascript:void(0)" class="botao" id="login_btn">Cadastrar</a></div>
+				<input type="text" placeholder="Usuário"				id="signin_User"	 		name="signin_User">
+				<input type="text" placeholder="Nome"					id="signin_Nome" 			name="signin_Nome">
+				<input type="text" placeholder="Sobrenome"				id="signin_Sobrenome" 		name="signin_Sobrenome">
+				<input type="text" placeholder="E-mail"					id="signin_Email" 			name="signin_Email">
+				<input type="text" placeholder="Confirmação E-mail"		id="signin_Email2"			name="signin_Email2">
+				<input type="text" placeholder="Telefone"				id="signin_Tel" 			name="signin_Tel">
+				<input type="password" placeholder="Senha"				id="signin_Senha" 			name="signin_Senha">
+				<input type="password" placeholder="Confirmação Senha"	id="signin_Senha2"			name="signin_Senha2">
+				<div><a href="javascript:void(0)" class="botao" id="signin_btn">Cadastrar</a></div>
 			</div>
 			<div class="modalBar"></div>
 		</div>
