@@ -17,12 +17,12 @@
 			height: 60px;
 			line-height: 60px;
 
-			.notifications {
+			.menuBtnNotifications {
 				position: relative;
 				float: right;
 				width: 36px;
 				height: 36px;
-				margin: 12.5px 10px;
+				margin: 12.5px 10px 12.5px 0px;
 				cursor: pointer;
 				.icon {
 					width: 36px;
@@ -49,7 +49,7 @@
 					flex-wrap: wrap;
 
 					position: absolute;
-					z-index: 10;
+					z-index: $zindex-modal;
 					width: 420px;
 					right: -47px;
 					top: 47px;
@@ -115,7 +115,7 @@
 					}
 				}
 			}
-			.notifications:hover .icon .menuNotificationsSVG path{
+			.menuBtnNotifications:hover .icon .menuNotificationsSVG path{
 				fill: $bgDarkGrey;
 			}
 			.menuBtnSettings {
@@ -137,14 +137,10 @@
 					flex-wrap: wrap;
 
 					position: absolute;
-					z-index: 10;
+					z-index: $zindex-modal;
 					width: 180px;
 					right: 0px;
 					top: 47px;
-					&.closed {
-						opacity: 0;
-						display: none;
-					}
 					&.open {
 						opacity: 1;
 						display: flex;
@@ -178,7 +174,7 @@
 		}
 
 		// MODAL LOGIN
-		#login {
+		#modalLogin {
 
 			.modal-dialog {
 				width: 300px;
@@ -239,7 +235,7 @@
 		}
 
 		// MODAL CADASTRO
-		#cadastro {
+		#modalCadastro {
 
 			.modal-dialog {
 				width: 300px;
@@ -349,7 +345,7 @@
 			}
 
 			#busca {
-				margin-right: 10px;
+				margin-right: 20px;
 
 				#form_container {
 					input[type=text] {

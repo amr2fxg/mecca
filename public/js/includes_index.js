@@ -1,20 +1,112 @@
-
-// ---------- General
-// $.getScript("/js/utils/jstorage.min.js");
-// $.getScript("/js/utils/resizeControl.js");
 $.getScript("/js/vendor/bootstrap/modal.js", function() {
-	$('#login').modal("hide");
-	$('#cadastro').modal("hide");
+
+	// auth/noauth
+	var auth = false;
+
+	$('#modalLogin').modal("hide");
+	$('#modalCadastro').modal("hide");
+
+	// LOGIN
 	$('#menuSettingsLogin').click(function() {
-		$('#login').modal("show");
+		$('#modalLogin').modal("show");
 	});
+
+	// CADASTRO
 	$('#menuSettingsCadastro').click(function() {
-		$('#cadastro').modal("show");
+		$('#modalCadastro').modal("show");
 	});
 	$('#login_novo').click(function() {
-		$('#login').modal("hide");
-		$('#cadastro').modal("show");
+		$('#modalLogin').modal("hide");
+		$('#modalCadastro').modal("show");
 	});
+
+	if(auth == false) {       // --------------------------------- NO AUTH
+
+		$('.menuBtnNotifications').hide();
+
+		var menuSettings = $('#menuSettings-noauth');
+
+		// MENU SETTINGS
+		$('.menuBtnSettings').click( function() {
+
+			if( menuSettings.hasClass('hidden') ) {
+				menuSettings.removeClass('hidden').addClass('open');
+				menuSettings.modal('show');
+				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
+				
+			} else if( menuSettings.hasClass('open') ) {
+				menuSettings.removeClass('open').addClass('hidden');
+				menuSettings.modal('hide');
+			}
+
+			$('.modal-backdrop').click(function() {
+				menuSettings.modal('hide');
+				menuSettings.removeClass('open').addClass('hidden');
+			});
+
+		});
+
+	} else if(auth == true) { // --------------------------------- AUTH
+
+		var menuSettings = $('#menuSettings-auth');
+		var menuNotifications = $('#menuNotifications');
+
+		// MENU SETTINGS
+		$('.menuBtnSettings').click( function() {
+
+			if( menuSettings.hasClass('hidden') ) {
+				
+				// close notifications
+				if(menuNotifications.hasClass('open')) {
+					menuNotifications.removeClass('open').addClass('hidden');
+					menuNotifications.modal('hide');
+				}
+
+				menuSettings.removeClass('hidden').addClass('open');
+				menuSettings.modal('show');
+				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
+				
+			} else if( menuSettings.hasClass('open') ) {
+				menuSettings.removeClass('open').addClass('hidden');
+				menuSettings.modal('hide');
+			}
+
+			$('.modal-backdrop').click(function() {
+				menuSettings.modal('hide');
+				menuSettings.removeClass('open').addClass('hidden');
+			});
+
+		});
+
+		// NOTIFICATIONS
+		$('.menuBtnNotifications').click( function() {
+
+			if( menuNotifications.hasClass('hidden') ) {
+
+				// close settings
+				if(menuSettings.hasClass('open')) {
+					menuSettings.removeClass('open').addClass('hidden');
+					menuSettings.modal('hide');
+				}
+
+				menuNotifications.removeClass('hidden').addClass('open');
+				menuNotifications.modal('show');
+				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
+				
+			} else if( menuNotifications.hasClass('open') ) {
+				menuNotifications.removeClass('open').addClass('hidden');
+				menuNotifications.modal('hide');
+			}
+
+			$('.modal-backdrop').click(function() {
+				menuNotifications.modal('hide');
+				menuNotifications.removeClass('open').addClass('hidden');
+			});
+
+		});
+
+	}
+
 });
 
 $.getScript("/js/utils/search.js");
@@ -38,42 +130,7 @@ $.getScript("/js/utils/search.js");
 $.getScript("/js/utils/CSSPlugin.min.js");
 $.getScript("/js/utils/EasePack.min.js");
 $.getScript("/js/utils/TweenLite.min.js", function() {
-
-	$('.notifications').click( function() {
-		var menuNotifications = $('#menuNotifications');
-		var menuSettings_auth = $('#menuSettings-auth');
-		var menuSettings_noauth = $('#menuSettings-noauth');
-
-		if( menuNotifications.hasClass('closed') ) {
-			menuNotifications.removeClass('closed').addClass('open');
-			TweenLite.to( menuNotifications, 0.5, { opacity:1 } );
-			// close menu auto or noauth
-			menuSettings_noauth.removeClass('open').addClass('closed');
-			TweenLite.to( menuSettings_noauth, 0.5, { opacity:0 } );
-		} else if( menuNotifications.hasClass('open') ) {
-			menuNotifications.removeClass('open').addClass('closed');
-			TweenLite.to( menuNotifications, 0.5, { opacity:0 } );
-		}
-
-	});
-
-	$('.menuBtnSettings').click( function() {
-		var menuSettings_auth = $('#menuSettings-auth');
-		var menuSettings_noauth = $('#menuSettings-noauth');
-		var menuNotifications = $('#menuNotifications');
-
-		if( menuSettings_noauth.hasClass('closed') ) {
-			menuSettings_noauth.removeClass('closed').addClass('open');
-			TweenLite.to( menuSettings_noauth, 0.5, { opacity:1 } );
-			// close notifications
-			menuNotifications.removeClass('open').addClass('closed');
-			TweenLite.to( menuNotifications, 0.5, { opacity:0 } );
-		} else if( menuSettings_noauth.hasClass('open') ) {
-			menuSettings_noauth.removeClass('open').addClass('closed');
-			TweenLite.to( menuSettings_noauth, 0.5, { opacity:0 } );
-		}
-
-	});
+	
 
 	$('#announce_close').click( function() {
 		var menu = $('#announceBar');
