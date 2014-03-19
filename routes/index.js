@@ -51,7 +51,7 @@ exports.busca = function(req, res) {
 		else{
 			
 
-			res.render('index', {  action: 'busca', results: '<p>aaaaaaaaaaaaaaahhhh!!</p>', ufs: [ 'Rio Grande do Sul', 'São Paulo', 'Rio de Janeiro' ],  lastView: req.session.lastView})
+			res.render('index', {  action: 'busca', results: '<p>aaaaahhhh!!</p>', ufs: [ 'Rio Grande do Sul', 'São Paulo', 'Rio de Janeiro' ],  lastView: req.session.lastView})
 
 		}
 
