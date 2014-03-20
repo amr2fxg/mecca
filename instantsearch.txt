@@ -1,0 +1,11 @@
+instant search
+- on list hover, erase currentSelection
+- keep original search string in a var
+- set #s with original search string when back from list top (arrow up)
+- set #s with original search string when back from list bottom (arrow down)
+- set list guesses as <span>original string</span><b>guess</b>
+- set #ss first guess
+- if #ss has guess: press tab > set #s = #ss
+- press ESC: if list is open   > close list
+- press ESC: if list is closed > focus #s and select ALL
+- any key press anywhere: focus and insert into #s (ver se não atrapalha)

@@ -1,7 +1,7 @@
 $.getScript("/js/vendor/bootstrap/modal.js", function() {
 
 	// auth/noauth
-	var auth = false;
+	var auth = true;
 
 	$('#modalLogin').modal("hide");
 	$('#modalCadastro').modal("hide");
