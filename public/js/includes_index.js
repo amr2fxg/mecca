@@ -1,3 +1,9 @@
+$.getScript("/js/vendor/bootstrap/tooltip.js", function() {
+	$('.menuBtnSettings').tooltip();
+	$('.menuBtnNotifications').tooltip();
+	$('.menuBtnSell').tooltip();
+});
+
 $.getScript("/js/vendor/bootstrap/modal.js", function() {
 
 	// auth/noauth
@@ -30,16 +36,19 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 		$('.menuBtnSettings').click( function() {
 
 			if( menuSettings.hasClass('hidden') ) {
+				$('.menuBtnSettings').tooltip('destroy');
 				menuSettings.removeClass('hidden').addClass('open');
 				menuSettings.modal('show');
 				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
 				
 			} else if( menuSettings.hasClass('open') ) {
+				$('.menuBtnSettings').tooltip();
 				menuSettings.removeClass('open').addClass('hidden');
 				menuSettings.modal('hide');
 			}
 
 			$('.modal-backdrop').click(function() {
+				$('.menuBtnSettings').tooltip();
 				menuSettings.modal('hide');
 				menuSettings.removeClass('open').addClass('hidden');
 			});
@@ -55,9 +64,12 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 		$('.menuBtnSettings').click( function() {
 
 			if( menuSettings.hasClass('hidden') ) {
+
+				$('.menuBtnSettings').tooltip('destroy');
 				
 				// close notifications
 				if(menuNotifications.hasClass('open')) {
+					$('.menuBtnNotifications').tooltip();
 					menuNotifications.removeClass('open').addClass('hidden');
 					menuNotifications.modal('hide');
 				}
@@ -67,11 +79,13 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
 				
 			} else if( menuSettings.hasClass('open') ) {
+				$('.menuBtnSettings').tooltip();
 				menuSettings.removeClass('open').addClass('hidden');
 				menuSettings.modal('hide');
 			}
 
 			$('.modal-backdrop').click(function() {
+				$('.menuBtnSettings').tooltip();
 				menuSettings.modal('hide');
 				menuSettings.removeClass('open').addClass('hidden');
 			});
@@ -83,8 +97,11 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 
 			if( menuNotifications.hasClass('hidden') ) {
 
+				$('.menuBtnNotifications').tooltip('destroy');
+
 				// close settings
 				if(menuSettings.hasClass('open')) {
+					$('.menuBtnSettings').tooltip();
 					menuSettings.removeClass('open').addClass('hidden');
 					menuSettings.modal('hide');
 				}
@@ -94,11 +111,13 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
 				
 			} else if( menuNotifications.hasClass('open') ) {
+				$('.menuBtnNotifications').tooltip();
 				menuNotifications.removeClass('open').addClass('hidden');
 				menuNotifications.modal('hide');
 			}
 
 			$('.modal-backdrop').click(function() {
+				$('.menuBtnNotifications').tooltip();
 				menuNotifications.modal('hide');
 				menuNotifications.removeClass('open').addClass('hidden');
 			});
@@ -127,22 +146,22 @@ $.getScript("/js/utils/search.js");
 // });
 
 // ---------- TweenLite
-$.getScript("/js/utils/CSSPlugin.min.js");
-$.getScript("/js/utils/EasePack.min.js");
-$.getScript("/js/utils/TweenLite.min.js", function() {
+// $.getScript("/js/utils/CSSPlugin.min.js");
+// $.getScript("/js/utils/EasePack.min.js");
+// $.getScript("/js/utils/TweenLite.min.js", function() {
 	
 
-	$('#announce_close').click( function() {
-		var menu = $('#announceBar');
-		TweenLite.to( menu, 0.5, { opacity:0, onComplete: announceComplete } );
+// 	$('#announce_close').click( function() {
+// 		var menu = $('#announceBar');
+// 		TweenLite.to( menu, 0.5, { opacity:0, onComplete: announceComplete } );
 
-		function announceComplete() {
-			TweenLite.to( menu, 0.0001, { display:'none' } );
-		}
-	});
+// 		function announceComplete() {
+// 			TweenLite.to( menu, 0.0001, { display:'none' } );
+// 		}
+// 	});
 
 
-});
+// });
 
 // ---------- Socket Io
 /*		var socket = io.connect(document.URL);
