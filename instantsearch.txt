@@ -9,6 +9,7 @@ instant search
 	- press ESC: if list is open   > close list
 	- cursor to the end of the text when return to inputbox
 
+- leave cursor on during navigation: fill #s with item and put cursor at the end
 - press ESC: if list is closed > focus #s and select ALL
 - any key press anywhere: focus and insert into #s (ver se não atrapalha)
 
