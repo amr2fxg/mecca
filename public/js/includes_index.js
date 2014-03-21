@@ -1,13 +1,20 @@
+// auth/noauth
+var auth = true;
+
 $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
+
+	if(auth == false) {
+		$('.menuBtnSettings').attr('title', 'Login & Cadastro');
+	} else if (auth == true) {
+		$('.menuBtnSettings').attr('title', 'Configurações');
+	}
+
 	$('.menuBtnSettings').tooltip();
 	$('.menuBtnNotifications').tooltip();
 	$('.menuBtnSell').tooltip();
 });
 
 $.getScript("/js/vendor/bootstrap/modal.js", function() {
-
-	// auth/noauth
-	var auth = true;
 
 	$('#modalLogin').modal("hide");
 	$('#modalCadastro').modal("hide");
@@ -28,6 +35,8 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 
 	if(auth == false) {       // --------------------------------- NO AUTH
 
+		$('.menuSettingsSVG').hide();
+		$('.menuLoginSignupSVG').show();
 		$('.menuBtnNotifications').hide();
 
 		var menuSettings = $('#menuSettings-noauth');
@@ -56,6 +65,9 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 		});
 
 	} else if(auth == true) { // --------------------------------- AUTH
+
+		$('.menuSettingsSVG').show();
+		$('.menuLoginSignupSVG').hide();
 
 		var menuSettings = $('#menuSettings-auth');
 		var menuNotifications = $('#menuNotifications');

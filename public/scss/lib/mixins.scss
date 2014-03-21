@@ -18,6 +18,16 @@
   }
 }
 
+@mixin txtPTMono12 {
+  font: {
+    family: 'PTMono';
+    size: 12px;
+  }
+  text-transform: uppercase;
+  @include antialiased;
+  letter-spacing: 0.25px;
+}
+
 @mixin txtOswald14 {
 	font: {
 		family: 'Oswald';
@@ -25,7 +35,7 @@
 	}
 	text-transform: uppercase;
 	@include antialiased;
-  	letter-spacing: 0.25px;
+  letter-spacing: 0.25px;
 }
 
 @mixin txtTitulo {

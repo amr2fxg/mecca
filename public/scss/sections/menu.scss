@@ -158,6 +158,41 @@
 						opacity: 1;
 						display: flex;
 					}
+					.menuNotificationsHeader {
+						display: flex;
+						justify-content: space-around;
+						align-content: center;
+						height: 30px;
+						line-height: 30px;
+						@include txtPTMono12;
+						@include gWhiteGrey;
+						.nome {
+							flex: 1;
+							background-color: $bgMidGrey;
+							@include txtOswald14;
+							color: #fff;
+							padding: 0px 10px;
+						}
+						.msgs, .nots, .settings {
+							display: flex;
+							justify-content: center;
+							width: 60px;
+							padding: 0px 10px;
+							background-color: $bgMidGrey;
+							border-left: 1px solid #97a4b6;
+							@include transitions;
+							&:hover {
+								background-color: $bgDarkGrey;
+							}
+							.numMSG, .numNOT {
+								margin-left: 7px;
+								color: #fff;
+							}
+						}
+						.settings {
+							width: 35px;
+						}
+					}
 					.menuNotificationsBar {
 						height: 40px;
 						background-color: $bgBlue;
@@ -172,10 +207,24 @@
 					}
 					.menuNotificationsItem {
 						display: flex;
+						position: relative;
 						@include gWhiteGrey;
 						border-bottom: 1px solid #d7d7d7;
 						&:hover {
 							@include gWhiteGreyHover;
+							.erase {
+								display: block;
+							}
+						}
+						.erase {
+							display: none;
+							position: absolute;
+							top: 5px;
+							right: 5px;
+							color: $bgDarkGrey;
+							&:hover {
+								color: $bgBlue;
+							}
 						}
 						.thumb {
 							width: 60px;
@@ -228,6 +277,14 @@
 					@include transitions;
 				    fill: $bgDarkGrey;
 				}
+				.menuLoginSignupSVG:hover {
+					path.user {
+						fill: $bgBlue;
+					}
+					circle {
+						fill: $bgDarkGrey;
+					}
+				}
 				// DROP MENU SETTINGS
 				#menuSettings-auth, #menuSettings-noauth {
 					display: flex;
@@ -246,7 +303,11 @@
 						opacity: 1;
 						display: flex;
 					}
-					.menuSettingsBar {
+					.menuSettingsBarTop {
+						height: 5px;
+						background-color: $bgMidGrey;
+					}
+					.menuSettingsBarBot {
 						height: 5px;
 						background-color: $bgBlue;
 					}
