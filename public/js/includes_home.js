@@ -1,10 +1,28 @@
-// ---------- distribute
+// LAST PRODUCT INFO BOX
+$('#seller_info').hide();
 
-// $('#last_product').click( function() {
-// 	$("#content").empty().load("perfil.html");
-// 	$(window).resize();
-// });
+$('#product_info .min').click(function() {
 
-// $('#last_searches').click( function() {
-// 	$('#last_searches_results :first-child').css('display','none');
-// });
+	if( $('#seller_info').hasClass('hidden') ) {
+		$('#seller_info').removeClass('hidden');
+	}
+
+	$('#product_info').hide();
+	$('#seller_info').show();
+});
+$('#seller_info .min').click(function() {
+	$('#seller_info').hide();
+	$('#product_info').show();
+});
+
+//  Tooltips
+$.getScript("/js/vendor/bootstrap/tooltip.js", function() {
+	$('.follow').tooltip();
+	$('.rating').tooltip();
+	$('.qGeral').tooltip();
+	$('.qNeg').tooltip();
+	$('.qAte').tooltip();
+	$('.qAnu').tooltip();
+	$('.qNegC').tooltip();
+
+});

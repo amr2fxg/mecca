@@ -8,6 +8,7 @@
 /usuario/favoritos				produtos/lojas favoritos
 /usuario/historico				historico compras/vendas/ações no site (follow)
 /usuario/meus-anuncios			meus anuncios (produtos a venda)
+/usuario/configuracoes			configuracoes de tudo (notificacoes, recebimento de email, interface, etc)
 /vender							novo produto
 /perfil							resumão do vendedor + produtos a venda (loja)
 /notificacoes					notificações sobre produtos e lojas que segue

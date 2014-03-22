@@ -20,6 +20,8 @@ $bgDarkGrey: #3e3e3e;
 $txtGrey: #8795a9;
 $txtBlue: #357ae8;
 
+$border: #e0e0e0;
+
 
 @mixin gGreen {
 	background-color: #61c109;
@@ -72,8 +74,11 @@ $txtBlue: #357ae8;
 } 
 
 // Qualificações
-.q95, .q90, .q80, .q70, .q60, .q50, .q40 { color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+@mixin q {
+	color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
 @mixin q95 {
+	@include q;
 	background-color: #39b54a;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#39b54a),to(#2f953d));
 	background-image: -webkit-linear-gradient(top,#39b54a,#2f953d);
@@ -83,6 +88,7 @@ $txtBlue: #357ae8;
 	background-image: linear-gradient(top,#39b54a,#2f953d);
 }
 @mixin q90 { 
+	@include q;
 	background-color: #8dc63f;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#8dc63f),to(#79ab36));
 	background-image: -webkit-linear-gradient(top,#8dc63f,#79ab36);
@@ -92,6 +98,7 @@ $txtBlue: #357ae8;
 	background-image: linear-gradient(top,#8dc63f,#79ab36);
 }
 @mixin q80 {
+	@include q;
 	background-color: #eab916;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#eab916),to(#d8a600));
 	background-image: -webkit-linear-gradient(top,#eab916,#d8a600);
@@ -101,6 +108,7 @@ $txtBlue: #357ae8;
 	background-image: linear-gradient(top,#eab916,#d8a600);
 }
 @mixin q70 {
+	@include q;
 	background-color: #f7941d;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#f7941d),to(#e17e08));
 	background-image: -webkit-linear-gradient(top,#f7941d,#e17e08);
@@ -110,6 +118,7 @@ $txtBlue: #357ae8;
 	background-image: linear-gradient(top,#f7941d,#e17e08);
 }
 @mixin q60 {
+	@include q;
 	background-color: #f1592a;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#f1592a),to(#d44215));
 	background-image: -webkit-linear-gradient(top,#f1592a,#d44215);
@@ -119,6 +128,7 @@ $txtBlue: #357ae8;
 	background-image: linear-gradient(top,#f1592a,#d44215);
 }
 @mixin q50 {
+	@include q;
 	background-color: #de3232;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#de3232),to(#c01f1f));
 	background-image: -webkit-linear-gradient(top,#de3232,#c01f1f);

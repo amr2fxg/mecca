@@ -1,0 +1,49 @@
+
+FLEXBOX QUICK GUIDE
+------------------------------------------------------------------------ ------------------------------------------------------------------------
+
+							CONTAINER																	FLEX ITENS
+
+
+display: flex;					enable flexbox layout on element		order:					order of the items
+								turn children into flex itens 			*	0;					all undefined items, appear in document normal order
+																			-X ou X;			menor aparece antes	
+
+flex-direction:					FLEX CONTAINER DIRECTION: MAIN AXIS		align-self:				override alignment for individual item
+*	row;						forma colunas							*	auto;				no change
+	column;						forma  linhas								flex-start;			top/left
+	row-reverse;				forma colunas			last-first			flex-end;			bottom/right
+	column-reverse;				forma  linhas			last-first			center;				middle/center
+																			baseline;			?
+																			stretch;			auto width/height to match parent
+
+flex-wrap:						FLEX CONTAINER CROSS AXIS				flex: X X auto/X		flexible length (grow shrink basis)
+*	nowrap;						single line/column 							grow				how much will grow when space left
+	wrap;						 multi line/column 							shrink				how much will shrink when lack of space
+	wrap-reverse;				 multi line/column		last-first			basis				initial width/height or auto
+
+*	0 1 auto;		
+
+justify-content:				ALIGN FLEX ITEMS ON MAIN AXIS
+*	flex-start;					left
+	center;						center
+	flex-end;					right
+	space-between;				distribute justify (LR colados)
+	space-around;				distribute center  (LR afastados)
+
+
+align-content:					ALIGN FLEX ITEMS ON CROSS AXIS
+	flex-start;					top
+	flex-end;					bottom
+	center;						middle
+	space-between;				distribute justify (TP colados)
+	space-around;				distribute center  (TP afastados)
+	stretch;					?
+
+
+align-items:					ALIGN FLEX ITEMS WITH EACH OTHER
+	flex-start;					left/top
+	flex-end;					right/bottom
+	center;						center/middle
+	baseline;					?
+	stretch;					auto width/height to match largest

@@ -158,107 +158,129 @@
 						opacity: 1;
 						display: flex;
 					}
+					.menuNotificationsBarTop {
+						height: 5px;
+						background-color: $bgMidGrey;
+					}
+					.menuNotificationsBarBot {
+						height: 5px;
+						background-color: $bgBlue;
+					}
 					.menuNotificationsHeader {
 						display: flex;
 						justify-content: space-around;
 						align-content: center;
 						height: 30px;
 						line-height: 30px;
-						@include txtPTMono12;
 						@include gWhiteGrey;
-						.nome {
+						border-bottom: 1px solid #d7d7d7;
+						.todas {
 							flex: 1;
-							background-color: $bgMidGrey;
 							@include txtOswald14;
-							color: #fff;
+							@include antialiased;
+							color: $txtGrey;
 							padding: 0px 10px;
+							&:hover {
+								background-color: $bgLightGrey;
+								color: #fff;
+							}
 						}
 						.msgs, .nots, .settings {
 							display: flex;
 							justify-content: center;
 							width: 60px;
 							padding: 0px 10px;
-							background-color: $bgMidGrey;
-							border-left: 1px solid #97a4b6;
+							border-left: 1px solid #d7d7d7;
 							@include transitions;
-							&:hover {
-								background-color: $bgDarkGrey;
+							@include antialiased;
+							font: {
+								family: 'PTMono';
+								size: 12px;
 							}
 							.numMSG, .numNOT {
 								margin-left: 7px;
-								color: #fff;
+								color: #000;
+							}
+							&:hover {
+								background-color: $bgLightGrey;
+								path, circle {
+									fill: $bgDarkGrey;
+								}
+								.numMSG, .numNOT {
+									color: $bgDarkGrey;
+								}
 							}
 						}
 						.settings {
 							width: 35px;
 						}
 					}
-					.menuNotificationsBar {
-						height: 40px;
-						background-color: $bgBlue;
-						color: #fff;
-						text-align: center;
-						line-height: 40px;
-						@include txtOswald14;
-						@include antialiased;
-					}
-					.menuNotificationsBar:hover {
-						background-color: $bgDarkGrey;
-					}
-					.menuNotificationsItem {
-						display: flex;
-						position: relative;
-						@include gWhiteGrey;
-						border-bottom: 1px solid #d7d7d7;
-						&:hover {
-							@include gWhiteGreyHover;
-							.erase {
-								display: block;
-							}
-						}
-						.erase {
-							display: none;
-							position: absolute;
-							top: 5px;
-							right: 5px;
-							color: $bgDarkGrey;
-							&:hover {
-								color: $bgBlue;
-							}
-						}
-						.thumb {
-							width: 60px;
-							height: 60px;
-							padding: 5px;
-						}
-						.infos {
-							flex: 1;
-							padding: 0px 0px 0px 5px;
-
+					#content {
+						max-height: 300px;
+						overflow-y: auto;
+						.menuNotificationsItem {
 							display: flex;
-							flex-direction: column;
-							justify-content: center;
-							.titulo {
-								font: {
-									family: "Oswald";
-									size: 14px;
+							position: relative;
+							@include gWhiteGrey;
+							border-bottom: 1px solid #d7d7d7;
+							&:hover {
+								@include gWhiteGreyHover;
+								.erase {
+									display: block;
 								}
-								line-height: 14px;
-								color: $txtBlue;
-								text-transform: uppercase;
-								@include antialiased;
-							  	letter-spacing: 0.25px;
-							  	margin-bottom: 5px;
+								.infos {
+									.titulo {
+										color: $txtBlue;
+									}
+									.action {
+										color: #000;
+									}
+								}
 							}
-							.action {
-								font: {
-									family: "PTMono";
-									size: 12px;
-									color: #ccc;
+							.erase {
+								display: none;
+								position: absolute;
+								top: 5px;
+								right: 5px;
+								color: $bgDarkGrey;
+								&:hover {
+									color: $bgBlue;
 								}
-								line-height: 12px;
-								text-transform: uppercase;
-								@include antialiased;
+							}
+							.thumb {
+								width: 60px;
+								height: 60px;
+								padding: 5px;
+							}
+							.infos {
+								flex: 1;
+								padding: 0px 0px 0px 5px;
+
+								display: flex;
+								flex-direction: column;
+								justify-content: center;
+								.titulo {
+									font: {
+										family: "Oswald";
+										size: 14px;
+									}
+									line-height: 14px;
+									color: $txtGrey;
+									text-transform: uppercase;
+									@include antialiased;
+								  	letter-spacing: 0.25px;
+								  	margin-bottom: 5px;
+								}
+								.action {
+									font: {
+										family: "PTMono";
+										size: 12px;
+									}
+									color: #777;
+									line-height: 12px;
+									text-transform: uppercase;
+									@include antialiased;
+								}
 							}
 						}
 					}

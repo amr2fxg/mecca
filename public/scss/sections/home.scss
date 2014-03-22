@@ -10,6 +10,273 @@
 		display: flex;
 		justify-content: space-between;
 
+		#last_product {
+			display: flex;
+
+			#img {
+				margin-right: 10px;
+				outline: 1px solid $border;
+				img { 
+					width: 240px;
+					heigth: 240px;
+				}
+			}
+
+			#infos {
+				width: 420px;
+				outline: 1px solid $border;
+
+				// PRODUCT INFOS 
+				// -------------------------------------------------------------------------------------------
+				#product_info {
+					.max {
+						display: flex;
+
+						height: 180px;
+						padding: 30px;
+						background-color: #fff;
+
+						a {
+							text-decoration: none;
+							&:hover {
+								.titulo {
+									color: $txtBlue;
+								}
+								.preco--last_product {
+									background-color: $bgDarkGrey;
+								}
+							}
+						}
+
+						.infos {
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							flex: 1;
+
+							height: 120px;
+
+							text-decoration: none;
+							.titulo {
+								font: {
+									family: 'Oswald';
+									size: 22px;
+								}
+								line-height: 24px;
+								color: $txtGrey;
+								text-transform: uppercase;
+								@include antialiased;
+							  	letter-spacing: 0.25px;
+							}
+						}
+						.actions {
+							width: 90px;
+							text-align: right;
+							.follow:hover {
+								cursor: pointer;
+								path { fill: $bgBlue; }
+							}
+						}
+					}
+					.min {
+						display: flex;
+						justify-content: space-between;
+
+						height: 60px;
+						line-height: 60px;
+						@include gWhiteGrey;
+						border-top: 1px solid $border;
+
+						&:hover {
+							@include gWhiteGreyHover;
+							cursor: pointer;
+							.loja {
+								color: $txtBlue;
+							}
+						}
+
+						.loja {
+							font: {
+								family: 'Oswald';
+								size: 20px;
+							}
+							color: $txtGrey;
+							text-transform: uppercase;
+							@include antialiased;
+							padding: 0px 20px;
+						}
+						.rating {
+							width: 90px;
+							height: 100%;
+							@include q95;
+							font: {
+								// family: 'PTMono';
+								size: 20px;
+							}
+							text-align: center;
+						}
+					}
+				}
+
+				// SELLER INFOS 
+				// -------------------------------------------------------------------------------------------
+				#seller_info {
+					.max {
+						display: flex;
+						flex-direction: column;
+
+						height: 180px;
+						padding: 30px;
+						background-color: #fff;
+
+						.infos {
+							display: flex;
+							width: 100%;
+							height: 100%;
+
+							.loja {
+								display: flex;
+								flex-direction: column;
+								flex: 1;
+
+								a {
+									text-decoration: none;
+									&:hover {
+										.titulo {
+											color: $txtBlue;
+										}
+									}
+								}
+
+								.titulo {
+									font: {
+										family: 'Oswald';
+										size: 22px;
+									}
+									line-height: 24px;
+									color: $txtGrey;
+									text-transform: uppercase;
+									@include antialiased;
+								  	letter-spacing: 0.25px;	
+								}
+								.location {
+									display: flex;
+									align-content: center;
+									margin-top: 10px;
+									.place {
+										margin-left: 8px;
+										font: {
+										  family: 'PTMono';
+										  size: 14px;
+										}
+										color: $txtGrey;
+										@include antialiased;
+										letter-spacing: 0.25px;
+										.state {
+											text-transform: uppercase;
+										}
+									}
+								}
+							}
+							.actions {
+								display: flex;
+								justify-content: flex-end;
+								width: 90px;
+								height: 30px;
+								.follow {
+									margin-left: 15px;
+									&:hover {
+										cursor: pointer;
+										path { fill: $bgBlue; }
+									}
+								}
+								.stats:hover {
+									cursor: pointer;
+									path { fill: $bgBlue; }
+								}
+							}
+						}
+						.ratings {
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							width: 100%;
+
+							.qGeral, .seta, .qNeg, .qAte, .qAnu, .qNegC {
+								height: 40px;
+								line-height: 40px;
+								cursor: default;
+								@include noSelection;
+							}
+
+							.qGeral {
+								width: 80px;
+								text-align: center;
+								@include q95;
+							}
+
+							.details {
+								display: flex;
+								justify-content: space-between;
+
+								.qNeg, .qAte, .qAnu, .qNegC {
+									width: 50px;
+									margin-left: 5px;
+									text-align: center;
+								}
+
+								.qNeg  { @include q95; }
+								.qAte  { @include q90; }
+								.qAnu  { @include q70; }
+								.qNegC { @include q80; }
+							}
+						}
+						
+					}
+					.min {
+						display: flex;
+						justify-content: space-between;
+
+						height: 60px;
+						line-height: 60px;
+						@include gWhiteGrey;
+						border-bottom: 1px solid $border;
+
+						&:hover {
+							@include gWhiteGreyHover;
+							cursor: pointer;
+							.loja, .produto {
+								color: $txtBlue;
+							}
+							.preco--info {
+								background-color: $bgDarkGrey;
+							}
+						}
+
+						.produto {
+							font: {
+								family: 'Oswald';
+								size: 18px;
+							}
+							color: $txtGrey;
+							text-transform: uppercase;
+							@include antialiased;
+							padding: 0px 20px;
+						}
+						.preco--info {
+							margin: auto 10px;
+							width: 90px;
+							height: 40px;
+							line-height: 40px;
+							background-color: $bgBlue;
+						}
+					}
+				}
+			}
+		}
+
+		
+		
 		#categories {
 			display: flex;
 			flex-direction: column;
@@ -214,7 +481,6 @@
   	width: 90px;
   	height: 35px;
   	line-height: 35px;
-  	margin-top: 5px;
   	background-color: $bgMidGrey;
   	text-shadow: 1px 1px 0px rgba(0,0,0,0.25);
   	@include transitions;
@@ -256,54 +522,53 @@
 /* netbook	992-1280			 							*/
 /* -------------------------------------------------------- */
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-	#historyBg {
-		height: 360px;
-		#history {
-			display: flex;
-			justify-content: space-between;
-			@include max_100p;
+	// #historyBg {
+	// 	height: 360px;
+	// 	#history {
+	// 		display: flex;
+	// 		justify-content: space-between;
+	// 		@include max_100p;
 
-			#last_product {
-				margin-right: 10px;
-				@include txtOswald14;
-				img { 
-					width: 240px;
-					heigth: 240px;
-				}
-			}
+	// 		#last_product {
+	// 			margin-right: 10px;
+	// 			img { 
+	// 				width: 240px;
+	// 				heigth: 240px;
+	// 			}
+	// 		}
 
-			#categories {
-				flex: 1;
-				margin: 0px 10px;
-				.similar_results {
-					ul {
-						display: flex;
-						justify-content: flex-start;
-						li {
-							margin-right: 10px;
-						}
-					}
-				}
-			}
+	// 		#categories {
+	// 			flex: 1;
+	// 			margin: 0px 10px;
+	// 			.similar_results {
+	// 				ul {
+	// 					display: flex;
+	// 					justify-content: flex-start;
+	// 					li {
+	// 						margin-right: 10px;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
 
-			#last_searches {
-				margin: 0px 10px;
-				ul {
-					width: 180px;
-					height: 280px;
-				}
-			}
+	// 		#last_searches {
+	// 			margin: 0px 10px;
+	// 			ul {
+	// 				width: 180px;
+	// 				height: 280px;
+	// 			}
+	// 		}
 
-			#last_searches_results {
-				margin-left: 10px;
-				height: 280px;
-				ul {
-					width: 200px;
-					height: 280px;
-				}
-			}
-		}
-	}
+	// 		#last_searches_results {
+	// 			margin-left: 10px;
+	// 			height: 280px;
+	// 			ul {
+	// 				width: 200px;
+	// 				height: 280px;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 /* -------------------------------------------------------- */
@@ -311,20 +576,12 @@
 /* -------------------------------------------------------- */
 @media (min-width: $screen-lg-min) {
 	#historyBg {
-		height: 360px;
+		height: 320px;
 		#history {
 			display: flex;
 			justify-content: space-between;
 			@include max_1280;
 			@include boxC;
-
-			#last_product {
-				@include txtOswald14;
-				img { 
-					width: 240px;
-					heigth: 240px;
-				}
-			}
 
 			#categories {
 				width: 380px;
