@@ -275,7 +275,78 @@
 			}
 		}
 
-		
+		#similares {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			width: 450px;
+
+			#nav {
+				display: flex;
+				justify-content: space-between;
+
+				height: 60px;
+				line-height: 60px;
+				padding: 0px 20px;
+				outline: 1px solid $border;
+				@include gWhiteGrey;
+
+				&:hover {
+					@include gWhiteGreyHover;
+				}
+
+				.titulo {
+					font: {
+						family: 'Oswald';
+						size: 18px;
+					}
+					color: $txtGrey;
+					text-transform: uppercase;
+					@include antialiased;
+					@include noSelection;
+					cursor: default;
+				  	letter-spacing: 0.25px;
+				}
+
+				.setaEsq:hover path, .setaDir:hover path {
+					fill: $bgBlue;
+					cursor: pointer;
+				}
+
+			}
+
+			#products-carousel {
+				height: 165px;
+				outline: 1px solid $border;
+				background-color: $grey25;
+
+				ul {
+					display: flex;
+					justify-content: flex-start;
+					padding: 10px;
+					li {
+						flex: 0 0 auto;
+						margin-right: 10px;
+						img {
+							width: 100px;
+							height: 100px;
+							margin-bottom: 10px;
+						}
+						img:after {
+							content:"\a";
+				    		white-space: pre;
+						}
+						a {
+							text-decoration: none;
+						}
+						a:hover .preco {
+							background-color: $bgBlue;
+						}
+					}
+				}
+			}
+		}
 		
 		#categories {
 			display: flex;
@@ -478,7 +549,7 @@
 	@include antialiased;
   	letter-spacing: 0.5px;
   	text-align: center;
-  	width: 90px;
+  	width: 100px;
   	height: 35px;
   	line-height: 35px;
   	background-color: $bgMidGrey;

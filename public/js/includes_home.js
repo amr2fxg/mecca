@@ -26,3 +26,25 @@ $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
 	$('.qNegC').tooltip();
 
 });
+
+// CAROUSEL: OFERTAS SIMILARES
+$.when(
+    $.getScript( "/js/vendor/bootstrap/transition.js" ),
+    $.getScript( "/js/vendor/bootstrap/carousel.js" ),
+    $.Deferred(function( deferred ){
+        $( deferred.resolve );
+    })
+).done(function(){
+
+	$('.carousel').carousel({
+		interval: 9000
+	});
+
+	$('.setaEsq').click(function() {
+		$('.carousel').carousel('prev');
+	});
+	$('.setaDir').click(function() {
+		$('.carousel').carousel('next');
+	});
+    
+});

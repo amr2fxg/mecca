@@ -538,6 +538,41 @@ td, th { padding: 0; }
 .tooltip.bottom-left .tooltip-arrow { top: 0; left: 5px; border-width: 0 5px 5px; border-bottom-color: #383838; }
 .tooltip.bottom-right .tooltip-arrow { top: 0; right: 5px; border-width: 0 5px 5px; border-bottom-color: #383838; }
 
+.carousel { position: relative; }
+
+.carousel-inner { position: relative; overflow: hidden; width: 100%; }
+.carousel-inner > .item { display: none; position: relative; -webkit-transition: 1.5s ease-in-out left; transition: 1.5s ease-in-out left; }
+.carousel-inner > .item > img, .carousel-inner > .item > a > img { display: block; max-width: 100%; height: auto; line-height: 1; }
+.carousel-inner > .active, .carousel-inner > .next, .carousel-inner > .prev { display: block; }
+.carousel-inner > .active { left: 0; }
+.carousel-inner > .next, .carousel-inner > .prev { position: absolute; top: 0; width: 100%; }
+.carousel-inner > .next { left: 100%; }
+.carousel-inner > .prev { left: -100%; }
+.carousel-inner > .next.left, .carousel-inner > .prev.right { left: 0; }
+.carousel-inner > .active.left { left: -100%; }
+.carousel-inner > .active.right { left: 100%; }
+
+.carousel-control { position: absolute; top: 0; left: 0; bottom: 0; width: 15%; opacity: 0.5; filter: alpha(opacity=50); font-size: 20px; color: white; text-align: center; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+.carousel-control.left { background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0%), color-stop(rgba(0, 0, 0, 0.0001) 100%)); background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1); }
+.carousel-control.right { left: auto; right: 0; background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0%), color-stop(rgba(0, 0, 0, 0.5) 100%)); background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1); }
+.carousel-control:hover, .carousel-control:focus { outline: none; color: white; text-decoration: none; opacity: 0.9; filter: alpha(opacity=90); }
+.carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right { position: absolute; top: 50%; z-index: 5; display: inline-block; }
+.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left { left: 50%; }
+.carousel-control .icon-next, .carousel-control .glyphicon-chevron-right { right: 50%; }
+.carousel-control .icon-prev, .carousel-control .icon-next { width: 20px; height: 20px; margin-top: -10px; margin-left: -10px; font-family: serif; }
+.carousel-control .icon-prev:before { content: '\2039'; }
+.carousel-control .icon-next:before { content: '\203a'; }
+
+.carousel-indicators { position: absolute; bottom: 10px; left: 50%; z-index: 15; width: 60%; margin-left: -30%; padding-left: 0; list-style: none; text-align: center; }
+.carousel-indicators li { display: inline-block; width: 10px; height: 10px; margin: 1px; text-indent: -999px; border: 1px solid white; border-radius: 10px; cursor: pointer; background-color: #000 \9; background-color: transparent; }
+.carousel-indicators .active { margin: 0; width: 12px; height: 12px; background-color: white; }
+
+.carousel-caption { position: absolute; left: 15%; right: 15%; bottom: 20px; z-index: 10; padding-top: 20px; padding-bottom: 20px; color: white; text-align: center; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+.carousel-caption .btn { text-shadow: none; }
+
+@media screen and (min-width: 768px) { .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next { width: 30px; height: 30px; margin-top: -15px; margin-left: -15px; font-size: 30px; }
+  .carousel-caption { left: 20%; right: 20%; padding-bottom: 30px; }
+  .carousel-indicators { bottom: 20px; } }
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
 
@@ -1082,6 +1117,18 @@ ul.menuHorz li { float: left; padding-right: 15px; }
 #historyBg #history #last_product #infos #seller_info .min:hover .preco--info { background-color: #3e3e3e; }
 #historyBg #history #last_product #infos #seller_info .min .produto { font-family: 'Oswald'; font-size: 18px; color: #8795a9; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; padding: 0px 20px; }
 #historyBg #history #last_product #infos #seller_info .min .preco--info { margin: auto 10px; width: 90px; height: 40px; line-height: 40px; background-color: #357ae8; }
+#historyBg #history #similares { display: flex; flex-direction: column; justify-content: space-between; width: 450px; }
+#historyBg #history #similares #nav { display: flex; justify-content: space-between; height: 60px; line-height: 60px; padding: 0px 20px; outline: 1px solid #e0e0e0; background-color: #f5f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#e5e5e5)); background-image: -webkit-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -moz-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -ms-linear-gradient(top, whitesmoke, #e5e5e5); background-image: -o-linear-gradient(top, whitesmoke, #e5e5e5); background-image: linear-gradient(top, whitesmoke, #e5e5e5); }
+#historyBg #history #similares #nav:hover { background-color: #ffffff; background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#dedede)); background-image: -webkit-linear-gradient(top, white, #dedede); background-image: -moz-linear-gradient(top, white, #dedede); background-image: -ms-linear-gradient(top, white, #dedede); background-image: -o-linear-gradient(top, white, #dedede); background-image: linear-gradient(top, white, #dedede); }
+#historyBg #history #similares #nav .titulo { font-family: 'Oswald'; font-size: 18px; color: #8795a9; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; user-select: none; -webkit-user-select: none; -moz-user-select: none; cursor: default; letter-spacing: 0.25px; }
+#historyBg #history #similares #nav .setaEsq:hover path, #historyBg #history #similares #nav .setaDir:hover path { fill: #357ae8; cursor: pointer; }
+#historyBg #history #similares #products-carousel { height: 165px; outline: 1px solid #e0e0e0; background-color: #e6eaf0; }
+#historyBg #history #similares #products-carousel ul { display: flex; justify-content: flex-start; padding: 10px; }
+#historyBg #history #similares #products-carousel ul li { flex: 0 0 auto; margin-right: 10px; }
+#historyBg #history #similares #products-carousel ul li img { width: 100px; height: 100px; margin-bottom: 10px; }
+#historyBg #history #similares #products-carousel ul li img:after { content: "\a"; white-space: pre; }
+#historyBg #history #similares #products-carousel ul li a { text-decoration: none; }
+#historyBg #history #similares #products-carousel ul li a:hover .preco, #historyBg #history #similares #products-carousel ul li a:hover .preco--last_product { background-color: #357ae8; }
 #historyBg #history #categories { display: flex; flex-direction: column; justify-content: space-between; }
 #historyBg #history #categories a { text-decoration: none; }
 #historyBg #history #categories a:hover .titulo { color: #357ae8; }
@@ -1124,7 +1171,7 @@ ul.menuHorz li { float: left; padding-right: 15px; }
 /* --------------------------------------------------------- */
 .area_title { color: #fff; background-color: #39b54a !important; font-family: 'Oswald'; font-size: 14px; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; user-select: none; -webkit-user-select: none; -moz-user-select: none; letter-spacing: 0.25px; text-align: center; width: 100%; height: 35px; line-height: 35px; margin-top: 5px; }
 
-.preco, .preco--last_product { font-family: 'Oswald'; font-size: 14px; color: #fff; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.5px; text-align: center; width: 90px; height: 35px; line-height: 35px; background-color: #8795a9; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25); transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; }
+.preco, .preco--last_product { font-family: 'Oswald'; font-size: 14px; color: #fff; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; letter-spacing: 0.5px; text-align: center; width: 100px; height: 35px; line-height: 35px; background-color: #8795a9; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25); transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; }
 
 .preco--last_product { background-color: #357ae8; }
 
@@ -1152,31 +1199,6 @@ ul.menuHorz li { float: left; padding-right: 15px; }
 #footer { z-index: 1000000; position: fixed; width: 100%; background-color: #fff; height: 0px; bottom: -1px; border-top: 1px solid #ccc; color: #999; font-family: 'PTMono'; font-size: 14px; }
 #footer #handler { float: right; width: auto; height: 30px; line-height: 30px; padding: 0 10px; border: 1px solid #ccc; border-width: 1px 1px 0 1px; background-color: #fff; margin: -30px 30px 0 0; border-radius: 3px 3px 0 0; text-align: center; cursor: pointer; }
 #footer #content { max-width: 1280px; padding: 0 20px; margin: auto; }
-
-/* --------------------------------------------------------- */
-/* PERFIL   			                                           */
-/* --------------------------------------------------------- */
-#app #content #perfil { display: flex; justify-content: center; align-content: flex-start; align-items: flex-start; padding-top: 30px; }
-#app #content #perfil #produtos { padding-left: 30px; padding-right: 30px; }
-#app #content #perfil #produtos .titulo { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
-#app #content #perfil #produtos .filters { color: #999; font-family: 'PTMono'; font-size: 14px; }
-#app #content #perfil #produtos .filters img { margin-left: 5px; }
-#app #content #perfil #produtos .anuncioBox a { font-family: 'Arial'; text-decoration: none; }
-#app #content #perfil #produtos .anuncioBox .nome { color: #367be9; font-family: 'Arial'; }
-#app #content #perfil #stats { padding-left: 30px; padding-right: 30px; text-align: center; }
-#app #content #perfil #stats #user_avatar img { width: 100%; }
-#app #content #perfil #stats #user_name { color: #686f82; letter-spacing: -1px; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; line-height: 32px; font-family: 'Oswald'; font-size: 28px; }
-#app #content #perfil #stats #user_place { color: #999; font-family: 'PTMono'; font-size: 14px; }
-#app #content #perfil #stats #user_stats { color: #999; font-family: 'PTMono'; font-size: 14px; }
-#app.l_1280 #content #perfil, #app.l_1024 #content #perfil { flex-direction: row; flex-wrap: nowrap; }
-#app.l_1280 #content #perfil #produtos, #app.l_1024 #content #perfil #produtos { flex: 1; }
-#app.l_1280 #content #perfil #stats, #app.l_1024 #content #perfil #stats { flex: 0 0 360px; }
-#app.l_768 #content #perfil { flex-direction: row; flex-wrap: nowrap; }
-#app.l_768 #content #perfil #produtos { flex: 1; }
-#app.l_768 #content #perfil #stats { flex: 0 0 320px; }
-#app.l_480 #content #perfil { flex-direction: column; flex-wrap: nowrap; }
-#app.l_480 #content #perfil #produtos { width: 100%; }
-#app.l_480 #content #perfil #stats { width: 100%; margin-top: 50px; }
 
 /* --------------------------------------------------------- */
 /* GERAL                                                     */
