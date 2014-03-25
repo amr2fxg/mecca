@@ -6,7 +6,7 @@ $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
 	if(auth == false) {
 		$('.menuBtnSettings').attr('title', 'Login & Cadastro');
 	} else if (auth == true) {
-		$('.menuBtnSettings').attr('title', 'Configurações');
+		$('.menuBtnSettings').attr('title', 'Menu');
 	}
 
 	$('.menuBtnSettings').tooltip();

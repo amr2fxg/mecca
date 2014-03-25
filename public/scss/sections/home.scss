@@ -1,15 +1,11 @@
 /* --------------------------------------------------------- */
 /* HOME PAGE	    			                             */
 /* --------------------------------------------------------- */
-
 #historyBg {
 	padding: 40px 0px;
 	background-color: $grey10;
 
 	#history {
-		display: flex;
-		justify-content: space-between;
-
 		#last_product {
 			display: flex;
 
@@ -275,16 +271,17 @@
 			}
 		}
 
+		// SIMILARES
+		// -------------------------------------------------------------------------------------------
 		#similares {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-
 			width: 450px;
 
 			#nav {
 				display: flex;
-				justify-content: space-between;
+				justify-content: center;
 
 				height: 60px;
 				line-height: 60px;
@@ -294,6 +291,9 @@
 
 				&:hover {
 					@include gWhiteGreyHover;
+					.titulo {
+						color: $txtBlue;
+					}
 				}
 
 				.titulo {
@@ -317,151 +317,50 @@
 			}
 
 			#products-carousel {
+				width: 100%;
 				height: 165px;
 				outline: 1px solid $border;
 				background-color: $grey25;
+				overflow: hidden;
+				position: relative;
 
-				ul {
-					display: flex;
-					justify-content: flex-start;
-					padding: 10px;
-					li {
-						flex: 0 0 auto;
-						margin-right: 10px;
-						img {
-							width: 100px;
-							height: 100px;
-							margin-bottom: 10px;
-						}
-						img:after {
-							content:"\a";
-				    		white-space: pre;
-						}
-						a {
-							text-decoration: none;
-						}
-						a:hover .preco {
-							background-color: $bgBlue;
-						}
-					}
-				}
-			}
-		}
-		
-		#categories {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			a {
-				text-decoration: none;
-			}
-			a:hover {
-				.titulo {
-					color: $txtBlue;
-				}
-				.preco {
-					background-color: $bgBlue;
-				}
-				.preco--last_product {
-					background-color: $bgDarkGrey;
-				}
-			}
-			.titulo {
-				font: {
-					family: 'Oswald';
-					size: 22px;
-				}
-				color: $txtGrey;
-				text-transform: uppercase;
-				@include antialiased;
-			  	letter-spacing: 0.25px;
-			}
-			.similar {
-				font: {
-					family: 'Oswald';
-					size: 18px;
-				}
-				color: $txtGrey;
-				text-transform: uppercase;
-				@include antialiased;
-				letter-spacing: 0.25px;
-				margin-bottom: 10px;
-			}
-			.similar_results {
-				ul {
-					display: flex;
-					justify-content: space-between;
-					li {
-						img {
-							width: 90px;
-							height: 90px;
-						}
-						img:after {
-							content:"\a";
-				    		white-space: pre;
-						}
-						a {
-							text-decoration: none;
-						}
-						a:hover .preco {
-							background-color: $bgBlue;
+				#scroller {
+					// start
+					position: absolute;
+					width: auto;
+					// end
+					ul {
+						display: flex;
+						justify-content: flex-start;
+						padding: 10px;
+						li {
+							flex: 0 0 auto;
+							margin-right: 10px;
+							img {
+								width: 100px;
+								height: 100px;
+								margin-bottom: 10px;
+							}
+							img:after {
+								content:"\a";
+					    		white-space: pre;
+							}
+							a {
+								text-decoration: none;
+							}
+							a:hover .preco {
+								background-color: $bgBlue;
+							}
+							&:last-child {
+								margin-right: 0px;
+							}
 						}
 					}
 				}
-			}
-		}
 
-		#last_searches {
-			ul {
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				a {
-					text-decoration: none;
-				}
-				a:hover li {
-					background-color: $bgMidGrey;
-				}
-				li {
-					@include transitions;
-					height: 35px;
-					line-height: 35px;
-					background-color: $bgLightGrey;
-					@include txtOswald14;
-					color: #fff;
-					text-align: center;
-				}
 			}
 		}
-
-		#last_searches_results {
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				align-content: space-between;
-				li {
-					img {
-						width: 90px;
-						height: 90px;
-					}
-					img:after {
-						content:"\a";
-			    		white-space: pre;
-					}
-					a {
-						text-decoration: none;
-					}
-					a:hover .preco {
-						background-color: $bgBlue;
-					}
-				}
-			}
-		}
-		
 	}
-
-	
 }
 
 #categoriasBg {
@@ -562,18 +461,116 @@
 	background-color: $bgBlue;
 }
 
-
 /* -------------------------------------------------------- */
-/* phone/tablet 992-										*/
+/* 	low phone												*/
 /* -------------------------------------------------------- */
-@media (max-width: $screen-sm-max) {
+@media (max-width: $screen-xs-max) {
 	#historyBg {
 		#history {
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
+			justify-content: center;
 			@include max_100p;
 			@include boxC;
+
+			#last_product {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-content: center;
+				width: 100%;
+				margin-bottom: 40px;
+				#img {
+					width: 100%;
+					margin-bottom: 1px;
+					img {
+						width: 100%;
+					}
+				}
+				#infos {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+/* -------------------------------------------------------- */
+/* high phone/tablet 										*/
+/* -------------------------------------------------------- */
+@media (max-width: $screen-sm-max) and (max-width: $screen-sm-max) {
+	#historyBg {
+		#history {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			@include max_100p;
+			@include boxC;
+
+			#last_product {
+				display: flex;
+				width: 100%;
+				margin-bottom: 40px;
+				#infos {
+					flex: 1;
+					#seller_info {
+						.min {
+							.produto {
+								font-size: 16px;
+							}
+						}
+					}
+				}
+			}
+
+			#similares {
+				width: 100%;
+				
+				#products-carousel {
+					width: 100%;
+					height: 220px;
+					overflow: hidden;
+					position: relative;
+
+					#scroller {
+						position: absolute;
+						width: auto;
+						height: 220px;
+
+						ul {
+							display: flex;
+							justify-content: space-around;
+							padding: 10px 10px;
+							li {
+								// flex: 0 0 auto;
+								margin-right: 10px;
+								img {
+									width: 150px;
+									height:150px;
+									margin-bottom: 10px;
+								}
+								img:after {
+									content:"\a";
+						    		white-space: pre;
+								}
+								a {
+									text-decoration: none;
+									.preco {
+										width: 150px;
+									}
+									&:hover {
+										.preco {
+											background-color: $bgBlue;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+
 		}
 	}
 
@@ -590,56 +587,36 @@
 }
 
 /* -------------------------------------------------------- */
-/* netbook	992-1280			 							*/
+/* netbook: 					 							*/
 /* -------------------------------------------------------- */
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-	// #historyBg {
-	// 	height: 360px;
-	// 	#history {
-	// 		display: flex;
-	// 		justify-content: space-between;
-	// 		@include max_100p;
+	#historyBg {
+		#history {
+			display: flex;
+			justify-content: space-between;
+			@include max_100p;
+			@include boxC;
 
-	// 		#last_product {
-	// 			margin-right: 10px;
-	// 			img { 
-	// 				width: 240px;
-	// 				heigth: 240px;
-	// 			}
-	// 		}
+			#last_product {
+				#infos {
+					width: 380px;
 
-	// 		#categories {
-	// 			flex: 1;
-	// 			margin: 0px 10px;
-	// 			.similar_results {
-	// 				ul {
-	// 					display: flex;
-	// 					justify-content: flex-start;
-	// 					li {
-	// 						margin-right: 10px;
-	// 					}
-	// 				}
-	// 			}
-	// 		}
+					#seller_info {
+						.min {
+							.produto {
+								font-size: 16px;
+							}
+						}
+					}
+				}
+			}
 
-	// 		#last_searches {
-	// 			margin: 0px 10px;
-	// 			ul {
-	// 				width: 180px;
-	// 				height: 280px;
-	// 			}
-	// 		}
+			#similares {
+				width: 340px;
+			}
+		}
+	}
 
-	// 		#last_searches_results {
-	// 			margin-left: 10px;
-	// 			height: 280px;
-	// 			ul {
-	// 				width: 200px;
-	// 				height: 280px;
-	// 			}
-	// 		}
-	// 	}
-	// }
 }
 
 /* -------------------------------------------------------- */
@@ -654,25 +631,6 @@
 			@include max_1280;
 			@include boxC;
 
-			#categories {
-				width: 380px;
-			}
-
-			#last_searches {
-				ul {
-					width: 200px;
-					height: 280px;
-				}
-			}
-
-			#last_searches_results {
-				width: 300px;
-				height: 280px;
-				ul {
-					width: 300px;
-					height: 280px;
-				}
-			}
 		}
 	}
 }

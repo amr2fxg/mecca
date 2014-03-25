@@ -263,7 +263,7 @@ $zindex-modal:             1050 !default;
 $screen-xs-min: 480px  !default; // xs: phone 479 -
 $screen-sm-min: 768px  !default; // sm: tablet 768 a 991
 $screen-md-min: 1024px !default; // md: netbook 992 a 1279
-$screen-lg-min: 1280px !default; // lg: desktop 1280 +
+$screen-lg-min: 1200px !default; // lg: desktop 1280 +
 
 // So media queries don't overlap when required, provide a maximum
 $screen-xs-max:              ($screen-sm-min - 1) !default;
