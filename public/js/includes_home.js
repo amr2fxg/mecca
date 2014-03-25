@@ -38,29 +38,52 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
  //        e.preventDefault();
  //    });
 
-    var myScroll = new IScroll('#products-carousel', {
+	// lastSearches Navigation
+	$('.search_item').click(function() {
+
+		$('#lastSearch1, #lastSearch2, #lastSearch3').addClass('hidden');
+		$('#lastSearches #list li').removeClass('active');
+		$(this).addClass('active');
+
+		if( $(this).hasClass('lastSearch1') ) {
+			$('#lastSearch1').removeClass('hidden');
+		} else if( $(this).hasClass('lastSearch2') ) {
+			$('#lastSearch2').removeClass('hidden');
+		} else if( $(this).hasClass('lastSearch3') ) {
+			$('#lastSearch3').removeClass('hidden');
+		}
+
+	});
+
+    var scrollSimilar = new IScroll('#products-carousel', {
     	scrollX: true,
     	scrollY: false
 	});
 
+	var scrollLastSearch1 = new IScroll('#lastSearch1', {
+		scrollX: true,
+		scrollY: false
+	});
+
+	var scrollLastSearch2 = new IScroll('#lastSearch2', {
+		scrollX: true,
+		scrollY: false
+	});
+
+	var scrollLastSearch3 = new IScroll('#lastSearch3', {
+		scrollX: true,
+		scrollY: false
+	});
+
     $(window).resize(function () {
 	    setTimeout (function(){
-	        myScroll.refresh();
-	    }, 500);
+	        scrollSimilar.refresh();
+	        scrollLastSearch1.refresh();
+	        scrollLastSearch2.refresh();
+	        scrollLastSearch3.refresh();
+	    }, 1000);
     });
 
-	// console.log(myScroll.options);
-
-	// var myScroll = new iScroll('products-carousel', {
-	// 	snap: 'li',
-	// 	momentum: false,
-	// 	hScrollbar: false,
-	// 	vScrollbar: false,
-	// });
-
-	// setTimeout(function () {
-	// 	myScroll.refresh();
-	// }, 0);
 });
 
 // $.when(

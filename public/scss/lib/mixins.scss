@@ -38,6 +38,16 @@
   letter-spacing: 0.25px;
 }
 
+@mixin txtOswald18 {
+  font: {
+    family: 'Oswald';
+    size: 18px;
+  }
+  text-transform: uppercase;
+  @include antialiased;
+  // letter-spacing: 0.25px;
+}
+
 @mixin txtTitulo {
 	color: #686f82;
   letter-spacing:-1px;

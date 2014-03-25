@@ -1,37 +1,25 @@
-$salmao: #ff666b;
+$blue: #357ae8;
 
+// bg greys
 $grey10: #f5f6f9;
 $grey25: #e6eaf0; // menu
 $grey30: #e1e6ed;
+$grey50: #cdd5e0;
 
-$bgBlue: #357ae8;
+// greys
+$lightGrey: #c8d0dd;
+$midGrey: #8795a9;
+$darkGrey: #3e3e3e;
 
-$bgDarkGreen: #39b54a; // q95
-$bgLightGreen: #8dc63f; // q90
-$bgYellow: #eab916; // q80
-$bgLightOrange: #f7941d; // q70
-$bgDarkOrange: #f1592a; // q60
-$bgRed: #de3232; // q50
-
-$bgLightGrey: #c8d0dd;
-$bgMidGrey: #8795a9;
-$bgDarkGrey: #3e3e3e;
-
-$txtGrey: #8795a9;
-$txtBlue: #357ae8;
+// qualificações
+$darkGreen: #39b54a; // q95
+$lightGreen: #8dc63f; // q90
+$Yellow: #eab916; // q80
+$lightOrange: #f7941d; // q70
+$larkOrange: #f1592a; // q60
+$red: #de3232; // q50
 
 $border: #e0e0e0;
-
-
-@mixin gGreen {
-	background-color: #61c109;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#61c109),to(#349e4c));
-	background-image: -webkit-linear-gradient(top,#61c109,#349e4c);
-	background-image: -moz-linear-gradient(top,#61c109,#349e4c);
-	background-image: -ms-linear-gradient(top,#61c109,#349e4c);
-	background-image: -o-linear-gradient(top,#61c109,#349e4c);
-	background-image: linear-gradient(top,#61c109,#349e4c);
-}
 
 @mixin gWhiteGrey {
 	background-color: #f5f5f5;
@@ -53,25 +41,12 @@ $border: #e0e0e0;
 	background-image: linear-gradient(top,#fff,#dedede);
 }
 
-@mixin gBlue {
-	background-color: #5b92ee;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#5b92ee),to(#3f78d4));
-	background-image: -webkit-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: -moz-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: -ms-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: -o-linear-gradient(top,#5b92ee,#3f78d4);
-	background-image: linear-gradient(top,#5b92ee,#3f78d4);
-} 
-
-@mixin gGreyBlue {
-	background-color: #889ab6;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#889ab6),to(#7b8da9));
-	background-image: -webkit-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: -moz-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: -ms-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: -o-linear-gradient(top,#889ab6,#7b8da9);
-	background-image: linear-gradient(top,#889ab6,#7b8da9);
-} 
+@mixin gReset($color:transparent) {
+    background-color:$color;
+    background-image: none;
+    background-repeat: no-repeat;
+    filter: none;
+}
 
 // Qualificações
 @mixin q {

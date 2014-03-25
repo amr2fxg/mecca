@@ -109,7 +109,7 @@
 			}
 			.menuSellSVG:hover path {
 				@include transitions;
-			    fill: $bgRed;
+			    fill: $red;
 			}
 
 			.menuBtnNotifications {
@@ -119,16 +119,16 @@
 				height: 36px;
 				margin: 12.5px 5px;
 				cursor: pointer;
-				// &:hover .icon .menuNotificationsSVG path{
-				// 	fill: $bgLightGreen;
-				// }
+				&:hover .icon .menuNotificationsSVG path{
+					fill: $lightGreen;
+				}
 				.icon {
 					width: 36px;
 					height: 36px;
 					position: absolute;
 					.menuNotificationsSVG path {
 						@include transitions;
-						fill: $bgDarkGreen;
+						fill: $darkGreen;
 					}
 				}
 				.number {
@@ -161,11 +161,11 @@
 					}
 					.menuNotificationsBarTop {
 						height: 5px;
-						background-color: $bgMidGrey;
+						background-color: $midGrey;
 					}
 					.menuNotificationsBarBot {
 						height: 5px;
-						background-color: $bgBlue;
+						background-color: $blue;
 					}
 					.menuNotificationsHeader {
 						display: flex;
@@ -179,10 +179,10 @@
 							flex: 1;
 							@include txtOswald14;
 							@include antialiased;
-							color: $txtGrey;
+							color: $blue;
 							padding: 0px 10px;
 							&:hover {
-								background-color: $bgBlue;
+								background-color: $blue;
 								color: #fff;
 							}
 						}
@@ -199,7 +199,7 @@
 								size: 12px;
 							}
 							&:hover {
-								background-color: $bgBlue;
+								background-color: $blue;
 								path, circle {
 									fill: #fff;
 								}
@@ -224,7 +224,7 @@
 								}
 								.infos {
 									.titulo {
-										color: $txtBlue;
+										color: $blue;
 									}
 									.action {
 										color: #000;
@@ -236,9 +236,9 @@
 								position: absolute;
 								top: 5px;
 								right: 5px;
-								color: $bgDarkGrey;
+								color: $darkGrey;
 								&:hover {
-									color: $bgBlue;
+									color: $blue;
 								}
 							}
 							.thumb {
@@ -259,7 +259,7 @@
 										size: 14px;
 									}
 									line-height: 14px;
-									color: $txtGrey;
+									color: $midGrey;
 									text-transform: uppercase;
 									@include antialiased;
 								  	letter-spacing: 0.25px;
@@ -291,14 +291,14 @@
 				cursor: pointer;
 				.menuSettingsSVG:hover path {
 					@include transitions;
-				    fill: $bgDarkGrey;
+				    fill: $darkGrey;
 				}
 				.menuLoginSignupSVG:hover {
 					path.user {
-						fill: $bgBlue;
+						fill: $blue;
 					}
 					circle {
-						fill: $bgDarkGrey;
+						fill: $darkGrey;
 					}
 				}
 				// DROP MENU SETTINGS
@@ -321,11 +321,11 @@
 					}
 					.menuSettingsBarTop {
 						height: 5px;
-						background-color: $bgMidGrey;
+						background-color: $midGrey;
 					}
 					.menuSettingsBarBot {
 						height: 5px;
-						background-color: $bgBlue;
+						background-color: $blue;
 					}
 					.menuSettingsItem {
 						display: flex;
@@ -364,7 +364,7 @@
 
 					.modalBar {
 						height: 5px;
-						background-color: $bgBlue;
+						background-color: $blue;
 					}
 
 					.fields {
@@ -384,12 +384,12 @@
 						#login_btn {
 							@include botao;
 							color: #fff;
-							background-color: $bgBlue;
+							background-color: $blue;
 							margin-top: 10px;
 						}
 
 						#login_btn:hover {
-							background-color: $bgDarkGrey;
+							background-color: $darkGrey;
 						}
 
 						#login_novo {
@@ -425,7 +425,7 @@
 
 					.modalBar {
 						height: 5px;
-						background-color: $bgBlue;
+						background-color: $blue;
 					}
 
 					.fields {
@@ -445,13 +445,13 @@
 						#signin_btn {
 							@include botao;
 							color: #fff;
-							background-color: $bgBlue;
+							background-color: $blue;
 							margin-bottom: 10px;
 							margin-top: 10px;
 						}
 
 						#signin_btn:hover {
-							background-color: $bgDarkGrey;
+							background-color: $darkGrey;
 						}
 
 						.form_erro {
@@ -504,10 +504,10 @@
 					.btnSearch {
 						@include transitions;
 						vertical-align: middle;
-						background-color: $bgBlue;
+						background-color: $blue;
 					}
 					.btnSearch:hover {
-						background-color: $bgDarkGrey;
+						background-color: $darkGrey;
 					}
 				}
 
@@ -550,11 +550,11 @@
 					.btnSearch {
 						@include transitions;
 						vertical-align: middle;
-						background-color: $bgBlue;
+						background-color: $blue;
 						border: 0;
 					}
 					.btnSearch:hover {
-						background-color: $bgDarkGrey;
+						background-color: $darkGrey;
 					}
 				}
 			}

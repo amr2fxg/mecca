@@ -36,10 +36,10 @@
 							text-decoration: none;
 							&:hover {
 								.titulo {
-									color: $txtBlue;
+									color: $blue;
 								}
 								.preco--last_product {
-									background-color: $bgDarkGrey;
+									background-color: $darkGrey;
 								}
 							}
 						}
@@ -59,7 +59,7 @@
 									size: 22px;
 								}
 								line-height: 24px;
-								color: $txtGrey;
+								color: $midGrey;
 								text-transform: uppercase;
 								@include antialiased;
 							  	letter-spacing: 0.25px;
@@ -70,7 +70,7 @@
 							text-align: right;
 							.follow:hover {
 								cursor: pointer;
-								path { fill: $bgBlue; }
+								path { fill: $blue; }
 							}
 						}
 					}
@@ -87,7 +87,7 @@
 							@include gWhiteGreyHover;
 							cursor: pointer;
 							.loja {
-								color: $txtBlue;
+								color: $blue;
 							}
 						}
 
@@ -96,7 +96,7 @@
 								family: 'Oswald';
 								size: 20px;
 							}
-							color: $txtGrey;
+							color: $midGrey;
 							text-transform: uppercase;
 							@include antialiased;
 							padding: 0px 20px;
@@ -139,7 +139,7 @@
 									text-decoration: none;
 									&:hover {
 										.titulo {
-											color: $txtBlue;
+											color: $blue;
 										}
 									}
 								}
@@ -150,7 +150,7 @@
 										size: 22px;
 									}
 									line-height: 24px;
-									color: $txtGrey;
+									color: $midGrey;
 									text-transform: uppercase;
 									@include antialiased;
 								  	letter-spacing: 0.25px;	
@@ -165,7 +165,7 @@
 										  family: 'PTMono';
 										  size: 14px;
 										}
-										color: $txtGrey;
+										color: $midGrey;
 										@include antialiased;
 										letter-spacing: 0.25px;
 										.state {
@@ -183,12 +183,12 @@
 									margin-left: 15px;
 									&:hover {
 										cursor: pointer;
-										path { fill: $bgBlue; }
+										path { fill: $blue; }
 									}
 								}
 								.stats:hover {
 									cursor: pointer;
-									path { fill: $bgBlue; }
+									path { fill: $blue; }
 								}
 							}
 						}
@@ -242,10 +242,10 @@
 							@include gWhiteGreyHover;
 							cursor: pointer;
 							.loja, .produto {
-								color: $txtBlue;
+								color: $blue;
 							}
 							.preco--info {
-								background-color: $bgDarkGrey;
+								background-color: $darkGrey;
 							}
 						}
 
@@ -254,7 +254,7 @@
 								family: 'Oswald';
 								size: 18px;
 							}
-							color: $txtGrey;
+							color: $midGrey;
 							text-transform: uppercase;
 							@include antialiased;
 							padding: 0px 20px;
@@ -264,7 +264,7 @@
 							width: 90px;
 							height: 40px;
 							line-height: 40px;
-							background-color: $bgBlue;
+							background-color: $blue;
 						}
 					}
 				}
@@ -292,7 +292,7 @@
 				&:hover {
 					@include gWhiteGreyHover;
 					.titulo {
-						color: $txtBlue;
+						color: $blue;
 					}
 				}
 
@@ -301,7 +301,7 @@
 						family: 'Oswald';
 						size: 18px;
 					}
-					color: $txtGrey;
+					color: $midGrey;
 					text-transform: uppercase;
 					@include antialiased;
 					@include noSelection;
@@ -310,7 +310,7 @@
 				}
 
 				.setaEsq:hover path, .setaDir:hover path {
-					fill: $bgBlue;
+					fill: $blue;
 					cursor: pointer;
 				}
 
@@ -324,7 +324,7 @@
 				overflow: hidden;
 				position: relative;
 
-				#scroller {
+				.scroller {
 					// start
 					position: absolute;
 					width: auto;
@@ -349,7 +349,7 @@
 								text-decoration: none;
 							}
 							a:hover .preco {
-								background-color: $bgBlue;
+								background-color: $blue;
 							}
 							&:last-child {
 								margin-right: 0px;
@@ -363,6 +363,120 @@
 	}
 }
 
+
+// ULTIMAS BUSCAS
+// -------------------------------------------------------------------------------------------
+#lastSearchesBg {
+	background-color: $grey50;
+	padding: 40px 0px;
+
+	#lastSearches {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		@include max_1280;
+		@include boxC;
+		height: 190px;
+		width: 100%;
+
+		#list {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+
+			.titulo {
+				text-align: center;
+				height: 40px;
+				line-height: 40px;
+				padding: 0px 20px;
+				background-color: $midGrey;
+				color: #fff;
+				@include txtOswald18;
+				@include noSelection;
+				cursor: default;
+				margin-bottom: 10px;
+				&:last-child {
+					margin-bottom: 0px;
+				}
+			}
+			.search_item {
+				@extend .titulo;
+				@include gWhiteGrey;
+				color: $midGrey;
+				cursor: pointer;
+				&:hover {
+					@include gWhiteGreyHover;
+					color: $blue;
+				}
+			}
+			.active {
+				@extend .titulo;
+				@include gReset($blue);
+				color: #fff;
+				cursor: default;
+				&:hover {
+					@include gReset($blue);
+					color: #fff;
+				}
+			}
+		}
+
+		#lastSearchesResults {
+			flex: 1;
+			position: relative;
+			margin-left: 20px;
+			overflow: hidden;
+
+			#lastSearch1, #lastSearch2, #lastSearch3 {
+				position: absolute;
+				width: auto;
+
+				.scroller {
+					position: absolute;
+					width: auto;
+
+					ul {
+						display: flex;
+						justify-content: flex-start;
+						
+						li {
+							flex: 0 0 auto;
+							margin-right: 10px;
+							img {
+								width: 140px;
+								height: 140px;
+								margin-bottom: 10px;
+							}
+							img:after {
+								content:"\a";
+					    		white-space: pre;
+							}
+							.preco-lastSearches {
+								height: 40px;
+								line-height: 40px;
+								width: 100%;
+							}
+							a {
+								text-decoration: none;
+							}
+							a:hover .preco {
+								background-color: $blue;
+							}
+							&:last-child {
+								margin-right: 0px;
+							}
+						}
+					}
+				}
+			}
+			
+		}
+
+	}
+}
+
+// CATEGORIAS
+// -------------------------------------------------------------------------------------------
 #categoriasBg {
 	background-color: $grey30;
 	padding: 20px 0px;
@@ -376,15 +490,15 @@
 		.btnCategories {
 			@include botao;
 			color: #fff;
-			background-color: $bgBlue;
+			background-color: $blue;
 		}
 		.btnCategoriesMore {
 			@include botao;
 			color: #fff;
-			background-color: $bgDarkGreen;
+			background-color: $darkGreen;
 		}
 		.btnCategories:hover, .btnCategoriesMore:hover {
-			background-color: $bgDarkGrey;
+			background-color: $darkGrey;
 		}
 	}
 }
@@ -420,24 +534,6 @@
 /* GERAL		    			                             */
 /* --------------------------------------------------------- */
 
-.area_title {
-	color: #fff;
-	background-color: $bgDarkGreen !important;
-	font: {
-		family: 'Oswald';
-		size: 14px;
-	}
-	text-transform: uppercase;
-	@include antialiased;
-	@include noSelection;
-  	letter-spacing: 0.25px;
-  	text-align: center;
-  	width: 100%;
-  	height: 35px;
-  	line-height: 35px;
-  	margin-top: 5px;
-}
-
 .preco {
 	font: {
 		family: 'Oswald';
@@ -451,14 +547,14 @@
   	width: 100px;
   	height: 35px;
   	line-height: 35px;
-  	background-color: $bgMidGrey;
+  	background-color: $midGrey;
   	text-shadow: 1px 1px 0px rgba(0,0,0,0.25);
   	@include transitions;
 }
 
 .preco--last_product {
 	@extend .preco;
-	background-color: $bgBlue;
+	background-color: $blue;
 }
 
 /* -------------------------------------------------------- */
@@ -532,7 +628,7 @@
 					overflow: hidden;
 					position: relative;
 
-					#scroller {
+					.scroller {
 						position: absolute;
 						width: auto;
 						height: 220px;
@@ -560,7 +656,7 @@
 									}
 									&:hover {
 										.preco {
-											background-color: $bgBlue;
+											background-color: $blue;
 										}
 									}
 								}
