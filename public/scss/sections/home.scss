@@ -316,48 +316,50 @@
 
 			}
 
-			#products-carousel {
+			#similarProductsResults {
+				position: relative;
 				width: 100%;
 				height: 165px;
 				outline: 1px solid $border;
 				background-color: $grey25;
+				padding: 10px;
 				overflow: hidden;
-				position: relative;
 
-				.scroller {
-					// start
+				#similarProducts {
 					position: absolute;
-					width: auto;
-					// end
-					ul {
-						display: flex;
-						justify-content: flex-start;
-						padding: 10px;
-						li {
-							flex: 0 0 auto;
-							margin-right: 10px;
-							img {
-								width: 100px;
-								height: 100px;
-								margin-bottom: 10px;
-							}
-							img:after {
-								content:"\a";
-					    		white-space: pre;
-							}
-							a {
-								text-decoration: none;
-							}
-							a:hover .preco {
-								background-color: $blue;
-							}
-							&:last-child {
-								margin-right: 0px;
+
+					.scroller {
+						position: absolute;
+
+						ul {
+							display: flex;
+							justify-content: flex-start;
+							
+							li {
+								flex: 0 0 auto;
+								margin-right: 10px;
+								img {
+									width: 100px;
+									height: 100px;
+									margin-bottom: 10px;
+								}
+								img:after {
+									content:"\a";
+						    		white-space: pre;
+								}
+								a {
+									text-decoration: none;
+								}
+								a:hover .preco {
+									background-color: $blue;
+								}
+								&:last-child {
+									margin-right: 0px;
+								}
 							}
 						}
 					}
 				}
-
 			}
 		}
 	}
@@ -429,11 +431,9 @@
 
 			#lastSearch1, #lastSearch2, #lastSearch3 {
 				position: absolute;
-				width: auto;
 
 				.scroller {
 					position: absolute;
-					width: auto;
 
 					ul {
 						display: flex;
@@ -621,42 +621,45 @@
 
 			#similares {
 				width: 100%;
-				
-				#products-carousel {
+
+				#similarProductsResults {
 					width: 100%;
-					height: 220px;
+					height: 215px;
 					overflow: hidden;
 					position: relative;
+					padding: 10px;
 
-					.scroller {
+					#similarProducts {
+						width: 100%;
 						position: absolute;
-						width: auto;
-						height: 220px;
 
-						ul {
-							display: flex;
-							justify-content: space-around;
-							padding: 10px 10px;
-							li {
-								// flex: 0 0 auto;
-								margin-right: 10px;
-								img {
-									width: 150px;
-									height:150px;
-									margin-bottom: 10px;
-								}
-								img:after {
-									content:"\a";
-						    		white-space: pre;
-								}
-								a {
-									text-decoration: none;
-									.preco {
+						.scroller {
+							position: absolute;
+							width: auto;
+
+							ul {
+								display: flex;
+								justify-content: space-around;
+								li {
+									margin-right: 10px;
+									img {
 										width: 150px;
+										height:150px;
+										margin-bottom: 10px;
 									}
-									&:hover {
+									img:after {
+										content:"\a";
+							    		white-space: pre;
+									}
+									a {
+										text-decoration: none;
 										.preco {
-											background-color: $blue;
+											width: 150px;
+										}
+										&:hover {
+											.preco {
+												background-color: $blue;
+											}
 										}
 									}
 								}
@@ -665,8 +668,6 @@
 					}
 				}
 			}
-
-
 		}
 	}
 

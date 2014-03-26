@@ -41,47 +41,51 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 	// lastSearches Navigation
 	$('.search_item').click(function() {
 
-		$('#lastSearch1, #lastSearch2, #lastSearch3').addClass('hidden');
+		$('#lastSearch1, #lastSearch2, #lastSearch3').addClass('invisible');
 		$('#lastSearches #list li').removeClass('active');
 		$(this).addClass('active');
 
 		if( $(this).hasClass('lastSearch1') ) {
-			$('#lastSearch1').removeClass('hidden');
+			$('#lastSearch1').removeClass('invisible');
 		} else if( $(this).hasClass('lastSearch2') ) {
-			$('#lastSearch2').removeClass('hidden');
+			$('#lastSearch2').removeClass('invisible');
 		} else if( $(this).hasClass('lastSearch3') ) {
-			$('#lastSearch3').removeClass('hidden');
+			$('#lastSearch3').removeClass('invisible');
 		}
 
 	});
 
-    var scrollSimilar = new IScroll('#products-carousel', {
-    	scrollX: true,
-    	scrollY: false
-	});
+    function createIScroll(wrapper, objName) {
+    	var total = 0;
+	    $(wrapper).css('width', $(wrapper).parent().width() );
+	    $(wrapper + ' .scroller ul li').each( function(index) { total += $(this).width() + parseInt( $(this).css("margin-right").replace('px','') ); });
+	    $(wrapper + ' .scroller').css('width', total);
+		window[objName] = new IScroll(wrapper, {
+			scrollX: true,
+			scrollY: false
+			// eventPassthrough: true,
+			// preventDefault: false
+		});
+    }
 
-	var scrollLastSearch1 = new IScroll('#lastSearch1', {
-		scrollX: true,
-		scrollY: false
-	});
+    function refreshIScroll(wrapper, obj) {
+    	obj.destroy();
+    	createIScroll(wrapper, obj);
+    }
 
-	var scrollLastSearch2 = new IScroll('#lastSearch2', {
-		scrollX: true,
-		scrollY: false
-	});
+    createIScroll('#similarProducts', 'similarProducts');
+    createIScroll('#lastSearch1', 'lastSearch1');
+    createIScroll('#lastSearch2', 'lastSearch2');
+    createIScroll('#lastSearch3', 'lastSearch3');
 
-	var scrollLastSearch3 = new IScroll('#lastSearch3', {
-		scrollX: true,
-		scrollY: false
-	});
 
     $(window).resize(function () {
 	    setTimeout (function(){
-	        scrollSimilar.refresh();
-	        scrollLastSearch1.refresh();
-	        scrollLastSearch2.refresh();
-	        scrollLastSearch3.refresh();
-	    }, 1000);
+	        refreshIScroll('#similarProducts', similarProducts);
+	        refreshIScroll('#lastSearch1', lastSearch1);
+	        refreshIScroll('#lastSearch2', lastSearch2);
+	        refreshIScroll('#lastSearch3', lastSearch3);
+	    }, 200);
     });
 
 });
