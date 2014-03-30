@@ -1,0 +1,269 @@
+@mixin prefixer($property, $value, $prefixes: webkit moz ms o) {
+  @each $prefix in $prefixes {
+    #{"-" + $prefix + "-" + $property}: #{$value}
+  }
+  #{$property}: #{$value}
+}
+
+//
+// CSS3 Flexible Box Layout
+//
+
+//  W3C Working Draft, 23 July 2009
+//  http://www.w3.org/TR/2009/WD-css3-flexbox-20090723
+$flex-box-2009:
+	webkit  // Chrome 20-, Safari 3.1+, iOS Safari 3.2+
+	moz     // Firefox 3+,
+	spec    //  IE9 (flexie.js)
+;
+
+//  W3C Working Draft, 22 March 2012
+//  http://www.w3.org/TR/2012/WD-css3-flexbox-20120322
+$flex-box-early-2012:
+	ms      // IE 10
+;
+
+//  W3C Candidate Recommendation, September 2012
+//  http://www.w3.org/TR/css3-flexbox
+$flex-box-2012:
+	webkit  // Chrome 21+
+	spec    // Opera 12.1+, Firefox 22+
+;
+
+
+//
+// Flex containers
+//
+
+// Custom shorthand notation for flex containers
+@mixin flex-container($flow: null, $main-axis-align: null, $cross-axis-align: null, $inline: false) {
+	@include display-flex($inline);
+
+	@if $flow != null {
+		@include flex-flow($flow);
+	}
+
+	@if $main-axis-align != null {
+		@include justify-content($main-axis-align);
+	}
+
+	@if $cross-axis-align != null {
+		@include align-items($cross-axis-align);
+	}
+}
+
+// display: flex || display: inline-box
+@mixin display-flex($inline: false) {
+	$inline-prefix: if($inline, 'inline-', '');
+
+	// Flexbox 2009
+	display: -webkit-#{$inline-prefix}box;
+	display: -moz-#{$inline-prefix}box;
+	display: box;
+
+	// Flexbox early 2012
+	display: -ms-#{$inline-prefix}flexbox;
+
+	// Flexbox 2012
+	display: -webkit-#{$inline-prefix}flex;
+	display: #{$inline-prefix}flex;
+}
+
+// Direction of the flex container's main axis
+// flex-direction: row | row-reverse | column | column-reverse
+@mixin flex-direction($value: row) {
+	@if $value == row {
+		@include prefixer(box-orient, horizontal, $flex-box-2009);
+		//@include prefixer(box-direction, normal, $flex-box-2009); // Not needed, default value
+	}
+	@else if $value == row-reverse {
+		@include prefixer(box-orient, horizontal, $flex-box-2009);
+		@include prefixer(box-direction, reverse, $flex-box-2009);
+	}
+	@else if $value == column {
+		@include prefixer(box-orient, vertical, $flex-box-2009);
+		//@include prefixer(box-direction, normal, $flex-box-2009); // Not needed, default value
+	}
+	@if $value == column-reverse {
+		@include prefixer(box-orient, vertical, $flex-box-2009);
+		@include prefixer(box-direction, reverse, $flex-box-2009);
+	}
+
+	@include prefixer(flex-direction, $value, $flex-box-early-2012);
+	@include prefixer(flex-direction, $value, $flex-box-2012);
+}
+
+// Controls whether the flex container is single-line or multi-line
+// flex-wrap: nowrap | wrap | wrap-reverse
+@mixin flex-wrap($value: nowrap) {
+	@if $value == nowrap {
+		@include prefixer(box-lines, single, $flex-box-2009);
+	}
+	@else if $value == wrap {
+		@include prefixer(box-lines, multiple, $flex-box-2009);
+	}
+	@else if $value == wrap-reverse {
+		@include prefixer(box-lines, multiple, $flex-box-2009); // Not really supported
+		@include prefixer(box-direction, reverse, $flex-box-2009);
+	}
+
+	@include prefixer(flex-wrap, $value, $flex-box-early-2012);
+	@include prefixer(flex-wrap, $value, $flex-box-2012);
+}
+
+// Flex direction and wrap shorthand
+// flex-flow: <flex-direction> [<flex-wrap>]
+@mixin flex-flow($direction, $wrap: null) {
+	@if $direction {
+		@include flex-direction($direction);
+	}
+
+	@if $wrap {
+		@include flex-wrap($wrap);
+	}
+}
+
+// Align flex items along the main axis (horizontal for rows, and vertical for columns)
+// justify-content: flex-start | flex-end | center | space-between | space-around
+@mixin justify-content($value: flex-start) {
+	@if $value == flex-start {
+		@include prefixer(box-pack, start, $flex-box-2009);
+		@include prefixer(flex-pack, start, $flex-box-early-2012);
+	}
+	@else if $value == flex-end {
+		@include prefixer(box-pack, end, $flex-box-2009);
+		@include prefixer(flex-pack, end, $flex-box-early-2012);
+	}
+	@else if $value == center {
+		@include prefixer(box-pack, $value, $flex-box-2009);
+		@include prefixer(flex-pack, $value, $flex-box-early-2012);
+	}
+	@else if $value == space-between {
+		@include prefixer(box-pack, justify, $flex-box-2009);
+		@include prefixer(flex-pack, justify, $flex-box-early-2012);
+	}
+	@else if $value == space-around {
+		@include prefixer(box-pack, justify, $flex-box-2009); // Not really supported
+		@include prefixer(flex-pack, distribute, $flex-box-early-2012);
+	}
+
+	@include prefixer(justify-content, $value, $flex-box-2012);
+}
+
+// Align flex items along the cross axis (vertical for rows, and horizontal for columns)
+// align-items: flex-start | flex-end | center | baseline | stretch
+@mixin align-items($value: stretch) {
+	@if $value == flex-start {
+		@include prefixer(box-align, start, $flex-box-2009);
+		@include prefixer(flex-align, start, $flex-box-early-2012);
+	}
+	@else if $value == flex-end {
+		@include prefixer(box-align, end, $flex-box-2009);
+		@include prefixer(flex-align, end, $flex-box-early-2012);
+	}
+	@else if $value == center {
+		@include prefixer(box-align, $value, $flex-box-2009);
+		@include prefixer(flex-align, $value, $flex-box-early-2012);
+	}
+	@else if $value == baseline {
+		@include prefixer(box-align, $value, $flex-box-2009);
+		@include prefixer(flex-align, $value, $flex-box-early-2012);
+	}
+	@else if $value == stretch {
+		@include prefixer(box-align, $value, $flex-box-2009);
+		@include prefixer(flex-align, $value, $flex-box-early-2012);
+	}
+
+	@include prefixer(align-items, $value, $flex-box-2012);
+}
+
+// Align a multi-line flex container's lines within the flex container when there is extra space in the cross axis
+// align-content: flex-start | flex-end | center | space-between | space-around | stretch
+@mixin align-content($value: stretch) {
+	@if $value == flex-start {
+		@include prefixer(flex-line-pack, start, $flex-box-early-2012);
+	}
+	@else if $value == flex-end {
+		@include prefixer(flex-line-pack, end, $flex-box-early-2012);
+	}
+	@else if $value == center {
+		@include prefixer(flex-line-pack, $value, $flex-box-early-2012);
+	}
+	@else if $value == space-between {
+		@include prefixer(flex-line-pack, justify, $flex-box-early-2012);
+	}
+	@else if $value == space-around {
+		@include prefixer(flex-line-pack, distribute, $flex-box-early-2012);
+	}
+	@else if $value == stretch {
+		@include prefixer(flex-line-pack, $value, $flex-box-early-2012);
+	}
+
+	@include prefixer(align-content, $value, $flex-box-2012);
+}
+
+
+//
+// Flex items
+//
+
+// Custom shorthand notation for flex items
+@mixin flex-item($flex: null, $order: null) {
+	@if $flex != null {
+		@include flex($flex);
+	}
+
+	@if $order != null {
+		@include order($order);
+	}
+}
+
+// Controls the order in which flex items appear within their flex container
+// order: <positive-number>
+@mixin order($value: 0) {
+	@include prefixer(box-ordinal-group, $value + 1, $flex-box-2009);
+	@include prefixer(flex-order, $value, $flex-box-early-2012);
+	@include prefixer(order, $value, $flex-box-2012);
+}
+
+// Specifies the components of a flexible length.
+// flex: [<flex-grow> <flex-shrink> <flex-basis>] | none
+//      flex-grow: <positive-number>
+//          Determines how much the flex item will *grow* relative to the rest of the flex items in the flex container
+//          when positive free space is distributed.
+//      flex-shrink: <positive-number>
+//          Determines how much the flex item will *shrink* relative to the rest of the flex items in the flex container
+//          when negative free space is distributed.
+//      flex-basis: <pixel> | <percentage>
+//          The initial width or height (depending on main axis) of the flex item, before free space is distributed
+//          according to the flex factors.
+@mixin flex($value) {
+	@include prefixer(box-flex, nth($value, 1), $flex-box-2009);
+	@include prefixer(flex, $value, $flex-box-early-2012);
+	@include prefixer(flex, $value, $flex-box-2012);
+}
+
+// Override to align individual items along the cross-axis
+// align-self: auto | flex-start | flex-end | center | baseline | stretch
+@mixin align-self($value: auto) {
+	@if $value == auto {
+		@include prefixer(flex-item-align, $value, $flex-box-early-2012);
+	}
+	@if $value == flex-start {
+		@include prefixer(flex-item-align, start, $flex-box-early-2012);
+	}
+	@else if $value == flex-end {
+		@include prefixer(flex-item-align, end, $flex-box-early-2012);
+	}
+	@else if $value == center {
+		@include prefixer(flex-item-align, $value, $flex-box-early-2012);
+	}
+	@else if $value == baseline {
+		@include prefixer(flex-item-align, $value, $flex-box-early-2012);
+	}
+	@else if $value == stretch {
+		@include prefixer(flex-item-align, $value, $flex-box-early-2012);
+	}
+
+	@include prefixer(align-self, $value, $flex-box-2012);
+}

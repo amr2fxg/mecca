@@ -143,9 +143,12 @@
 				}
 				//  DROP MENU NOTIFICATIONS
 				#menuNotifications {
-					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
+					@include display-flex;
+					@include flex-direction('column');
+					@include flex-wrap('wrap');
+					// display: flex;
+					// flex-direction: column;
+					// flex-wrap: wrap;
 
 					box-shadow: 0 2px 4px rgba(0,0,0,0.25);
 					-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.25);
@@ -157,7 +160,8 @@
 					top: 47px;
 					&.open {
 						opacity: 1;
-						display: flex;
+						// display: flex;
+						@include display-flex;
 					}
 					.menuNotificationsBarTop {
 						height: 5px;
@@ -168,15 +172,21 @@
 						background-color: $blue;
 					}
 					.menuNotificationsHeader {
-						display: flex;
-						justify-content: space-around;
-						align-content: center;
+						// display: flex;
+						// justify-content: space-around;
+						// align-content: center;
+						@include display-flex;
+						@include justify-content('space-around');
+						@include align-content('center');
+
 						height: 30px;
 						line-height: 30px;
 						@include gWhiteGrey;
 						border-bottom: 1px solid #d7d7d7;
 						.todas {
-							flex: 1;
+							// flex: 1;
+							@include flex('1');
+
 							@include txtOswald14;
 							@include antialiased;
 							color: $blue;
@@ -187,8 +197,11 @@
 							}
 						}
 						.msgs, .nots, .settings {
-							display: flex;
-							justify-content: center;
+							// display: flex;
+							// justify-content: center;
+							@include display-flex;
+							@include justify-content('center');
+
 							width: 60px;
 							padding: 0px 10px;
 							border-left: 1px solid #d7d7d7;
@@ -213,7 +226,9 @@
 						max-height: 300px;
 						overflow-y: auto;
 						.menuNotificationsItem {
-							display: flex;
+							// display: flex;
+							@include display-flex;
+
 							position: relative;
 							@include gWhiteGrey;
 							border-bottom: 1px solid #d7d7d7;
@@ -247,12 +262,17 @@
 								padding: 5px;
 							}
 							.infos {
-								flex: 1;
+								// flex: 1;
+								@include flex('1');
 								padding: 0px 0px 0px 5px;
 
-								display: flex;
-								flex-direction: column;
-								justify-content: center;
+								// display: flex;
+								// flex-direction: column;
+								// justify-content: center;
+								@include display-flex;
+								@include flex-direction('column');
+								@include justify-content('center');
+
 								.titulo {
 									font: {
 										family: "Oswald";
@@ -303,9 +323,12 @@
 				}
 				// DROP MENU SETTINGS
 				#menuSettings-auth, #menuSettings-noauth {
-					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
+					// display: flex;
+					// flex-direction: column;
+					// flex-wrap: wrap;
+					@include display-flex;
+					@include flex-direction('column');
+					@include flex-wrap('wrap');
 
 					box-shadow: 0 2px 4px rgba(0,0,0,0.25);
 					-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.25);
@@ -317,7 +340,8 @@
 					top: 48px;
 					&.open {
 						opacity: 1;
-						display: flex;
+						// display: flex;
+						@include display-flex;
 					}
 					.menuSettingsBarTop {
 						height: 5px;
@@ -328,7 +352,9 @@
 						background-color: $blue;
 					}
 					.menuSettingsItem {
-						display: flex;
+						// display: flex;
+						@include display-flex;
+
 						height: 45px;
 						@include gWhiteGrey;
 						&:hover {
@@ -341,7 +367,9 @@
 							padding: 0 10px;
 						}
 						.text {
-							flex: 1;
+							// flex: 1;
+							@include flex('1');
+
 							height: 100%;
 							line-height: 45px;
 							border-left: 1px solid #fff;
@@ -368,9 +396,12 @@
 					}
 
 					.fields {
-						display: flex;
-						flex-direction: column;
-						justify-content: center;
+						// display: flex;
+						// flex-direction: column;
+						// justify-content: center;
+						@include display-flex;
+						@include flex-direction('column');
+						@include justify-content('center');
 
 						padding: 10px;
 						text-align: center;
@@ -429,9 +460,12 @@
 					}
 
 					.fields {
-						display: flex;
-						flex-direction: column;
-						justify-content: center;
+						// display: flex;
+						// flex-direction: column;
+						// justify-content: center;
+						@include display-flex;
+						@include flex-direction('column');
+						@include justify-content('center');
 
 						padding: 10px;
 						text-align: center;
@@ -482,24 +516,36 @@
 	#menuBg {
 
 		#menu {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
+			// display: flex;
+			// flex-direction: row;
+			// flex-wrap: wrap;
+			// justify-content: space-between;
+			@include display-flex;
+			@include flex-direction('row');
+			@include flex-wrap('wrap');
+			@include justify-content('space-between');
+		
+
 			@include max_100p;
 			@include boxC;
 
 			#busca {
-				flex: 0 1 100%;
-				order: 1;
+				// flex: 0 1 100%;
+				// order: 1;
+				@include flex('0 1 100%');
+				@include order(1);
 
 				#form_container {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
+					// display: flex;
+					// justify-content: space-between;
+					// align-items: center;
+					@include display-flex;
+					@include justify-content('space-between');
+					@include align-items('center');
 
 					input[type=text] {
-						flex: 1;
+						// flex: 1;
+						@include flex('1');
 					}
 					.btnSearch {
 						@include transitions;
@@ -525,24 +571,32 @@
 		height: 60px;
 
 		#menu {
-			display: flex;
-			flex-wrap: nowrap;
-			justify-content: space-between;
+			// display: flex;
+			// flex-wrap: nowrap;
+			// justify-content: space-between;
+			@include display-flex;
+			@include flex-wrap('nowrap');
+			@include justify-content('space-between');
+
 			height: 60px;
 			@include max_1280;
 			@include boxC;
 
 			#logo {
-				flex: 1;
+				// flex: 1;
+				@include flex('1');
 			}
 
 			#busca {
 				margin-right: 20px;
 
 				#form_container {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
+					// display: flex;
+					// justify-content: space-between;
+					// align-items: center;
+					@include display-flex;
+					@include justify-content('space-between');
+					@include align-items('center');
 
 					input[type=text] {
 						min-width: 300px;

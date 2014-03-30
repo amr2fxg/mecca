@@ -77,6 +77,7 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
     createIScroll('#lastSearch1', 'lastSearch1');
     createIScroll('#lastSearch2', 'lastSearch2');
     createIScroll('#lastSearch3', 'lastSearch3');
+    createIScroll('#anunciosDestaqueResults', 'anunciosDestaque');
 
 
     $(window).resize(function () {
@@ -85,6 +86,7 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 	        refreshIScroll('#lastSearch1', lastSearch1);
 	        refreshIScroll('#lastSearch2', lastSearch2);
 	        refreshIScroll('#lastSearch3', lastSearch3);
+	        refreshIScroll('#anunciosDestaqueResults', anunciosDestaque);
 	    }, 200);
     });
 

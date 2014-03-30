@@ -1,4 +1,25 @@
 /* --------------------------------------------------------- */
+/* Media Queries                                             */
+/* --------------------------------------------------------- */
+
+@mixin bp($point, $point2:null, $point3:null) {
+  @if $point == desk { @media (min-width: $screen-lg-min) { @content; } }
+  @else if $point == netbook { @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content; } }
+  @else if $point == mobile { @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)  { @content; } }
+  @else if $point == low { @media (max-width: $screen-xs-max) { @content; } }
+
+  @if $point2 == desk { @media (min-width: $screen-lg-min) { @content; } }
+  @else if $point2 == netbook { @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content; } }
+  @else if $point2 == mobile { @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)  { @content; } }
+  @else if $point2 == low { @media (max-width: $screen-xs-max) { @content; } }
+
+  @if $point3 == desk { @media (min-width: $screen-lg-min) { @content; } }
+  @else if $point3 == netbook { @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content; } }
+  @else if $point3 == mobile { @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)  { @content; } }
+  @else if $point3 == low { @media (max-width: $screen-xs-max) { @content; } }
+}
+
+/* --------------------------------------------------------- */
 /* MIXINS                                                    */
 /* --------------------------------------------------------- */
 
@@ -67,6 +88,7 @@
     size: 14px;
   }
 }
+
 
 /* GENERAL LAYOUT */
 /* -------------------------------------------*/
