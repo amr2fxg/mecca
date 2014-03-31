@@ -34,10 +34,6 @@ $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
 //  iscroll
 $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 
-	// $('body').on('touchmove', function(e){
- //        e.preventDefault();
- //    });
-
 	// lastSearches Navigation
 	$('.search_item').click(function() {
 
@@ -55,17 +51,17 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 
 	});
 
-    function createIScroll(wrapper, objName) {
+	function createIScroll(wrapper, objName) {
     	var total = 0;
 	    $(wrapper).css('width', $(wrapper).parent().width() );
 	    $(wrapper + ' .scroller ul li').each( function(index) { total += $(this).width() + parseInt( $(this).css("margin-right").replace('px','') ); });
 	    $(wrapper + ' .scroller').css('width', total);
-		window[objName] = new IScroll(wrapper, {
-			scrollX: true,
-			scrollY: false
-			// eventPassthrough: true,
-			// preventDefault: false
-		});
+
+    	if( $('html').hasClass('desktop') == true) {
+			window[objName] = new IScroll(wrapper, { scrollX: true, scrollY: false });
+    	} else if( $('html').hasClass('desktop') == false) {
+    		window[objName] = new IScroll(wrapper, { scrollX: true,	scrollY: false,	eventPassthrough: true,	preventDefault: false });
+    	}
     }
 
     function refreshIScroll(wrapper, obj) {
@@ -95,21 +91,9 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 // $.when(
 //     $.getScript("/js/vendor/bootstrap/transition.js"),
 //     $.getScript("/js/vendor/bootstrap/carousel.js"),
-//     // $.getScript("/js/vendor/bootstrap-touch-carousel/bootstrap-touch-carousel.js"),
 //     $.Deferred(function( deferred ){
 //         $( deferred.resolve );
 //     })
 // ).done(function(){
-
-// 	$('.carousel').carousel({
-// 		interval: 9000
-// 	});
-
-// 	$('.setaEsq').click(function() {
-// 		$('.carousel').carousel('prev');
-// 	});
-// 	$('.setaDir').click(function() {
-// 		$('.carousel').carousel('next');
-// 	});
-
+// 
 // });
