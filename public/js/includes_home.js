@@ -31,9 +31,24 @@ $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
 
 });
 
-//  iscroll
-$.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 
+$.when(
+    $.getScript("/js/vendor/iscroll/iscroll.min.js"),
+    $.getScript("/js/vendor/bootstrap/popover.js"),
+    $.Deferred(function( deferred ){
+        $( deferred.resolve );
+    })
+).done(function(){
+	// Popovers
+	$("[data-toggle='popover']").popover({
+		trigger: 'hover',
+		placement: 'bottom',
+		container: 'body',
+		html: true,
+		delay: { show: 200, hide: 50 }
+	});
+	
+	// iScroll
 	// lastSearches Navigation
 	$('.search_item').click(function() {
 
@@ -58,10 +73,19 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 	    $(wrapper + ' .scroller').css('width', total);
 
     	if( $('html').hasClass('desktop') == true) {
-			window[objName] = new IScroll(wrapper, { scrollX: true, scrollY: false });
+			window[objName] = new IScroll(wrapper, { scrollX: true,	scrollY: false });
     	} else if( $('html').hasClass('desktop') == false) {
     		window[objName] = new IScroll(wrapper, { scrollX: true,	scrollY: false,	eventPassthrough: true,	preventDefault: false });
     	}
+
+    	window[objName].on('beforeScrollStart', function() {
+    		$("[data-toggle='popover']").popover('hide');
+    		$("[data-toggle='popover']").popover('disable');
+    	});
+
+    	window[objName].on('scrollEnd', function() {
+   			$("[data-toggle='popover']").popover('enable');
+    	});
     }
 
     function refreshIScroll(wrapper, obj) {
@@ -85,15 +109,5 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 	        refreshIScroll('#anunciosDestaqueResults', anunciosDestaque);
 	    }, 200);
     });
-
+	
 });
-
-// $.when(
-//     $.getScript("/js/vendor/bootstrap/transition.js"),
-//     $.getScript("/js/vendor/bootstrap/carousel.js"),
-//     $.Deferred(function( deferred ){
-//         $( deferred.resolve );
-//     })
-// ).done(function(){
-// 
-// });

@@ -758,3 +758,60 @@
 	@extend .preco;
 	background-color: $blue;
 }
+
+.popover {
+	width: 200px;
+	height: 130px;
+	background-color: $midGrey;
+	margin-top: 20px !important;
+
+	&.bottom > .arrow {
+		border-bottom-color: $midGrey;
+		&:after {
+		  border-bottom-color: $midGrey;
+		}
+	}
+
+	.infos {
+		@include display-flex;
+		@include flex-direction('column');
+		
+		.titulo {
+			height: 85px;
+			padding: 15px;
+			background-color: $midGrey;
+			font: {
+				family: 'Oswald';
+				size: 16px;
+			}
+			line-height: 20px;
+			text-transform: uppercase;
+			@include noSelection;
+			@include antialiased;
+			color: #fff;
+		}
+		.bar {
+			@include display-flex;
+			height: 45px;
+
+			.icons {
+				@include display-flex;
+				@include align-self('center');
+				@include flex('1');
+				height: 45px;
+				padding: 0px 15px;
+				background-color: $lightGrey;
+				svg {
+					margin-right: 5px;
+				}
+			}
+			.rating {
+				width: 45px;
+				height: 45px;
+				line-height: 45px;
+				text-align: center;
+			}
+		}
+
+	}
+}

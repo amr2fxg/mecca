@@ -112,3 +112,9 @@ $border: #e0e0e0;
 	background-image: -o-linear-gradient(top,#de3232,#c01f1f);
 	background-image: linear-gradient(top,#de3232,#c01f1f);
 }
+.q95 { @include q95; }
+.q90 { @include q90; }
+.q80 { @include q80; }
+.q70 { @include q70; }
+.q60 { @include q60; }
+.q50 { @include q50; }
