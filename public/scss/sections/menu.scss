@@ -1,564 +1,545 @@
-/* --------------------------------------------------------- */
 /* MENU BAR                                                  */
 /* --------------------------------------------------------- */
 
 #menuBg {
 	background-color: $grey25;
-	#menu {
-		#logo {
-			height: 60px;
-			line-height: 60px;
-			img {
-				vertical-align: middle;
+
+	@include bp(netbook, desk) {
+		height: 60px;
+	}
+}
+
+#menu {
+	@include display-flex;
+	@include justify-content('space-between');
+	@include boxC;
+
+	@include bp(low, mobile) {
+		@include flex-wrap('wrap');
+		@include max_100p;
+	}
+	@include bp(netbook, desk) {
+		@include flex-wrap('nowrap');
+		@include max_1280;
+	}
+}
+
+#logo {
+	height: 60px;
+	line-height: 60px;
+	img {
+		vertical-align: middle;
+	}
+
+	@include bp(netbook, desk) {
+		@include flex('1');
+	}
+}
+
+#busca {
+	position: relative;
+
+	@include bp(low, mobile) {
+		@include flex('0 1 100%');
+		@include order(1);
+	}
+	@include bp(netbook, desk) {
+		margin-right: 20px;
+	}
+
+	#form_container {
+		@include display-flex;
+		@include justify-content('space-between');
+		@include align-items('center');
+
+		@include bp(low, mobile) {
+			input[type=text] {
+				@include flex('1');
+			}
+		}
+		@include bp(netbook, desk) {
+			input[type=text] {
+				min-width: 300px;
 			}
 		}
 
-		#busca {
-			position: relative;
+		#s {
+			z-index: $zindex-navbar-fixed + 1;
+			background-color: transparent;
+		}
 
-			#form_container {
+		#ss {
+			z-index: $zindex-navbar-fixed;
+			color: #ccc;
+			width: 100%;
+			position: absolute;
+			left: 0px;
+		}
 
-				#s {
-					z-index: $zindex-navbar-fixed + 1;
-					background-color: transparent;
-				}
+		.txtSearch {
+			height: 35px;
+			margin: 12px 0px;
+			text-transform: lowercase;
+		}
 
-				#ss {
-					z-index: $zindex-navbar-fixed;
-					color: #ccc;
-					width: 100%;
-					position: absolute;
-					left: 0px;
-				}
+		#btn_search {
+			z-index: $zindex-navbar-fixed + 2;
+		}
 
-				.txtSearch {
-					height: 35px;
-					margin: 12px 0px;
-					text-transform: lowercase;
-				}
-
-				#btn_search {
-					z-index: $zindex-navbar-fixed + 2;
-				}
-
-				.btnSearch, .btnSearch:hover {
-					height: 35px;
-					line-height: 35px;
-					min-width: 62px;
-					background-image: url("../i/btnSearch.png");
-					background-repeat: no-repeat;
-					background-position: center center;
-				}
-
+		.btnSearch {
+			height: 35px;
+			line-height: 35px;
+			min-width: 62px;
+			background-image: url("../i/btnSearch.png");
+			background-repeat: no-repeat;
+			background-position: center center;
+			@include transitions;
+			vertical-align: middle;
+			background-color: $blue;
+			&:hover {
+				background-color: $darkGrey;
 			}
+		}
 
-			#results {
-				display:none;
+	}
 
-				position: absolute;
-				width: 100%;
-				top: 46px;
-				z-index: $zindex-navbar-fixed;
+	#results {
+		display:none;
 
-				border: 1px solid #ddd;
-				box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-				-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		position: absolute;
+		width: 100%;
+		top: 46px;
+		z-index: $zindex-navbar-fixed;
 
-				ul {
-					list-style:none;
+		border: 1px solid #ddd;
+		@include box-shadow(0 2px 4px rgba(0,0,0,.1));
 
-					li {
-						background-color: #fff;
+		ul {
+			list-style:none;
 
-						a {
-							display: block;
-							padding: 0px 7px;
-							line-height: 28px;
-							height: 28px;
-							text-decoration: none;
-							color: #333;
-							font: {
-								family: "Arial";
-								size: 13px;
-							}
-							&.search_hover {
-								background-color:#EBEBEB!important; 
-								color:#232323!important; 
-							}
-						}
+			li {
+				background-color: #fff;
+
+				a {
+					display: block;
+					padding: 0px 7px;
+					line-height: 28px;
+					height: 28px;
+					text-decoration: none;
+					color: #333;
+					font: {
+						family: "Arial";
+						size: 13px;
 					}
-					li:hover {
+					&.search_hover {
 						background-color: #ebebeb;
+						color: #232323;
 					}
 				}
-
+			}
+			li:hover {
+				background-color: #ebebeb;
 			}
 		}
 
-		#menuIcons {
-			height: 60px;
-			line-height: 60px;
+	}
+}
 
-			.menuBtnSell {
-				position: relative;
-				float: right;
-				width: 37px;
-				height: 35px;
-				margin: 12px 5px;
-				cursor: pointer;
-			}
-			.menuSellSVG:hover path {
+#menuIcons {
+	height: 60px;
+	line-height: 60px;
+
+	.menuBtnSell {
+		position: relative;
+		float: right;
+		width: 37px;
+		height: 35px;
+		margin: 12px 5px;
+		cursor: pointer;
+	}
+	.menuSellSVG:hover path {
+		@include transitions;
+	    fill: $red;
+	}
+
+	.menuBtnNotifications {
+		position: relative;
+		float: right;
+		width: 36px;
+		height: 36px;
+		margin: 12.5px 5px;
+		cursor: pointer;
+		&:hover .icon .menuNotificationsSVG path{
+			fill: $lightGreen;
+		}
+		.icon {
+			width: 36px;
+			height: 36px;
+			position: absolute;
+			.menuNotificationsSVG path {
 				@include transitions;
-			    fill: $red;
+				fill: $darkGreen;
 			}
+		}
+		.number {
+			height: 36px;
+			@include noSelection;
+			position: relative;
+			z-index: 10;
+			text-align: center;
+			@include txtOswald14;
+			color: #fff;
+			margin: -12.5px 0px;
+		}
+		//  DROP MENU NOTIFICATIONS
+		#menuNotifications {
+			@include display-flex;
+			@include flex-direction('column');
+			@include flex-wrap('wrap');
 
-			.menuBtnNotifications {
-				position: relative;
-				float: right;
-				width: 36px;
-				height: 36px;
-				margin: 12.5px 5px;
-				cursor: pointer;
-				&:hover .icon .menuNotificationsSVG path{
-					fill: $lightGreen;
-				}
-				.icon {
-					width: 36px;
-					height: 36px;
-					position: absolute;
-					.menuNotificationsSVG path {
-						@include transitions;
-						fill: $darkGreen;
-					}
-				}
-				.number {
-					height: 36px;
-					@include noSelection;
-					position: relative;
-					z-index: 10;
-					text-align: center;
+			@include box-shadow(0 2px 4px rgba(0,0,0,.25));
+
+			position: absolute;
+			z-index: $zindex-modal;
+			width: 420px;
+			right: -95px;
+			top: 47px;
+			&.open {
+				opacity: 1;
+				@include display-flex;
+			}
+			.menuNotificationsBarTop {
+				height: 5px;
+				background-color: $midGrey;
+			}
+			.menuNotificationsBarBot {
+				height: 5px;
+				background-color: $blue;
+			}
+			.menuNotificationsHeader {
+				@include display-flex;
+				@include justify-content('space-around');
+				@include align-content('center');
+
+				height: 30px;
+				line-height: 30px;
+				@include gWhiteGrey;
+				border-bottom: 1px solid #d7d7d7;
+				.todas {
+					@include flex('1');
+
 					@include txtOswald14;
-					color: #fff;
-					margin: -12.5px 0px;
-				}
-				//  DROP MENU NOTIFICATIONS
-				#menuNotifications {
-					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
-
-					box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-					-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-
-					position: absolute;
-					z-index: $zindex-modal;
-					width: 420px;
-					right: -95px;
-					top: 47px;
-					&.open {
-						opacity: 1;
-						display: flex;
-					}
-					.menuNotificationsBarTop {
-						height: 5px;
-						background-color: $midGrey;
-					}
-					.menuNotificationsBarBot {
-						height: 5px;
+					@include antialiased;
+					color: $blue;
+					padding: 0px 10px;
+					&:hover {
 						background-color: $blue;
+						color: #fff;
 					}
-					.menuNotificationsHeader {
-						display: flex;
-						justify-content: space-around;
-						align-content: center;
-						height: 30px;
-						line-height: 30px;
-						@include gWhiteGrey;
-						border-bottom: 1px solid #d7d7d7;
-						.todas {
-							flex: 1;
-							@include txtOswald14;
-							@include antialiased;
-							color: $blue;
-							padding: 0px 10px;
-							&:hover {
-								background-color: $blue;
-								color: #fff;
+				}
+				.msgs, .nots, .settings {
+					@include display-flex;
+					@include justify-content('center');
+
+					width: 60px;
+					padding: 0px 10px;
+					border-left: 1px solid #d7d7d7;
+					@include transitions;
+					@include antialiased;
+					font: {
+						family: 'PTMono';
+						size: 12px;
+					}
+					&:hover {
+						background-color: $blue;
+						path, circle {
+							fill: #fff;
+						}
+					}
+				}
+				.settings {
+					width: 35px;
+				}
+			}
+			#content {
+				max-height: 300px;
+				overflow-y: auto;
+				.menuNotificationsItem {
+					@include display-flex;
+
+					position: relative;
+					@include gWhiteGrey;
+					border-bottom: 1px solid #d7d7d7;
+					&:hover {
+						@include gWhiteGreyHover;
+						.erase {
+							display: block;
+						}
+						.infos {
+							.titulo {
+								color: $blue;
+							}
+							.action {
+								color: #000;
 							}
 						}
-						.msgs, .nots, .settings {
-							display: flex;
-							justify-content: center;
-							width: 60px;
-							padding: 0px 10px;
-							border-left: 1px solid #d7d7d7;
-							@include transitions;
-							@include antialiased;
+					}
+					.erase {
+						display: none;
+						position: absolute;
+						top: 5px;
+						right: 5px;
+						color: $darkGrey;
+						&:hover {
+							color: $blue;
+						}
+					}
+					.thumb {
+						width: 60px;
+						height: 60px;
+						padding: 5px;
+					}
+					.infos {
+						@include flex('1');
+						padding: 0px 0px 0px 5px;
+
+						@include display-flex;
+						@include flex-direction('column');
+						@include justify-content('center');
+
+						.titulo {
 							font: {
-								family: 'PTMono';
+								family: "Oswald";
+								size: 14px;
+							}
+							line-height: 14px;
+							color: $midGrey;
+							text-transform: uppercase;
+							@include antialiased;
+						  	letter-spacing: 0.25px;
+						  	margin-bottom: 5px;
+						}
+						.action {
+							font: {
+								family: "PTMono";
 								size: 12px;
 							}
-							&:hover {
-								background-color: $blue;
-								path, circle {
-									fill: #fff;
-								}
-							}
-						}
-						.settings {
-							width: 35px;
-						}
-					}
-					#content {
-						max-height: 300px;
-						overflow-y: auto;
-						.menuNotificationsItem {
-							display: flex;
-							position: relative;
-							@include gWhiteGrey;
-							border-bottom: 1px solid #d7d7d7;
-							&:hover {
-								@include gWhiteGreyHover;
-								.erase {
-									display: block;
-								}
-								.infos {
-									.titulo {
-										color: $blue;
-									}
-									.action {
-										color: #000;
-									}
-								}
-							}
-							.erase {
-								display: none;
-								position: absolute;
-								top: 5px;
-								right: 5px;
-								color: $darkGrey;
-								&:hover {
-									color: $blue;
-								}
-							}
-							.thumb {
-								width: 60px;
-								height: 60px;
-								padding: 5px;
-							}
-							.infos {
-								flex: 1;
-								padding: 0px 0px 0px 5px;
-
-								display: flex;
-								flex-direction: column;
-								justify-content: center;
-								.titulo {
-									font: {
-										family: "Oswald";
-										size: 14px;
-									}
-									line-height: 14px;
-									color: $midGrey;
-									text-transform: uppercase;
-									@include antialiased;
-								  	letter-spacing: 0.25px;
-								  	margin-bottom: 5px;
-								}
-								.action {
-									font: {
-										family: "PTMono";
-										size: 12px;
-									}
-									color: #777;
-									line-height: 12px;
-									text-transform: uppercase;
-									@include antialiased;
-								}
-							}
+							color: #777;
+							line-height: 12px;
+							text-transform: uppercase;
+							@include antialiased;
 						}
 					}
 				}
 			}
-			
-			.menuBtnSettings {
-				position: relative;
-				float: right;
-				width: 38px;
-				height: 35px;
-				margin: 12px 0px 9px 5px;
-				right: 0;
-				cursor: pointer;
-				.menuSettingsSVG:hover path {
-					@include transitions;
-				    fill: $darkGrey;
-				}
-				.menuLoginSignupSVG:hover {
-					path.user {
-						fill: $blue;
-					}
-					circle {
+		}
+	}
+	
+	.menuBtnSettings {
+		position: relative;
+		float: right;
+		width: 38px;
+		height: 35px;
+		margin: 12px 0px 9px 5px;
+		right: 0;
+		cursor: pointer;
+		.menuSettingsSVG:hover path {
+			@include transitions;
+		    fill: $darkGrey;
+		}
+		.menuLoginSignupSVG:hover {
+			path.user {
+				fill: $blue;
+			}
+			circle {
+				fill: $darkGrey;
+			}
+		}
+		// DROP MENU SETTINGS
+		#menuSettings-auth, #menuSettings-noauth {
+			@include display-flex;
+			@include flex-direction('column');
+			@include flex-wrap('wrap');
+
+			@include box-shadow(0 2px 4px rgba(0,0,0,.25));
+
+			position: absolute;
+			z-index: $zindex-modal;
+			width: 180px;
+			right: 0px;
+			top: 48px;
+			&.open {
+				opacity: 1;
+				@include display-flex;
+			}
+			.menuSettingsBarTop {
+				height: 5px;
+				background-color: $midGrey;
+			}
+			.menuSettingsBarBot {
+				height: 5px;
+				background-color: $blue;
+			}
+			.menuSettingsItem {
+				@include display-flex;
+				height: 45px;
+				line-height: 45px;
+				@include gWhiteGrey;
+				&:hover {
+					@include gWhiteGreyHover;
+					.icon svg path, .icon svg circle {
 						fill: $darkGrey;
 					}
 				}
-				// DROP MENU SETTINGS
-				#menuSettings-auth, #menuSettings-noauth {
-					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
+				.icon {
+					width: 45px;
+					height: 45px;
+					line-height: 45px;
+					text-align: center;
+					padding: 7px 0px;
+					border-right: 1px solid #dcdcdc;
+				}
+				.text {
+					@include flex('1');
 
-					box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-					-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-
-					position: absolute;
-					z-index: $zindex-modal;
-					width: 180px;
-					right: 0px;
-					top: 48px;
-					&.open {
-						opacity: 1;
-						display: flex;
+					height: 100%;
+					line-height: 45px;
+					border-left: 1px solid #fff;
+					padding: 0px 0px 0px 10px;
+					font: {
+						family: 'Oswald';
+						size: 14px;
 					}
-					.menuSettingsBarTop {
-						height: 5px;
-						background-color: $midGrey;
-					}
-					.menuSettingsBarBot {
-						height: 5px;
-						background-color: $blue;
-					}
-					.menuSettingsItem {
-						display: flex;
-						height: 45px;
-						@include gWhiteGrey;
-						&:hover {
-							@include gWhiteGreyHover;
-						}
-						.icon {
-							width: 45px;
-							height: 100%;
-							border-right: 1px solid #dcdcdc;
-							padding: 0 10px;
-						}
-						.text {
-							flex: 1;
-							height: 100%;
-							line-height: 45px;
-							border-left: 1px solid #fff;
-							padding: 0px 0px 0px 10px;
-							@include txtMenuAcc;
-						}
+					text-transform: uppercase;
+					letter-spacing: 0.3px;
+					color: $midGrey;
+					@include noSelection;
+					@include antialiased;
+					&:hover {
+						color: $blue;
 					}
 				}
 			}
-		}
-
-		// MODAL LOGIN
-		#modalLogin {
-
-			.modal-dialog {
-				width: 300px;
-
-				.modal-content {
-					background-color: $grey25;
-
-					.modalBar {
-						height: 5px;
-						background-color: $blue;
-					}
-
-					.fields {
-						display: flex;
-						flex-direction: column;
-						justify-content: center;
-
-						padding: 10px;
-						text-align: center;
-
-						#login_user, #login_senha, #login_btn, #login_novo {
-							width: 100%;
-							height: 35px;
-							margin-top: 5px;
-						}
-
-						#login_btn {
-							@include botao;
-							color: #fff;
-							background-color: $blue;
-							margin-top: 10px;
-						}
-
-						#login_btn:hover {
-							background-color: $darkGrey;
-						}
-
-						#login_novo {
-							font: {
-								family: "Arial";
-								size: 13px;
-							}
-							line-height: 13px;
-							height: 13px;
-							color: #555;
-							text-decoration: none;
-							margin: 15px 0px 5px 0px;
-						}
-						#login_novo:hover {
-							color: #000;
-						}
-						
-					}
-					
-				}
-			}
-
-		}
-
-		// MODAL CADASTRO
-		#modalCadastro {
-
-			.modal-dialog {
-				width: 300px;
-
-				.modal-content {
-					background-color: $grey25;
-
-					.modalBar {
-						height: 5px;
-						background-color: $blue;
-					}
-
-					.fields {
-						display: flex;
-						flex-direction: column;
-						justify-content: center;
-
-						padding: 10px;
-						text-align: center;
-
-						#signin_User, #signin_Nome, #signin_Sobrenome, #signin_Email, #signin_Email2, #signin_Tel, #signin_Cep, #signin_Senha, #signin_Senha2, #signin_btn {
-							width: 100%;
-							height: 35px;
-							margin-top: 5px;
-						}
-
-						#signin_btn {
-							@include botao;
-							color: #fff;
-							background-color: $blue;
-							margin-bottom: 10px;
-							margin-top: 10px;
-						}
-
-						#signin_btn:hover {
-							background-color: $darkGrey;
-						}
-
-						.form_erro {
-							background-image: url("../i/form_erro.png");
-							background-repeat: no-repeat;
-							background-position: right 7px center;
-						}
-
-						.form_ok {
-							background-image: url("../i/form_ok.png");
-							background-repeat: no-repeat;
-							background-position: right 7px center;
-						}
-						
-					}
-					
-				}
-			}
-
 		}
 	}
 }
 
-/* -------------------------------------------------------- */
-/* xs: phone 479 -											*/
-/* -------------------------------------------------------- */
-@media (max-width: $screen-sm-max) { 
-	#menuBg {
+// MODAL LOGIN
+#modalLogin {
 
-		#menu {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			@include max_100p;
-			@include boxC;
+	.modal-dialog {
+		width: 300px;
 
-			#busca {
-				flex: 0 1 100%;
-				order: 1;
+		.modal-content {
+			background-color: $grey25;
 
-				#form_container {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					input[type=text] {
-						flex: 1;
-					}
-					.btnSearch {
-						@include transitions;
-						vertical-align: middle;
-						background-color: $blue;
-					}
-					.btnSearch:hover {
-						background-color: $darkGrey;
-					}
-				}
-
+			.modalBar {
+				height: 5px;
+				background-color: $blue;
 			}
 
-		}
+			.fields {
+				@include display-flex;
+				@include flex-direction('column');
+				@include justify-content('center');
 
+				padding: 10px;
+				text-align: center;
+
+				#login_user, #login_senha, #login_btn, #login_novo {
+					width: 100%;
+					height: 35px;
+					margin-top: 5px;
+				}
+
+				#login_btn {
+					@include botao;
+					color: #fff;
+					background-color: $blue;
+					margin-top: 10px;
+				}
+
+				#login_btn:hover {
+					background-color: $darkGrey;
+				}
+
+				#login_novo {
+					font: {
+						family: "Arial";
+						size: 13px;
+					}
+					line-height: 13px;
+					height: 13px;
+					color: #555;
+					text-decoration: none;
+					margin: 15px 0px 5px 0px;
+				}
+				#login_novo:hover {
+					color: #000;
+				}
+				
+			}
+			
+		}
 	}
+
 }
-/* -------------------------------------------------------- */
-/* sm-md-lg: tablet 768 +									*/
-/* -------------------------------------------------------- */
-@media (min-width: $screen-md-min) { // 
-	#menuBg {
-		height: 60px;
 
-		#menu {
-			display: flex;
-			flex-wrap: nowrap;
-			justify-content: space-between;
-			height: 60px;
-			@include max_1280;
-			@include boxC;
+// MODAL CADASTRO
+#modalCadastro {
 
-			#logo {
-				flex: 1;
+	.modal-dialog {
+		width: 300px;
+
+		.modal-content {
+			background-color: $grey25;
+
+			.modalBar {
+				height: 5px;
+				background-color: $blue;
 			}
 
-			#busca {
-				margin-right: 20px;
+			.fields {
+				@include display-flex;
+				@include flex-direction('column');
+				@include justify-content('center');
 
-				#form_container {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
+				padding: 10px;
+				text-align: center;
 
-					input[type=text] {
-						min-width: 300px;
-					}
-					.btnSearch {
-						@include transitions;
-						vertical-align: middle;
-						background-color: $blue;
-						border: 0;
-					}
-					.btnSearch:hover {
-						background-color: $darkGrey;
-					}
+				#signin_User, #signin_Nome, #signin_Sobrenome, #signin_Email, #signin_Email2, #signin_Tel, #signin_Cep, #signin_Senha, #signin_Senha2, #signin_btn {
+					width: 100%;
+					height: 35px;
+					margin-top: 5px;
 				}
-			}
 
+				#signin_btn {
+					@include botao;
+					color: #fff;
+					background-color: $blue;
+					margin-bottom: 10px;
+					margin-top: 10px;
+				}
+
+				#signin_btn:hover {
+					background-color: $darkGrey;
+				}
+
+				.form_erro {
+					background-image: url("../i/form_erro.png");
+					background-repeat: no-repeat;
+					background-position: right 7px center;
+				}
+
+				.form_ok {
+					background-image: url("../i/form_ok.png");
+					background-repeat: no-repeat;
+					background-position: right 7px center;
+				}
+				
+			}
+			
 		}
 	}
+
 }

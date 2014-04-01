@@ -1,6 +1,8 @@
 // auth/noauth
 var auth = true;
 
+$.getScript("/js/utils/device.min.js");
+
 $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
 
 	if(auth == false) {
@@ -142,9 +144,6 @@ $.getScript("/js/vendor/bootstrap/modal.js", function() {
 
 $.getScript("/js/utils/search.js");
 
-// $("[rel='tooltip']").tooltip();
-
-
 // ---------- gritter
 // $.getScript("/js/utils/jquery.gritter.min.js", function() {
 
@@ -154,24 +153,6 @@ $.getScript("/js/utils/search.js");
 // 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, ipsa, ducimus, tempora corporis tenetur a illo perspiciatis voluptate ex similique molestiae in obcaecati hic ut at. Aspernatur, quisquam quas ratione?'
 // 		});
 // 	});
-
-// });
-
-// ---------- TweenLite
-// $.getScript("/js/utils/CSSPlugin.min.js");
-// $.getScript("/js/utils/EasePack.min.js");
-// $.getScript("/js/utils/TweenLite.min.js", function() {
-	
-
-// 	$('#announce_close').click( function() {
-// 		var menu = $('#announceBar');
-// 		TweenLite.to( menu, 0.5, { opacity:0, onComplete: announceComplete } );
-
-// 		function announceComplete() {
-// 			TweenLite.to( menu, 0.0001, { display:'none' } );
-// 		}
-// 	});
-
 
 // });
 

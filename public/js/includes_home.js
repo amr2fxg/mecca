@@ -31,13 +31,24 @@ $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
 
 });
 
-//  iscroll
-$.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 
-	// $('body').on('touchmove', function(e){
- //        e.preventDefault();
- //    });
-
+$.when(
+    $.getScript("/js/vendor/iscroll/iscroll.min.js"),
+    $.getScript("/js/vendor/bootstrap/popover.js"),
+    $.Deferred(function( deferred ){
+        $( deferred.resolve );
+    })
+).done(function(){
+	// Popovers
+	$("[data-toggle='popover']").popover({
+		trigger: 'hover',
+		placement: 'bottom',
+		container: 'body',
+		html: true,
+		delay: { show: 200, hide: 50 }
+	});
+	
+	// iScroll
 	// lastSearches Navigation
 	$('.search_item').click(function() {
 
@@ -55,17 +66,31 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 
 	});
 
-    function createIScroll(wrapper, objName) {
+	function createIScroll(wrapper, objName) {
+
     	var total = 0;
 	    $(wrapper).css('width', $(wrapper).parent().width() );
 	    $(wrapper + ' .scroller ul li').each( function(index) { total += $(this).width() + parseInt( $(this).css("margin-right").replace('px','') ); });
 	    $(wrapper + ' .scroller').css('width', total);
-		window[objName] = new IScroll(wrapper, {
-			scrollX: true,
-			scrollY: false
-			// eventPassthrough: true,
-			// preventDefault: false
-		});
+
+    	if( $('html').hasClass('desktop') == true) {
+			window[objName] = new IScroll(wrapper, { scrollX: true,	scrollY: false });
+    	} else if( $('html').hasClass('desktop') == false) {
+    		window[objName] = new IScroll(wrapper, { scrollX: true,	scrollY: false,	eventPassthrough: true,	preventDefault: false });
+    	}
+
+    	window[objName].on('beforeScrollStart', function() {
+    		$("[data-toggle='popover']").popover('hide');
+    		$("[data-toggle='popover']").popover('disable');
+    	});
+
+    	window[objName].on('scrollCancel', function() {
+    		$("[data-toggle='popover']").popover('enable');
+    	});
+
+    	window[objName].on('scrollEnd', function() {
+   			$("[data-toggle='popover']").popover('enable');
+    	});
     }
 
     function refreshIScroll(wrapper, obj) {
@@ -77,6 +102,7 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
     createIScroll('#lastSearch1', 'lastSearch1');
     createIScroll('#lastSearch2', 'lastSearch2');
     createIScroll('#lastSearch3', 'lastSearch3');
+    createIScroll('#anunciosDestaqueResults', 'anunciosDestaque');
 
 
     $(window).resize(function () {
@@ -85,29 +111,8 @@ $.getScript("/js/vendor/iscroll/iscroll.min.js", function() {
 	        refreshIScroll('#lastSearch1', lastSearch1);
 	        refreshIScroll('#lastSearch2', lastSearch2);
 	        refreshIScroll('#lastSearch3', lastSearch3);
+	        refreshIScroll('#anunciosDestaqueResults', anunciosDestaque);
 	    }, 200);
     });
-
+	
 });
-
-// $.when(
-//     $.getScript("/js/vendor/bootstrap/transition.js"),
-//     $.getScript("/js/vendor/bootstrap/carousel.js"),
-//     // $.getScript("/js/vendor/bootstrap-touch-carousel/bootstrap-touch-carousel.js"),
-//     $.Deferred(function( deferred ){
-//         $( deferred.resolve );
-//     })
-// ).done(function(){
-
-// 	$('.carousel').carousel({
-// 		interval: 9000
-// 	});
-
-// 	$('.setaEsq').click(function() {
-// 		$('.carousel').carousel('prev');
-// 	});
-// 	$('.setaDir').click(function() {
-// 		$('.carousel').carousel('next');
-// 	});
-
-// });
