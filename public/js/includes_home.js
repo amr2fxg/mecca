@@ -67,6 +67,7 @@ $.when(
 	});
 
 	function createIScroll(wrapper, objName) {
+
     	var total = 0;
 	    $(wrapper).css('width', $(wrapper).parent().width() );
 	    $(wrapper + ' .scroller ul li').each( function(index) { total += $(this).width() + parseInt( $(this).css("margin-right").replace('px','') ); });
@@ -81,6 +82,10 @@ $.when(
     	window[objName].on('beforeScrollStart', function() {
     		$("[data-toggle='popover']").popover('hide');
     		$("[data-toggle='popover']").popover('disable');
+    	});
+
+    	window[objName].on('scrollCancel', function() {
+    		$("[data-toggle='popover']").popover('enable');
     	});
 
     	window[objName].on('scrollEnd', function() {
