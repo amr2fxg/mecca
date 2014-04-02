@@ -9,8 +9,17 @@ var url = require('url'),
 //////////////////////////////////////////////////////////////  Index
 exports.index =  function(req, res){
 		
+	if(req.session.user){
+	  	res.render('index', { action: 'XXXXX', lastView: req.session.lastView, auth: 'true' });
+
+	}else{
+
+	  	res.render('index', { action: 'XXXXX', lastView: req.session.lastView, auth: 'false' });
+	}
+
+
 	req.session.lastView = req.host  + req.url;
-  	res.render('index', { action: 'XXXXX', lastView: req.session.lastView });
+  	//res.render('index', { action: 'XXXXX', lastView: req.session.lastView });
 
 };
 
@@ -20,6 +29,18 @@ exports.home = function(req, res){
   
   req.session.lastView = req.host + '/home.html';
   res.render('home', {lastView: req.session.lastView} );
+
+};
+
+
+//////////////////////////////////////////////////////////////  Menu
+exports.menu = function(req, res){
+  
+  if(req.session.user) {
+  	res.render('menu_auth');
+  }else{
+	res.render('menu_noauth');
+  }
 
 };
 
@@ -41,8 +62,7 @@ exports.busca = function(req, res) {
 		if(req.xhr){
 	
 			if(err || (anuncios=='')){
-				res.send('')
-				res.end();
+				res.send('', 200);
 			}
 
 			res.render('listProducts', { anuncios: anuncios, palavras: palavras, caminho: __dirname + '/compre/', lastView: req.session.lastView });
@@ -83,8 +103,7 @@ exports.instant = function(req, res) {
 
 
 			if(err || (results=='')){
-				res.send('')
-				res.end();
+				res.send('',200);
 			}
 
 			/*   Fazer por sockets.io um dia

@@ -1,0 +1,89 @@
+<div id="modalLogin" class="modal fade" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modalBar"></div>
+			<div class="fields">
+				<input type="text" placeholder="Usuário" id="login_user">
+				<input type="password" placeholder="Senha" id="login_senha">
+				<a href="javascript:void(0)" class="botao" id="login_btn">Entrar</a>
+				<a href="javascript:void(0)" id="login_novo">Novo Usuário</a>
+				<span id="msg" />
+			</div>
+			<div class="modalBar"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+
+		$("#login_btn").click( function() {
+
+			user = $('#login_user').val();
+			pwd = $('#login_senha').val();
+			$('#login_btn').attr("disabled", true);
+
+
+			$.ajax({
+	           	type: 'POST',
+	           	url: 'user/auth',
+		        data: {login_user: user, login_senha: pwd},
+				cache: false,
+				timeout: 5000,
+				error: function(data,status){
+					alert(data + status);
+				},
+	           	success: function(data)	{
+	           			
+	           			console.log(data);
+
+	           			switch(data){
+
+	           			case 'loginOk': /* ------------------------ Dá os parabéns ao novo usuário, já logado ---------------------- */
+
+		           			$('#modalLogin').modal('hide');
+		           			loadMenu();
+		           			return false;
+							break;
+
+	           			case 'userNotFound':
+	           				$('#msg').empty().append('Usuário não encontrado');
+	           				break;
+
+	           			case 'incorrectPwd':
+
+	           				$('#msg').empty().append('Senha Invalida');
+	           				break;
+
+//	           			default:
+	           				
+
+	      //      				zeraCampos();
+		     //       			//console.log(data);
+							// var respObj = jQuery.parseJSON(data);
+
+							// $.each(respObj, function(index, element){
+
+							// 		//$('#signin_'+index).parent().attr("data-hint", "Nome de usuário em uso");
+							// 		//$('#signin_'+index).addClass("form_erro");
+
+							// 		//$('#signin_'+index).addClass("form_ok");
+
+							// 		$('#signin_'+index).parent().addClass("hint--rounded hint--left");
+							// 		$('#signin_'+index).addClass("form_erro");
+							// 		$('#signin_'+index).parent().attr("data-hint", element);
+							// 		//$('#lbl'+index).append(element);
+
+							// });
+
+
+							// 	$('#signin_btn').attr("disabled", false);
+							// 	$('#signin_Nome').focus();
+	           		}
+	            }
+	         });
+
+		});
+
+
+</script>
