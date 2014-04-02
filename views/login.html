@@ -42,7 +42,6 @@ function zeraCampos(){
 
 			
 			$('#login_btn').css('background-color', '#E1E6ED');
-			$('#login_btn').click(false);
 			$('body, input, #login_btn').css('cursor','wait');
 
 			$.ajax({
@@ -51,8 +50,17 @@ function zeraCampos(){
 		        data: {login_user: user, login_senha: pwd},
 				cache: false,
 				timeout: 5000,
+				error: function(){
+
+					$('#login_btn').css('background-color','357AE8');
+					$('body, input, #login_btn').css('cursor','default');
+
+				},
 	           	success: function(data)	{
 	           			
+					$('#login_btn').css('background-color','357AE8');
+					$('body, input, #login_btn').css('cursor','default');
+
 	           			switch(data){
 
 	           			case 'loginOk': /* ------------------------ Dá os parabéns ao novo usuário, já logado ---------------------- */
@@ -77,36 +85,8 @@ function zeraCampos(){
 	           				$('#login_senha').addClass('form_erro');
 	           				break;
 
-//	           			default:
-	           				
-
-	      //      				zeraCampos();
-		     //       			//console.log(data);
-							// var respObj = jQuery.parseJSON(data);
-
-							// $.each(respObj, function(index, element){
-
-							// 		//$('#signin_'+index).parent().attr("data-hint", "Nome de usuário em uso");
-							// 		//$('#signin_'+index).addClass("form_erro");
-
-							// 		//$('#signin_'+index).addClass("form_ok");
-
-							// 		$('#signin_'+index).parent().addClass("hint--rounded hint--left");
-							// 		$('#signin_'+index).addClass("form_erro");
-							// 		$('#signin_'+index).parent().attr("data-hint", element);
-							// 		//$('#lbl'+index).append(element);
-
-							// });
-
-
-							// 	$('#signin_btn').attr("disabled", false);
-							// 	$('#signin_Nome').focus();
-
 	           		}
 
-					$('#login_btn').click(true);
-					$('#login_btn').css('background-color','357AE8');
-					$('body, input, #login_btn').css('cursor','default');
 
 	            }
 	         });
