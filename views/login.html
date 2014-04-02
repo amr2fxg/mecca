@@ -16,13 +16,34 @@
 
 <script type="text/javascript">
 
+function zeraCampos(){
+	$('#login_user').attr('placeholder','Usuário');
+	$('#login_senha').attr('placeholder','Senha');
+	$('input').removeClass('form_erro');
+}
 
 		$("#login_btn").click( function() {
 
 			user = $('#login_user').val();
 			pwd = $('#login_senha').val();
-			$('#login_btn').attr("disabled", true);
 
+			if(user==''){
+				zeraCampos();
+				$('#login_user').attr('placeholder','Digite um usuário'); 
+				$('#login_user').addClass('form_erro');
+				return false;
+
+			}else if(pwd==''){
+				zeraCampos();
+				$('#login_senha').attr('placeholder','Digite uma senha'); 
+				$('#login_senha').addClass('form_erro');
+				return false;
+			}
+
+			
+			$('#login_btn').css('background-color', '#E1E6ED');
+			$('#login_btn').click(false);
+			$('body, input, #login_btn').css('cursor','wait');
 
 			$.ajax({
 	           	type: 'POST',
@@ -30,29 +51,30 @@
 		        data: {login_user: user, login_senha: pwd},
 				cache: false,
 				timeout: 5000,
-				error: function(data,status){
-					alert(data + status);
-				},
 	           	success: function(data)	{
 	           			
-	           			console.log(data);
-
 	           			switch(data){
 
 	           			case 'loginOk': /* ------------------------ Dá os parabéns ao novo usuário, já logado ---------------------- */
 
 		           			$('#modalLogin').modal('hide');
+		           			$('#user_info').html('true');
 		           			loadMenu();
 		           			return false;
 							break;
 
 	           			case 'userNotFound':
-	           				$('#msg').empty().append('Usuário não encontrado');
+	           				zeraCampos();
+	           				$('#login_user').val('');
+	           				$('#login_user').attr('placeholder','Usuário inexistente'); 
+	           				$('#login_user').addClass('form_erro');
 	           				break;
 
 	           			case 'incorrectPwd':
-
-	           				$('#msg').empty().append('Senha Invalida');
+	           				zeraCampos();
+	           				$('#login_senha').val('');
+	           				$('#login_senha').attr('placeholder','Senha incorreta'); 
+	           				$('#login_senha').addClass('form_erro');
 	           				break;
 
 //	           			default:
@@ -79,7 +101,13 @@
 
 							// 	$('#signin_btn').attr("disabled", false);
 							// 	$('#signin_Nome').focus();
+
 	           		}
+
+					$('#login_btn').click(true);
+					$('#login_btn').css('background-color','357AE8');
+					$('body, input, #login_btn').css('cursor','default');
+
 	            }
 	         });
 

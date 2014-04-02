@@ -1069,8 +1069,10 @@ ul.menuHorz li { float: left; padding-right: 15px; }
 #modalCadastro .modal-dialog .modal-content .fields #signin_User, #modalCadastro .modal-dialog .modal-content .fields #signin_Nome, #modalCadastro .modal-dialog .modal-content .fields #signin_Sobrenome, #modalCadastro .modal-dialog .modal-content .fields #signin_Email, #modalCadastro .modal-dialog .modal-content .fields #signin_Email2, #modalCadastro .modal-dialog .modal-content .fields #signin_Tel, #modalCadastro .modal-dialog .modal-content .fields #signin_Cep, #modalCadastro .modal-dialog .modal-content .fields #signin_Senha, #modalCadastro .modal-dialog .modal-content .fields #signin_Senha2, #modalCadastro .modal-dialog .modal-content .fields #signin_btn { width: 100%; height: 35px; margin-top: 5px; }
 #modalCadastro .modal-dialog .modal-content .fields #signin_btn { font-family: "Oswald"; font-size: 13px; text-align: center; text-decoration: none; text-transform: uppercase; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; display: inline-block; height: 35px; line-height: 35px; padding: 0 15px; border: none; transition: all 0.150s; -webkit-transition: all 0.150s; -moz-transition: all 0.150s; -ms-transition: all 0.150s; -o-transition: all 0.150s; user-select: none; -webkit-user-select: none; -moz-user-select: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; cursor: pointer; color: #fff; background-color: #357ae8; margin-bottom: 10px; margin-top: 10px; }
 #modalCadastro .modal-dialog .modal-content .fields #signin_btn:hover { background-color: #3e3e3e; }
-#modalCadastro .modal-dialog .modal-content .fields .form_erro { background-image: url("../i/form_erro.png"); background-repeat: no-repeat; background-position: right 7px center; }
-#modalCadastro .modal-dialog .modal-content .fields .form_ok { background-image: url("../i/form_ok.png"); background-repeat: no-repeat; background-position: right 7px center; }
+
+.form_erro { background-image: url("../i/form_erro.png"); background-repeat: no-repeat; background-position: right 7px center; }
+
+.form_ok { background-image: url("../i/form_ok.png"); background-repeat: no-repeat; background-position: right 7px center; }
 
 /* --------------------------------------------------------- */
 /* ANNOUNCEMENT BAR                                          */

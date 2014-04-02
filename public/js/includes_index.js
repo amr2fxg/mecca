@@ -1,13 +1,26 @@
 // auth/noauth
 var auth;
 
-if ($('#user_info').html() == 'true'){
-	auth = true;
-}else{
-	auth = false;
+function init() {
+
+	if ($('#user_info').html() == 'true'){
+		
+		auth = true;
+
+
+	}else{
+
+		auth = false;
+
+	}
 }
 
+
+init();
+
 function loadMenu(){
+
+	init();
 
 	$.ajax({
        	type: 'GET',
@@ -16,33 +29,20 @@ function loadMenu(){
        	success: function(data)	{
 
        		if (data) {
-       			$('.menuBtnSettings').empty().append(data);
+       			$('#menu').empty().append(data);
+       			setupMenu();
        		}
 		}
 	});
 }
 
 function setupMenu() {
+	//console.log(auth);
 
 	if(auth == true) {
 
 		$('.menuBtnSettings').attr('title', 'Menu');
 		$('.menuBtnNotifications').tooltip();
-
-		// LOGOUT
-		$('#menuLogout').click(function() {
-
-			$.ajax({	
-				type: 'GET',
-				url: 'user/logout',
-				success: function (data) {
-					alert('shiiiiiiit');
-					$('#user_info').html('false');
-					loadMenu();
-				}
-			});
-
-		});
 
 		var menuSettings = $('#menuSettings-auth');
 		var menuNotifications = $('#menuNotifications');
@@ -79,7 +79,7 @@ function setupMenu() {
 
 		});
 
-		NOTIFICATIONS
+		//NOTIFICATIONS
 		$('.menuBtnNotifications').click( function() {
 
 			if( menuNotifications.hasClass('hidden') ) {
@@ -111,12 +111,50 @@ function setupMenu() {
 
 		});
 
+	// LOGOUT
+	$('#menuLogout').click(function() {
+	console.log('logout');
+		$.ajax({	
+			type: 'GET',
+			url: 'user/logout',
+			success: function (data) {
+				$('#user_info').html('false');
+				loadMenu();
+			}
+		});
+
+	});
 	} else if(auth == false) {
 
 		$('.menuBtnSettings').attr('title', 'Login & Cadastro');
 
+		// MENU SETTINGS
+		var menuSettings = $('#menuSettings-noauth');
+		$('.menuBtnSettings').click( function() {
+
+			if( menuSettings.hasClass('hidden') ) {
+				$('.menuBtnSettings').tooltip('destroy');
+				menuSettings.removeClass('hidden').addClass('open');
+				menuSettings.modal('show');
+				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
+				
+			} else if( menuSettings.hasClass('open') ) {
+				$('.menuBtnSettings').tooltip();
+				menuSettings.removeClass('open').addClass('hidden');
+				menuSettings.modal('hide');
+			}
+
+			$('.modal-backdrop').click(function() {
+				$('.menuBtnSettings').tooltip();
+				menuSettings.modal('hide');
+				menuSettings.removeClass('open').addClass('hidden');
+			});
+
+		});
+
 		// LOGIN
 		$('#menuSettingsLogin').click(function() {
+		console.log('login');
 
 				$.ajax({	
 						type: 'GET',
@@ -146,37 +184,16 @@ function setupMenu() {
 			$('#modalLogin').modal("hide");
 			$('#modalCadastro').modal("show");
 		});
-
-		// MENU SETTINGS
-		var menuSettings = $('#menuSettings-noauth');
-		$('.menuBtnSettings').click( function() {
-
-			if( menuSettings.hasClass('hidden') ) {
-				$('.menuBtnSettings').tooltip('destroy');
-				menuSettings.removeClass('hidden').addClass('open');
-				menuSettings.modal('show');
-				$('.modal-backdrop').css('opacity', 0).css('top', '60px');
-				
-			} else if( menuSettings.hasClass('open') ) {
-				$('.menuBtnSettings').tooltip();
-				menuSettings.removeClass('open').addClass('hidden');
-				menuSettings.modal('hide');
-			}
-
-			$('.modal-backdrop').click(function() {
-				$('.menuBtnSettings').tooltip();
-				menuSettings.modal('hide');
-				menuSettings.removeClass('open').addClass('hidden');
-			});
-
-		});
-
 	}
 
 	$('.menuBtnSettings').tooltip();
 	$('.menuBtnSell').tooltip();
 
 }
+
+
+
+
 
 $.getScript("/js/utils/device.min.js");
 

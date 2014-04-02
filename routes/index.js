@@ -37,9 +37,9 @@ exports.home = function(req, res){
 exports.menu = function(req, res){
   
   if(req.session.user) {
-  	res.render('menu_auth');
+  	res.render('menu', {auth: 'true'});
   }else{
-	res.render('menu_noauth');
+	res.render('menu', {auth: 'false'});
   }
 
 };
