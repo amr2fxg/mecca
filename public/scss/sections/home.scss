@@ -778,8 +778,7 @@
 		
 		.titulo {
 			height: 85px;
-			padding: 15px;
-			// background-color: $midGrey;
+			padding: 15px 20px;
 			@include gWhiteGrey;
 			font: {
 				family: 'Oswald';
@@ -787,6 +786,7 @@
 			}
 			line-height: 20px;
 			text-transform: uppercase;
+			text-align: center;
 			@include noSelection;
 			@include antialiased;
 			color: $midGrey;
