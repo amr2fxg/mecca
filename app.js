@@ -56,7 +56,6 @@ app.use(app.router);
 
 
 // Routes
-app.get('/user/logout', user.logout);
 app.get('/', routes.index);
 app.get('/menu', routes.menu);
 app.get('/busca/*', routes.busca);
@@ -64,6 +63,7 @@ app.post('/home', routes.home);
 app.post('/instant/*', routes.instant);
 app.get('/user/login', user.login);
 app.post('/user/auth', user.auth);
+app.get('/user/logout', user.logout);
 
 
 /*app.all('*', function(req, res){

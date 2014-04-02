@@ -7,7 +7,7 @@ var url = require('url'),
 
 
 exports.login = function(req, res){
-	res.render('login',200);
+	res.render('login');
 };
 
 
@@ -27,19 +27,19 @@ exports.auth = function(req, res){
 	console.log('Autenticando: ' + user + ' senha:' + pwd);
 
 	// u = new mUsuarios;
-	// u.usuario ='amr2fxg';
-	// u.nome='fernando';
-	// u.sobrenome='gomes';
-	// u.email='gomes.fernando@gmail.com';
+	// u.usuario ='a';
+	// u.nome='rafael';
+	// u.sobrenome='de marchi';
+	// u.email='gherini@gmail.com';
 	// u.cep='05451130';
 	
-	// hash('maverick', function(err, salt, hash){
+	// hash('a', function(err, salt, hash){
 	//   	if (err) throw err;
 			
 	// 		// store the salt & hash in the "db"
 	// 		u.salt = salt;
 	// 		u.hash = hash;
-	// 		u.pwd = 'maverick';
+	// 		u.pwd = 'a';
 	// 		u.save(function(err){
 	// 								if (!err) { console.log('Usuario salvo.');}
 	// 								else{ throw err;}

@@ -5,7 +5,6 @@ var auth;
 //alert($('#user_info').html());
 
 	if ($('#user_info').html() == 'true'){
-		console
 		auth = true;
 	}else{
 		auth = false;
