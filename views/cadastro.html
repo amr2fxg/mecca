@@ -1,11 +1,10 @@
-
-<div id="modalCadastro" class="modal fade" role="dialog" aria-labelledby="modalCadastro" aria-hidden="true">
+<div id="modalCadastro" class="modal fade" role="dialog" aria-labelledby="modalCadastro" aria-hidden="true" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modalBar"></div>
 			<div class="fields">
-				<input type="text" placeholder="Usuário"				id="signin_User"	 		name="signin_User" class="form_ok">
-				<input type="text" placeholder="Nome"					id="signin_Nome" 			name="signin_Nome" class="form_erro">
+				<input type="text" placeholder="Usuário"				id="signin_User"	 		name="signin_User">
+				<input type="text" placeholder="Nome"					id="signin_Nome" 			name="signin_Nome">
 				<input type="text" placeholder="Sobrenome"				id="signin_Sobrenome" 		name="signin_Sobrenome">
 				<input type="text" placeholder="E-mail"					id="signin_Email" 			name="signin_Email">
 				<input type="text" placeholder="Confirmação E-mail"		id="signin_Email2"			name="signin_Email2">
@@ -19,3 +18,54 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+	
+// Valida os campos ao perder o foco
+$('input').blur( function (obj) {
+
+	switch(obj.target.name){
+
+		case 'signin_User':
+
+			break;
+
+		case 'signin_Nome','signin_Sobrenome':
+
+			break;
+
+		case 'signin_Cep':
+			
+			break;
+
+		case 'signin_Senha', 'signin_Senha2':
+			break;
+
+		default:
+
+	}
+
+});
+
+
+	// Envia o cadastro ao clicar no botao Cadastrar
+	$('#signin_btn').click( function () {
+
+		var cadastro = {
+			usuario:	$('#signin_User').val(),
+			nome: 		$('#signin_Nome').val(),
+			sobrenome:	$('#signin_Sobrenome').val(),
+			email: 		$('#signin_Email').val(),
+			email2:		$('#signin_Email2').val(),
+			telefone:	$('#signin_Tel').val(),
+			cep: 		$('#signin_Cep').val(),
+			pwd:		$('#signin_Senha').val(),
+			pwd: 		$('#signin_Senha2').val()
+		};
+
+
+
+	});
+
+</script>

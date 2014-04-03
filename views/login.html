@@ -16,90 +16,116 @@
 
 <script type="text/javascript">
 
-// $('input').keydown(function(e){
-
-// 	if(e.which==27) {
-// 		e.preventdefault;
-// 		return false;
-// 	}
-// })
-
 function zeraCampos(){
 	$('#login_user').attr('placeholder','Usuário');
 	$('#login_senha').attr('placeholder','Senha');
 	$('input').removeClass('form_erro');
 }
 
-		$("#login_btn").click( function() {
 
-			user = $('#login_user').val();
-			pwd = $('#login_senha').val();
+// Vai pra novo cadastro
+$('#login_novo').click(function() {
+	
+	$('#modalLogin').modal("hide");
+	$.ajax({	
+			type: 'GET',
+			url: 'user/new',
+			success: function (data) {
 
-			if(user==''){
-				zeraCampos();
-				$('#login_user').attr('placeholder','Digite um usuário'); 
-				$('#login_user').addClass('form_erro');
-				return false;
+					var tag = $('#modalCadastro');
 
-			}else if(pwd==''){
-				zeraCampos();
-				$('#login_senha').attr('placeholder','Digite uma senha'); 
-				$('#login_senha').addClass('form_erro');
-				return false;
+					if(tag.length > 0) {
+						tag.remove();
+					}
+
+				$('#menu').append(data);
+				$('#modalCadastro').modal("show");
+				$('#signin_User').focus();
+
 			}
+			});
 
-			
-			$('#login_btn').css('background-color', '#E1E6ED');
-			$('body, input, #login_btn').css('cursor','wait');
-
-			$.ajax({
-	           	type: 'POST',
-	           	url: 'user/auth',
-		        data: {login_user: user, login_senha: pwd},
-				cache: false,
-				timeout: 5000,
-				error: function(){
-
-					$('#login_btn').css('background-color','357AE8');
-					$('body, input, #login_btn').css('cursor','auto');
-
-				},
-	           	success: function(data)	{
-	           			
-					$('#login_btn').css('background-color','357AE8');
-					$('body, input, #login_btn').css('cursor','auto');
-
-	           			switch(data){
-
-	           			case 'loginOk': /* ------------------------ Dá os parabéns ao novo usuário, já logado ---------------------- */
-
-		           			$('#modalLogin').modal('hide');
-		           			$('#user_info').html('true');
-		           			loadMenu();
-		           			return false;
-							break;
-
-	           			case 'userNotFound':
-	           				zeraCampos();
-	           				$('#login_user').val('');
-	           				$('#login_user').attr('placeholder','Usuário inexistente'); 
-	           				$('#login_user').addClass('form_erro');
-	           				break;
-
-	           			case 'incorrectPwd':
-	           				zeraCampos();
-	           				$('#login_senha').val('');
-	           				$('#login_senha').attr('placeholder','Senha incorreta'); 
-	           				$('#login_senha').addClass('form_erro');
-	           				break;
-
-	           		}
+});
 
 
-	            }
-	         });
+// Teclando ENTER chama login.click
+$('input').keydown( function (event) {
 
-		});
+	if(event.which==13) $("#login_btn").click();
+});
 
+
+// Efetua validação e login
+$("#login_btn").click( function() {
+
+	user = $('#login_user').val();
+	pwd = $('#login_senha').val();
+
+	if(user==''){
+		zeraCampos();
+		$('#login_user').attr('placeholder','Digite um usuário'); 
+		$('#login_user').addClass('form_erro');
+		$('#login_user').focus();
+		return false;
+
+	}else if(pwd==''){
+		zeraCampos();
+		$('#login_senha').attr('placeholder','Digite uma senha'); 
+		$('#login_senha').addClass('form_erro');
+		$('#login_senha').focus();
+		return false;
+	}
+
+	
+	$('#login_btn').css('background-color', '#E1E6ED');
+	$('body, input, #login_btn').css('cursor','wait');
+
+	$.ajax({
+       	type: 'POST',
+       	url: 'user/auth',
+        data: {login_user: user, login_senha: pwd},
+		cache: false,
+		timeout: 5000,
+		error: function(){
+
+			$('#login_btn').css('background-color','357AE8');
+			$('body, input, #login_btn').css('cursor','auto');
+
+		},
+       	success: function(data)	{
+       			
+			$('#login_btn').css('background-color','357AE8');
+			$('body, input, #login_btn').css('cursor','auto');
+
+       			switch(data){
+
+       			case 'loginOk': /* ------------------------ Dá os parabéns ao novo usuário, já logado ---------------------- */
+
+           			$('#modalLogin').modal('hide');
+           			$('#user_info').html('true');
+           			loadMenu();
+           			return false;
+					break;
+
+       			case 'userNotFound':
+       				zeraCampos();
+       				$('#login_user').val('');
+       				$('#login_user').attr('placeholder','Usuário inexistente'); 
+       				$('#login_user').addClass('form_erro');
+					$('#login_user').focus();
+       				break;
+
+       			case 'incorrectPwd':
+       				zeraCampos();
+       				$('#login_senha').val('');
+       				$('#login_senha').attr('placeholder','Senha incorreta'); 
+       				$('#login_senha').addClass('form_erro');
+					$('#login_senha').focus();
+       				break;
+
+       		}
+        }
+     });
+});
 
 </script>

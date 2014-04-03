@@ -153,8 +153,7 @@ function setupMenu() {
 		});
 
 		// LOGIN
-		$('#menuSettingsLogin').click(function() {
-		console.log('login');
+		$('#menuSettingsLogin').click( function() {
 
 				$.ajax({	
 						type: 'GET',
@@ -177,13 +176,30 @@ function setupMenu() {
 		});
 
 		// CADASTRO
-		$('#menuSettingsCadastro').click(function() {
+		$('#menuSettingsCadastro').click( function() {
+
+				$.ajax({	
+						type: 'GET',
+						url: 'user/new',
+						success: function (data) {
+
+								var tag = $('#modalCadastro');
+
+								if(tag.length > 0) {
+									tag.remove();
+								}
+
+							$('#menu').append(data);
+							$('#modalCadastro').modal("show");
+							$('#signin_User').focus();
+
+						}
+						});
+
+
 			$('#modalCadastro').modal("show");
 		});
-		$('#login_novo').click(function() {
-			$('#modalLogin').modal("hide");
-			$('#modalCadastro').modal("show");
-		});
+
 	}
 
 	$('.menuBtnSettings').tooltip();

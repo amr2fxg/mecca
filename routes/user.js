@@ -10,6 +10,9 @@ exports.login = function(req, res){
 	res.render('login');
 };
 
+exports.new = function(req, res){
+	res.render('cadastro');
+};
 
 exports.logout = function(req, res){
 	delete req.session.user;

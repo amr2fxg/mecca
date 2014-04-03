@@ -64,7 +64,7 @@ app.post('/instant/*', routes.instant);
 app.get('/user/login', user.login);
 app.post('/user/auth', user.auth);
 app.get('/user/logout', user.logout);
-
+app.get('/user/new', user.new)
 
 /*app.all('*', function(req, res){
   res.send(404);
