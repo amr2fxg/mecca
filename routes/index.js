@@ -9,18 +9,8 @@ var url = require('url'),
 //////////////////////////////////////////////////////////////  Index
 exports.index =  function(req, res){
 		
-	if(req.session.user){
-	  	res.render('index', { action: 'XXXXX', lastView: req.session.lastView, auth: 'true' });
-
-	}else{
-
-	  	res.render('index', { action: 'XXXXX', lastView: req.session.lastView, auth: 'false' });
-	}
-
-
 	req.session.lastView = req.host  + req.url;
-  	//res.render('index', { action: 'XXXXX', lastView: req.session.lastView });
-
+  	res.render('index', { action: 'XXXXX', lastView: req.session.lastView, auth: req.session.user ? 'true' : 'false' });
 };
 
 
@@ -36,12 +26,7 @@ exports.home = function(req, res){
 //////////////////////////////////////////////////////////////  Menu
 exports.menu = function(req, res){
   
-  if(req.session.user) {
-  	res.render('menu', {auth: 'true'});
-  }else{
-	res.render('menu', {auth: 'false'});
-  }
-
+  	res.render('menu', { auth: req.session.user ? 'true' : 'false' });
 };
 
 

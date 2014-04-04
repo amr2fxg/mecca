@@ -3,15 +3,15 @@
 		<div class="modal-content">
 			<div class="modalBar"></div>
 			<div class="fields">
-				<input type="text" placeholder="Usuário"				id="signin_User"	 		name="signin_User">
-				<input type="text" placeholder="Nome"					id="signin_Nome" 			name="signin_Nome">
-				<input type="text" placeholder="Sobrenome"				id="signin_Sobrenome" 		name="signin_Sobrenome">
-				<input type="text" placeholder="E-mail"					id="signin_Email" 			name="signin_Email">
-				<input type="text" placeholder="Confirmação E-mail"		id="signin_Email2"			name="signin_Email2">
-				<input type="text" placeholder="Telefone"				id="signin_Tel" 			name="signin_Tel">
-				<input type="text" placeholder="CEP"					id="signin_Cep" 			name="signin_Cep">
-				<input type="password" placeholder="Senha"				id="signin_Senha" 			name="signin_Senha">
-				<input type="password" placeholder="Confirmação Senha"	id="signin_Senha2"			name="signin_Senha2">
+				<input type="text" placeholder="Usuário"				id="signin_User"	 		name="signin_User"			alt="Usuário">
+				<input type="text" placeholder="Nome"					id="signin_Nome" 			name="signin_Nome"			alt="Nome">
+				<input type="text" placeholder="Sobrenome"				id="signin_Sobrenome" 		name="signin_Sobrenome"		alt="Sobrenome">
+				<input type="text" placeholder="E-mail"					id="signin_Email" 			name="signin_Email"			alt="E-mail">
+				<input type="text" placeholder="Confirmação E-mail"		id="signin_Email2"			name="signin_Email2"		alt="Confirmação E-mail">
+				<input type="text" placeholder="Telefone"				id="signin_Tel" 			name="signin_Tel"			alt="Telefone"	maxlength="11">
+				<input type="text" placeholder="CEP"					id="signin_Cep" 			name="signin_Cep"			alt="CEP">
+				<input type="password" placeholder="Senha"				id="signin_Senha" 			name="signin_Senha"			alt="Senha">
+				<input type="password" placeholder="Confirmação Senha"	id="signin_Senha2"			name="signin_Senha2"		alt="Confirmação Senha">
 				<div><a href="javascript:void(0)" class="botao" id="signin_btn">Cadastrar</a></div>
 			</div>
 			<div class="modalBar"></div>
@@ -19,53 +19,164 @@
 	</div>
 </div>
 
-
 <script type="text/javascript">
-	
+
+$(document).ready(function(){
+	$.getScript("/js/utils/validator.min.js");
+
+	var SPphoneMask = function(phone, e, currentField, options){
+	  return phone.match(/^(\(?11\)? ?9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])[0-9]{1})/g) ? '(00) 00000-0000' : '(00) 0000-0000';
+	};
+
+	$("#signin_Tel").mask(SPphoneMask, {onKeyPress: function(phone, e, currentField, options){
+	  $(currentField).mask(SPphoneMask(phone), options);
+	}});
+});
+
+
+
 // Valida os campos ao perder o foco
 $('input').blur( function (obj) {
 
-	switch(obj.target.name){
+	var e 	= $('#'+obj.target.id),
+		msg	= '';
 
-		case 'signin_User':
+		switch(e.attr('name')){
 
-			break;
+			case 'signin_User':
 
-		case 'signin_Nome','signin_Sobrenome':
+				e.removeClass();
 
-			break;
+				if(e.val().length>=6) {
+	
+					$.ajax({	
+							type: 'POST',
+							url: 'user/validate',
+							data: {palavra: e.val()},
+							cache: false,
+	        				timeout: 5000,
+							success: function (data) {
 
-		case 'signin_Cep':
+									if(data=='OK') {
+
+										e.addClass('form_ok');
+
+									}else{
+
+										e.addClass('form_erro');
+										e.val('');
+										e.attr('placeholder', 'Nome já em uso');
+
+									}
+							}
+					});
+				
+				}else if(e.val().length>0){
+
+					msg = 'Usuário deve ter 6 digitos no mínimo';
+
+				}else{
+
+					e.attr('placeholder', e.attr('title'));
+				}
+
+				break;
+
 			
-			break;
+			case 'signin_Nome':
+			case 'signin_Sobrenome':
 
-		case 'signin_Senha', 'signin_Senha2':
-			break;
+				e.removeClass();
 
-		default:
+				if (e.val().length >= 5) {
 
+					e.addClass('form_ok');
+
+				}else if(e.val().length > 0){
+
+					msg = 'Digite pelo menos 5 letras no ' + e.attr('alt');
+
+				}else{
+
+					e.attr('placeholder', e.attr('title'));
+				}
+
+				break;
+
+
+			case 'signin_Email':
+			case 'signin_Email2':
+
+				e.removeClass();
+
+				if(e.val().length>0){
+				
+					if(!validator.isEmail(e.val())){
+						
+						msg='Digite um endereço de e-mail válido'
+					
+					}else{
+
+						e.addClass('form_ok');
+					}
+
+				}else{
+
+					e.attr('placeholder', e.attr('title'));
+
+				}
+
+
+				break;
+
+
+			case 'signin_Tel':
+				
+
+				break;
+
+
+			case 'signin_Cep':
+				
+				break;
+
+
+			case 'signin_Senha', 'signin_Senha2':
+				break;
+		}
+
+
+	if (msg!='') {
+
+		e.val('');
+		e.addClass('form_erro');
+		e.attr('placeholder', msg);
+		msg='';
+
+	}else{
+		e.attr('placeholder', e.attr('alt'));
 	}
 
 });
 
 
-	// Envia o cadastro ao clicar no botao Cadastrar
-	$('#signin_btn').click( function () {
+// Envia o cadastro ao clicar no botao Cadastrar
+$('#signin_btn').click( function () {
 
-		var cadastro = {
-			usuario:	$('#signin_User').val(),
-			nome: 		$('#signin_Nome').val(),
-			sobrenome:	$('#signin_Sobrenome').val(),
-			email: 		$('#signin_Email').val(),
-			email2:		$('#signin_Email2').val(),
-			telefone:	$('#signin_Tel').val(),
-			cep: 		$('#signin_Cep').val(),
-			pwd:		$('#signin_Senha').val(),
-			pwd: 		$('#signin_Senha2').val()
-		};
+	var cadastro = {
+		usuario:	$('#signin_User').val(),
+		nome: 		$('#signin_Nome').val(),
+		sobrenome:	$('#signin_Sobrenome').val(),
+		email: 		$('#signin_Email').val(),
+		email2:		$('#signin_Email2').val(),
+		telefone:	$('#signin_Tel').val(),
+		cep: 		$('#signin_Cep').val(),
+		pwd:		$('#signin_Senha').val(),
+		pwd: 		$('#signin_Senha2').val()
+	};
 
 
 
-	});
+});
 
 </script>

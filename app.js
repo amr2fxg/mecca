@@ -11,6 +11,7 @@ var express = require('express'),
 	app 	= express(),
 	events 	= require('events'),
 	eventEmitter = new events.EventEmitter(),
+	validator = require('validator'),
 
 	server 	= http.createServer(app),
 	io 		= require('./lib/sockets').listen(server),
@@ -59,12 +60,14 @@ app.use(app.router);
 app.get('/', routes.index);
 app.get('/menu', routes.menu);
 app.get('/busca/*', routes.busca);
-app.post('/home', routes.home);
 app.post('/instant/*', routes.instant);
-app.get('/user/login', user.login);
+app.post('/home', routes.home);
 app.post('/user/auth', user.auth);
+app.get('/user/login', user.login);
 app.get('/user/logout', user.logout);
-app.get('/user/new', user.new)
+app.get('/user/new', user.new);
+app.post('/user/validate', user.validate);
+
 
 /*app.all('*', function(req, res){
   res.send(404);

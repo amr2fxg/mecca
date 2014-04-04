@@ -5,6 +5,8 @@ var url = require('url'),
 	tools = require('../lib/tools'),
 	hash = require('../lib/pass').hash;
 
+	require('../models/usuarios');
+
 
 exports.login = function(req, res){
 	res.render('login');
@@ -16,13 +18,30 @@ exports.new = function(req, res){
 
 exports.logout = function(req, res){
 	delete req.session.user;
-	res.send('',200);
+	res.send('', 200);
 };
+
+exports.validate = function (req, res) {
+	
+	var mUsuarios = mongoose.model('usuarios'),
+		user = req.body.palavra;
+
+   	mUsuarios.findOne({usuario: user}, {usuario:1}, function(err, results) {
+
+		if (err || results) {
+		
+			res.send('Usado', 200);
+		
+		}else{
+
+			res.send('OK', 200);
+		}
+	});
+};
+
 
 exports.auth = function(req, res){
 
-	require('../models/usuarios');
-	
 	var mUsuarios = mongoose.model('usuarios'),
 		user = req.body.login_user,
 		pwd = req.body.login_senha;
@@ -48,7 +67,6 @@ exports.auth = function(req, res){
 	// 								else{ throw err;}
 	// 							});
 	// });
-	
 
  
    	mUsuarios.findOne({usuario: user}, {usuario:1, hash:1, salt:1}, function(err, results) {

@@ -196,8 +196,6 @@ function setupMenu() {
 						}
 						});
 
-
-			$('#modalCadastro').modal("show");
 		});
 
 	}
