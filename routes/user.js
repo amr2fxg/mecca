@@ -49,19 +49,19 @@ exports.auth = function(req, res){
 	console.log('Autenticando: ' + user + ' senha:' + pwd);
 
 	// u = new mUsuarios;
-	// u.usuario ='a';
+	// u.usuario ='gherini';
 	// u.nome='rafael';
 	// u.sobrenome='de marchi';
 	// u.email='gherini@gmail.com';
 	// u.cep='05451130';
 	
-	// hash('a', function(err, salt, hash){
+	// hash('123456', function(err, salt, hash){
 	//   	if (err) throw err;
 			
 	// 		// store the salt & hash in the "db"
 	// 		u.salt = salt;
 	// 		u.hash = hash;
-	// 		u.pwd = 'a';
+	// 		u.pwd = '123456';
 	// 		u.save(function(err){
 	// 								if (!err) { console.log('Usuario salvo.');}
 	// 								else{ throw err;}
