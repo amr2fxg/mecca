@@ -8,10 +8,10 @@
 				<input type="text" placeholder="Sobrenome"				id="signin_Sobrenome" 		name="signin_Sobrenome"		alt="Sobrenome">
 				<input type="text" placeholder="E-mail"					id="signin_Email" 			name="signin_Email"			alt="E-mail">
 				<input type="text" placeholder="Confirmação E-mail"		id="signin_Email2"			name="signin_Email2"		alt="Confirmação E-mail">
-				<input type="text" placeholder="Telefone"				id="signin_Tel" 			name="signin_Tel"			alt="Telefone"	maxlength="11">
-				<input type="text" placeholder="CEP"					id="signin_Cep" 			name="signin_Cep"			alt="CEP">
-				<input type="password" placeholder="Senha"				id="signin_Senha" 			name="signin_Senha"			alt="Senha">
-				<input type="password" placeholder="Confirmação Senha"	id="signin_Senha2"			name="signin_Senha2"		alt="Confirmação Senha">
+				<input type="text" placeholder="Telefone"				id="signin_Tel" 			name="signin_Tel"			alt="Telefone"	>
+				<input type="text" placeholder="CEP"					id="signin_Cep" 			name="signin_Cep"			alt="CEP"		>
+				<input type="password" placeholder="Senha"				id="signin_Senha" 			name="signin_Senha"			alt="Senha"		>
+				<input type="password" placeholder="Confirmação Senha"	id="signin_Senha2"			name="signin_Senha2"		alt="Confirmação Senha"	>
 				<div><a href="javascript:void(0)" class="botao" id="signin_btn">Cadastrar</a></div>
 			</div>
 			<div class="modalBar"></div>
@@ -19,8 +19,14 @@
 	</div>
 </div>
 
+<script type="text/javascript" src="/js/utils/validator.min.js"></script>
 <script type="text/javascript">
 
+$('#signin_btn').css('background-color','#E1E6ED');
+var libera= false;
+
+
+//$('#signin_Tel').mask('(00) 0000-0000');
 // var SPphoneMask = function(phone, e, currentField, options){
 //   return phone.match(/^(\(?11\)? ?9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])[0-9]{1})/g) ? '(00) 00000-0000' : '(00) 0000-0000';
 // };
@@ -29,150 +35,363 @@
 //   $(currentField).mask(SPphoneMask(phone), options);
 // }});
 
-$.getScript("/js/utils/validator.min.js");
+
+// Valida os campos ao teclar TAB
+$('input[id^="signin"]').keydown( function (obj) {
+
+	if(obj.which==9) {
+
+		var e 	= $('#'+obj.target.id),
+			msg	= '',
+			name = e.attr('name');
+
+			switch(name){
+
+				case 'signin_User':
+
+					e.tooltip('destroy');
+					e.removeClass();
+
+					if(e.val().length>=6) {
+		
+						$.ajax({	
+								type: 'POST',
+								url: 'user/validate',
+								data: {palavra: e.val()},
+								cache: false,
+		        				timeout: 5000,
+								success: function (data) {
+
+										if(data=='OK') {
+
+											e.addClass('form_ok');
+
+										}else{
+
+											e.addClass('form_erro');
+											e.tooltip({	trigger:'manual', 
+														title:'Nome já em uso', 
+														placement:'right',
+														container: 'body',
+														});
+											e.tooltip('show');
+											setTimeout(function () {
+												e.tooltip('hide');
+											}  , 5000);											
+											
+										}
+								}
+						});
+					
 
 
-// Valida os campos ao perder o foco
-$('input').blur( function (obj) {
+					}else if(e.val().length>0){
+
+						obj.preventDefault();
+						e.addClass('form_erro');
+						e.tooltip({	trigger:'manual', 
+									title:'Usuário deve ter no mínimo 6 dígitos', 
+									placement:'right',
+									container: 'body',
+									});
+						e.tooltip('show');
+						setTimeout( function () {
+							e.tooltip('hide');
+						}, 5000);											
+
+					}else{
+
+						e.attr('placeholder', e.attr('title'));
+					}
+
+					break;
+
+				
+				case 'signin_Nome':
+				case 'signin_Sobrenome':
+
+					e.tooltip('destroy');
+					e.removeClass();
+
+					if (e.val().length >= 5) {
+
+						e.addClass('form_ok');
+
+					}else if(e.val().length > 0){
+
+						obj.preventDefault();
+						e.addClass('form_erro');
+						e.tooltip({	trigger:'manual', 
+									title:'O ' + e.attr('alt') + ' deve ter pelo menos 5 letras', 
+									container: 'body',
+									placement:'right'});
+
+						e.tooltip('show');
+
+					}else{
+
+						e.attr('placeholder', e.attr('title'));
+					}
+
+					break;
+
+
+				case 'signin_Email':
+				case 'signin_Email2':
+
+					e.removeClass();
+					e.tooltip('destroy');
+
+					if(e.val().length>0){
+					
+						if(!validator.isEmail(e.val())){
+							
+							obj.preventDefault();
+							e.addClass('form_erro');
+							e.tooltip({	trigger:'manual', 
+										title:'Digite um E-mail válido', 
+										container: 'body',
+										placement:'right'});
+
+							e.tooltip('show');
+						
+						}else{
+
+							var outro = name=='signin_Email' ? $('#signin_Email2') : $('#signin_Email');
+
+							if( outro.val().length >0 ){
+
+								if( $('#signin_Email').val() != $('#signin_Email2').val() ){
+
+									obj.preventDefault();
+									e.addClass('form_erro');
+									e.tooltip({	trigger:'manual', 
+												title:'Endereços de E-mail diferentes', 
+												container: 'body',
+												placement:'right'});
+
+									e.tooltip('show');
+
+									outro.addClass('form_erro');
+									outro.tooltip({	trigger:'manual', 
+												title:'Endereços de E-mail diferentes', 
+												container: 'body',
+												placement:'right'});
+
+									outro.tooltip('show');
+								
+								}else{
+
+									e.addClass('form_ok');
+									outro.addClass('form_ok');
+								}
+							
+							}else{
+
+								e.addClass('form_ok');
+
+							}
+						}
+
+					}else{
+
+						e.attr('placeholder', e.attr('title'));
+					}
+
+					break;
+
+
+				case 'signin_Tel':
+					
+					e.removeClass();
+					e.tooltip('destroy');
+
+					if(e.val().length>=10){
+					
+						e.addClass('form_ok');
+
+					}else if(e.val().length>0){
+
+						obj.preventDefault();
+						e.addClass('form_erro');
+						e.tooltip({	trigger:'manual', 
+									title:'Digite um número de telefoe com DDD', 
+									container: 'body',
+									placement:'right'});
+
+						e.tooltip('show');
+						
+					}else{
+
+						e.attr('placeholder', e.attr('title'));
+
+					}
+
+					break;
+
+
+				case 'signin_Cep':
+					
+					e.removeClass();
+					e.tooltip('destroy');
+
+					if(e.val().length>=8){
+					
+						e.addClass('form_ok');
+
+					}else if(e.val().length>0){
+
+						obj.preventDefault();
+						e.addClass('form_erro');
+						e.tooltip({	trigger:'manual', 
+									title:'Digite um Código postal com 8 dígitos', 
+									container: 'body',
+									placement:'right'});
+
+						e.tooltip('show');
+						
+					}else{
+
+						e.attr('placeholder', e.attr('title'));
+
+					}
+
+					break;
+
+
+				case 'signin_Senha':
+				case 'signin_Senha2':
+					
+					e.removeClass();
+					e.tooltip('destroy');
+
+					if(e.val().length>=6){
+					
+						if(!validator.isAlphanumeric(e.val())){
+							
+							obj.preventDefault();
+							e.addClass('form_erro');
+							e.tooltip({	trigger:'manual', 
+										title:'A senha deve conter letras e números', 
+										container: 'body',
+										placement:'right'});
+
+							e.tooltip('show');
+						
+						}else{
+
+							var outro = name=='signin_Senha' ? $('#signin_Senha2') : $('#signin_Senha');
+
+							if( outro.val().length >0 ){
+
+								if( $('#signin_Senha').val() != $('#signin_Senha2').val() ){
+
+									obj.preventDefault();
+									e.addClass('form_erro');
+									e.tooltip({	trigger:'manual', 
+												title:'Senhas não conferem', 
+												container: 'body',
+												placement:'right'});
+
+									e.tooltip('show');
+
+									outro.addClass('form_erro');
+									outro.tooltip({	trigger:'manual', 
+												title:'Senhas não conferem', 
+												container: 'body',
+												placement:'right'});
+
+									outro.tooltip('show');
+								
+								}else{
+
+									e.addClass('form_ok');
+									outro.addClass('form_ok');
+								}
+							
+							}else{
+
+								e.addClass('form_ok');
+
+							}
+						}
+
+					}else if(e.val().length>0){
+
+						obj.preventDefault();
+						e.addClass('form_erro');
+						e.tooltip({	trigger:'manual', 
+									title:'A senha deve conter no mínimo 6 dígitos', 
+									container: 'body',
+									placement:'right'});
+
+						e.tooltip('show');
+
+					}else{
+
+						e.attr('placeholder', e.attr('title'));
+					}
+
+					break;
+			}
+
+
+		if (e.val().length==0  &&  e.attr('title') =='') {
+			e.attr('placeholder', e.attr('alt'));
+		}
+
+
+		var lista = $('.form_ok').length;
+
+			if(lista==9){
+
+				libera = true;
+				$('#signin_btn').css('background-color', 'auto');
+
+			}else{
+
+				libera = false;
+				$('#signin_btn').css('background-color', '#E1E6ED');
+			}
+
+	} // if obj.which==9  TAB
+});
+
+
+$('input[id^="signin"]').focus( function(obj){
+
+	$('input[id^="signin"]').tooltip('destroy');
 
 	var e 	= $('#'+obj.target.id),
 		msg	= '';
 
 		switch(e.attr('name')){
 
-			case 'signin_User':
+			case '':
 
-				e.removeClass();
-
-				if(e.val().length>=6) {
-	
-					$.ajax({	
-							type: 'POST',
-							url: 'user/validate',
-							data: {palavra: e.val()},
-							cache: false,
-	        				timeout: 5000,
-							success: function (data) {
-
-									if(data=='OK') {
-
-										e.addClass('form_ok');
-
-									}else{
-
-										e.addClass('form_erro');
-										e.val('');
-										e.attr('placeholder', 'Nome já em uso');
-
-									}
-							}
-					});
-				
-				}else if(e.val().length>0){
-
-					msg = 'Usuário deve ter 6 digitos no mínimo';
-
-				}else{
-
-					e.attr('placeholder', e.attr('title'));
-				}
-
-				break;
-
-			
-			case 'signin_Nome':
-			case 'signin_Sobrenome':
-
-				e.removeClass();
-
-				if (e.val().length >= 5) {
-
-					e.addClass('form_ok');
-
-				}else if(e.val().length > 0){
-
-					msg = 'Digite pelo menos 5 letras no ' + e.attr('alt');
-
-				}else{
-
-					e.attr('placeholder', e.attr('title'));
-				}
-
-				break;
-
-
-			case 'signin_Email':
-			case 'signin_Email2':
-
-				e.removeClass();
-
-				if(e.val().length>0){
-				
-					if(!validator.isEmail(e.val())){
-						
-						msg='Digite um endereço de e-mail válido'
-					
-					}else{
-
-						e.addClass('form_ok');
-					}
-
-				}else{
-
-					e.attr('placeholder', e.attr('title'));
-
-				}
-
-
-				break;
-
-
-			case 'signin_Tel':
-				
-
-				break;
-
-
-			case 'signin_Cep':
-				
-				break;
-
-
-			case 'signin_Senha', 'signin_Senha2':
-				break;
 		}
 
-
-	if (msg!='') {
-
-		e.val('');
-		e.addClass('form_erro');
-		e.attr('placeholder', msg);
-		msg='';
-
-	}else{
-		e.attr('placeholder', e.attr('alt'));
-	}
-
 });
-
 
 // Envia o cadastro ao clicar no botao Cadastrar
 $('#signin_btn').click( function () {
 
-	var cadastro = {
-		usuario:	$('#signin_User').val(),
-		nome: 		$('#signin_Nome').val(),
-		sobrenome:	$('#signin_Sobrenome').val(),
-		email: 		$('#signin_Email').val(),
-		email2:		$('#signin_Email2').val(),
-		telefone:	$('#signin_Tel').val(),
-		cep: 		$('#signin_Cep').val(),
-		pwd:		$('#signin_Senha').val(),
-		pwd: 		$('#signin_Senha2').val()
-	};
+	if(libera){
+	alert('cadastra!!');
 
+		var cadastro = {
+			usuario:	$('#signin_User').val(),
+			nome: 		$('#signin_Nome').val(),
+			sobrenome:	$('#signin_Sobrenome').val(),
+			email: 		$('#signin_Email').val(),
+			email2:		$('#signin_Email2').val(),
+			telefone:	$('#signin_Tel').val(),
+			cep: 		$('#signin_Cep').val(),
+			pwd:		$('#signin_Senha').val(),
+			pwd: 		$('#signin_Senha2').val()
+		};
 
+	}
 
 });
 

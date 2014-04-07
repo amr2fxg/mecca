@@ -113,7 +113,7 @@ function setupMenu() {
 
 	// LOGOUT
 	$('#menuLogout').click(function() {
-	console.log('logout');
+
 		$.ajax({	
 			type: 'GET',
 			url: 'user/logout',
@@ -210,6 +210,7 @@ function setupMenu() {
 
 
 $.getScript("/js/utils/device.min.js");
+$.getScript("js/utils/jquery.mask.min.js")
 
 $.when(
     $.getScript("/js/vendor/bootstrap/modal.js"),
