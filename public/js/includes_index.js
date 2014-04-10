@@ -210,7 +210,6 @@ function setupMenu() {
 
 
 $.getScript("/js/utils/device.min.js");
-$.getScript("js/utils/jquery.mask.min.js")
 
 $.when(
     $.getScript("/js/vendor/bootstrap/modal.js"),

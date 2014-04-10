@@ -3,16 +3,16 @@
 		<div class="modal-content">
 			<div class="modalBar"></div>
 			<div class="fields">
-				<input type="text" placeholder="Usuário"				id="signin_User"	 		name="signin_User"			alt="Usuário">
-				<input type="text" placeholder="Nome"					id="signin_Nome" 			name="signin_Nome"			alt="Nome">
-				<input type="text" placeholder="Sobrenome"				id="signin_Sobrenome" 		name="signin_Sobrenome"		alt="Sobrenome">
 				<input type="text" placeholder="E-mail"					id="signin_Email" 			name="signin_Email"			alt="E-mail">
 				<input type="text" placeholder="Confirmação E-mail"		id="signin_Email2"			name="signin_Email2"		alt="Confirmação E-mail">
+				<input type="text" placeholder="CPF"					id="signin_CPF"	 			name="signin_CPF"			alt="CPF">
+				<input type="text" placeholder="Nome"					id="signin_Nome" 			name="signin_Nome"			alt="Nome">
+				<input type="text" placeholder="Sobrenome"				id="signin_Sobrenome" 		name="signin_Sobrenome"		alt="Sobrenome">
 				<input type="text" placeholder="Telefone"				id="signin_Tel" 			name="signin_Tel"			alt="Telefone"	>
 				<input type="text" placeholder="CEP"					id="signin_Cep" 			name="signin_Cep"			alt="CEP"		>
 				<input type="password" placeholder="Senha"				id="signin_Senha" 			name="signin_Senha"			alt="Senha"		>
 				<input type="password" placeholder="Confirmação Senha"	id="signin_Senha2"			name="signin_Senha2"		alt="Confirmação Senha"	>
-				<div><a href="javascript:void(0)" class="botao" id="signin_btn">Cadastrar</a></div>
+				<div><a href="javascript:void(0)" class="botao disabled" id="signin_btn">Cadastrar</a></div>
 			</div>
 			<div class="modalBar"></div>
 		</div>
@@ -22,37 +22,35 @@
 <script type="text/javascript" src="/js/utils/validator.min.js"></script>
 <script type="text/javascript">
 
-$('#signin_btn').css('background-color','#E1E6ED');
-var libera= false;
 
+$.getScript('/js/utils/jquery.inputmask.min.js', function () {
 
-//$('#signin_Tel').mask('(00) 0000-0000');
-// var SPphoneMask = function(phone, e, currentField, options){
-//   return phone.match(/^(\(?11\)? ?9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])[0-9]{1})/g) ? '(00) 00000-0000' : '(00) 0000-0000';
-// };
+	$("#signin_Tel").inputmask("(99) 9999[9]-9999",{placeholder:" "});
+	$("#signin_CPF").inputmask("999.999.999-99",{placeholder:" "});
+	$("#signin_Cep").inputmask("99999-999",{placeholder:" "});	
 
-// $("#signin_Tel").mask(SPphoneMask, {onKeyPress: function(phone, e, currentField, options){
-//   $(currentField).mask(SPphoneMask(phone), options);
-// }});
+});
+
+var libera = false;
 
 
 // Valida os campos ao teclar TAB
-$('input[id^="signin"]').keydown( function (obj) {
+$('input[id^="signin"]').blur( function (obj) {
 
-	if(obj.which==9) {
 
 		var e 	= $('#'+obj.target.id),
 			msg	= '',
-			name = e.attr('name');
+			name = e.attr('name'),
+			tam = e.val().length;
 
 			switch(name){
 
-				case 'signin_User':
+				case 'signin_CPF':
 
 					e.tooltip('destroy');
 					e.removeClass();
 
-					if(e.val().length>=6) {
+					if(tam>=6) {
 		
 						$.ajax({	
 								type: 'POST',
@@ -75,6 +73,8 @@ $('input[id^="signin"]').keydown( function (obj) {
 														container: 'body',
 														});
 											e.tooltip('show');
+											e.focus();
+
 											setTimeout(function () {
 												e.tooltip('hide');
 											}  , 5000);											
@@ -85,9 +85,8 @@ $('input[id^="signin"]').keydown( function (obj) {
 					
 
 
-					}else if(e.val().length>0){
+					}else if(tam>0){
 
-						obj.preventDefault();
 						e.addClass('form_erro');
 						e.tooltip({	trigger:'manual', 
 									title:'Usuário deve ter no mínimo 6 dígitos', 
@@ -95,13 +94,11 @@ $('input[id^="signin"]').keydown( function (obj) {
 									container: 'body',
 									});
 						e.tooltip('show');
+						e.focus();
+
 						setTimeout( function () {
 							e.tooltip('hide');
 						}, 5000);											
-
-					}else{
-
-						e.attr('placeholder', e.attr('title'));
 					}
 
 					break;
@@ -113,24 +110,20 @@ $('input[id^="signin"]').keydown( function (obj) {
 					e.tooltip('destroy');
 					e.removeClass();
 
-					if (e.val().length >= 5) {
+					if (tam >= 3) {
 
 						e.addClass('form_ok');
 
-					}else if(e.val().length > 0){
+					}else if(tam > 0){
 
-						obj.preventDefault();
 						e.addClass('form_erro');
 						e.tooltip({	trigger:'manual', 
-									title:'O ' + e.attr('alt') + ' deve ter pelo menos 5 letras', 
+									title:'O ' + e.attr('alt') + ' deve ter pelo menos 3 letras', 
 									container: 'body',
 									placement:'right'});
 
 						e.tooltip('show');
-
-					}else{
-
-						e.attr('placeholder', e.attr('title'));
+						e.focus();
 					}
 
 					break;
@@ -142,11 +135,10 @@ $('input[id^="signin"]').keydown( function (obj) {
 					e.removeClass();
 					e.tooltip('destroy');
 
-					if(e.val().length>0){
+					if(tam>0){
 					
 						if(!validator.isEmail(e.val())){
 							
-							obj.preventDefault();
 							e.addClass('form_erro');
 							e.tooltip({	trigger:'manual', 
 										title:'Digite um E-mail válido', 
@@ -154,6 +146,7 @@ $('input[id^="signin"]').keydown( function (obj) {
 										placement:'right'});
 
 							e.tooltip('show');
+							e.focus();
 						
 						}else{
 
@@ -163,7 +156,7 @@ $('input[id^="signin"]').keydown( function (obj) {
 
 								if( $('#signin_Email').val() != $('#signin_Email2').val() ){
 
-									obj.preventDefault();
+	
 									e.addClass('form_erro');
 									e.tooltip({	trigger:'manual', 
 												title:'Endereços de E-mail diferentes', 
@@ -171,14 +164,15 @@ $('input[id^="signin"]').keydown( function (obj) {
 												placement:'right'});
 
 									e.tooltip('show');
+									e.focus();
 
-									outro.addClass('form_erro');
-									outro.tooltip({	trigger:'manual', 
-												title:'Endereços de E-mail diferentes', 
-												container: 'body',
-												placement:'right'});
+									// outro.addClass('form_erro');
+									// outro.tooltip({	trigger:'manual', 
+									// 			title:'Endereços de E-mail diferentes', 
+									// 			container: 'body',
+									// 			placement:'right'});
 
-									outro.tooltip('show');
+									// outro.tooltip('show');
 								
 								}else{
 
@@ -192,10 +186,6 @@ $('input[id^="signin"]').keydown( function (obj) {
 
 							}
 						}
-
-					}else{
-
-						e.attr('placeholder', e.attr('title'));
 					}
 
 					break;
@@ -205,28 +195,24 @@ $('input[id^="signin"]').keydown( function (obj) {
 					
 					e.removeClass();
 					e.tooltip('destroy');
+					console.log( $('#signin_Tel').inputmask('unmaskedvalue') );
 
-					if(e.val().length>=10){
+					if($('#signin_Tel').inputmask('unmaskedvalue').length>=10){
 					
 						e.addClass('form_ok');
 
-					}else if(e.val().length>0){
+					}else if(tam>0){
 
-						obj.preventDefault();
 						e.addClass('form_erro');
 						e.tooltip({	trigger:'manual', 
-									title:'Digite um número de telefoe com DDD', 
+									title:'Digite um número de telefone com DDD', 
 									container: 'body',
 									placement:'right'});
 
 						e.tooltip('show');
-						
-					}else{
-
-						e.attr('placeholder', e.attr('title'));
-
+						e.focus();
 					}
-
+						
 					break;
 
 
@@ -235,13 +221,12 @@ $('input[id^="signin"]').keydown( function (obj) {
 					e.removeClass();
 					e.tooltip('destroy');
 
-					if(e.val().length>=8){
+					if(tam>=8){
 					
 						e.addClass('form_ok');
 
-					}else if(e.val().length>0){
+					}else if(tam>0){
 
-						obj.preventDefault();
 						e.addClass('form_erro');
 						e.tooltip({	trigger:'manual', 
 									title:'Digite um Código postal com 8 dígitos', 
@@ -249,11 +234,7 @@ $('input[id^="signin"]').keydown( function (obj) {
 									placement:'right'});
 
 						e.tooltip('show');
-						
-					}else{
-
-						e.attr('placeholder', e.attr('title'));
-
+						e.focus();
 					}
 
 					break;
@@ -265,11 +246,10 @@ $('input[id^="signin"]').keydown( function (obj) {
 					e.removeClass();
 					e.tooltip('destroy');
 
-					if(e.val().length>=6){
+					if(tam>=6){
 					
 						if(!validator.isAlphanumeric(e.val())){
 							
-							obj.preventDefault();
 							e.addClass('form_erro');
 							e.tooltip({	trigger:'manual', 
 										title:'A senha deve conter letras e números', 
@@ -277,7 +257,8 @@ $('input[id^="signin"]').keydown( function (obj) {
 										placement:'right'});
 
 							e.tooltip('show');
-						
+							e.focus();
+
 						}else{
 
 							var outro = name=='signin_Senha' ? $('#signin_Senha2') : $('#signin_Senha');
@@ -286,7 +267,7 @@ $('input[id^="signin"]').keydown( function (obj) {
 
 								if( $('#signin_Senha').val() != $('#signin_Senha2').val() ){
 
-									obj.preventDefault();
+	
 									e.addClass('form_erro');
 									e.tooltip({	trigger:'manual', 
 												title:'Senhas não conferem', 
@@ -302,6 +283,8 @@ $('input[id^="signin"]').keydown( function (obj) {
 												placement:'right'});
 
 									outro.tooltip('show');
+									e.focus();
+
 								
 								}else{
 
@@ -316,9 +299,8 @@ $('input[id^="signin"]').keydown( function (obj) {
 							}
 						}
 
-					}else if(e.val().length>0){
+					}else if(tam>0){
 
-						obj.preventDefault();
 						e.addClass('form_erro');
 						e.tooltip({	trigger:'manual', 
 									title:'A senha deve conter no mínimo 6 dígitos', 
@@ -326,17 +308,14 @@ $('input[id^="signin"]').keydown( function (obj) {
 									placement:'right'});
 
 						e.tooltip('show');
-
-					}else{
-
-						e.attr('placeholder', e.attr('title'));
+						e.focus();
 					}
 
 					break;
 			}
 
 
-		if (e.val().length==0  &&  e.attr('title') =='') {
+		if (tam==0  &&  e.attr('title') =='') {
 			e.attr('placeholder', e.attr('alt'));
 		}
 
@@ -346,41 +325,24 @@ $('input[id^="signin"]').keydown( function (obj) {
 			if(lista==9){
 
 				libera = true;
-				$('#signin_btn').css('background-color', 'auto');
+				$('#signin_btn').removeClass('disabled');
 
 			}else{
 
 				libera = false;
-				$('#signin_btn').css('background-color', '#E1E6ED');
+				$('#signin_btn').addClass('disabled');
 			}
 
-	} // if obj.which==9  TAB
 });
 
-
-$('input[id^="signin"]').focus( function(obj){
-
-	$('input[id^="signin"]').tooltip('destroy');
-
-	var e 	= $('#'+obj.target.id),
-		msg	= '';
-
-		switch(e.attr('name')){
-
-			case '':
-
-		}
-
-});
 
 // Envia o cadastro ao clicar no botao Cadastrar
 $('#signin_btn').click( function () {
 
 	if(libera){
-	alert('cadastra!!');
 
 		var cadastro = {
-			usuario:	$('#signin_User').val(),
+			cpf:		$('#signin_CPF').val(),
 			nome: 		$('#signin_Nome').val(),
 			sobrenome:	$('#signin_Sobrenome').val(),
 			email: 		$('#signin_Email').val(),
@@ -388,7 +350,7 @@ $('#signin_btn').click( function () {
 			telefone:	$('#signin_Tel').val(),
 			cep: 		$('#signin_Cep').val(),
 			pwd:		$('#signin_Senha').val(),
-			pwd: 		$('#signin_Senha2').val()
+			pwd2: 		$('#signin_Senha2').val()
 		};
 
 	}
