@@ -67,6 +67,8 @@ app.get('/user/login', user.login);
 app.get('/user/logout', user.logout);
 app.get('/user/new', user.new);
 app.post('/user/validate', user.validate);
+app.put('/user/create', user.create);
+
 
 
 /*app.all('*', function(req, res){

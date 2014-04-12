@@ -191,7 +191,7 @@ function setupMenu() {
 
 							$('#menu').append(data);
 							$('#modalCadastro').modal("show");
-							$('#signin_User').focus();
+							$('#signin_Email').focus();
 
 						}
 						});

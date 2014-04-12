@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modalBar"></div>
 			<div class="fields">
-				<input type="text" placeholder="Usuário" id="login_user">
+				<input type="text" placeholder="E-mail" id="login_user">
 				<input type="password" placeholder="Senha" id="login_senha">
 				<a href="javascript:void(0)" class="botao" id="login_btn">Entrar</a>
 				<a href="javascript:void(0)" id="login_novo">Novo Usuário</a>
@@ -17,7 +17,7 @@
 <script type="text/javascript">
 
 function zeraCampos(){
-	$('#login_user').attr('placeholder','Usuário');
+	$('#login_user').attr('placeholder','E-mail');
 	$('#login_senha').attr('placeholder','Senha');
 	$('input').removeClass('form_erro');
 }
@@ -63,7 +63,7 @@ $("#login_btn").click( function() {
 
 	if(user==''){
 		zeraCampos();
-		$('#login_user').attr('placeholder','Digite um usuário'); 
+		$('#login_user').attr('placeholder','Digite um E-mail'); 
 		$('#login_user').addClass('form_erro');
 		$('#login_user').focus();
 		return false;
@@ -77,7 +77,7 @@ $("#login_btn").click( function() {
 	}
 
 	
-	$('#login_btn').css('background-color', '#E1E6ED');
+	$('#login_btn').addClass('disabled');
 	$('body, input, #login_btn').css('cursor','wait');
 
 	$.ajax({
@@ -88,13 +88,13 @@ $("#login_btn").click( function() {
 		timeout: 5000,
 		error: function(){
 
-			$('#login_btn').css('background-color','357AE8');
+			$('#login_btn').removeClass('disabled');
 			$('body, input, #login_btn').css('cursor','auto');
 
 		},
        	success: function(data)	{
        			
-			$('#login_btn').css('background-color','357AE8');
+			$('#login_btn').removeClass('disabled');
 			$('body, input, #login_btn').css('cursor','auto');
 
        			switch(data){
@@ -110,7 +110,7 @@ $("#login_btn").click( function() {
        			case 'userNotFound':
        				zeraCampos();
        				$('#login_user').val('');
-       				$('#login_user').attr('placeholder','Usuário inexistente'); 
+       				$('#login_user').attr('placeholder','Email inexistente'); 
        				$('#login_user').addClass('form_erro');
 					$('#login_user').focus();
        				break;

@@ -24,9 +24,9 @@ exports.logout = function(req, res){
 exports.validate = function (req, res) {
 	
 	var mUsuarios = mongoose.model('usuarios'),
-		user = req.body.palavra;
+		email = req.body.palavra;
 
-   	mUsuarios.findOne({usuario: user}, {usuario:1}, function(err, results) {
+   	mUsuarios.findOne({email: email}, {email:1}, function(err, results) {
 
 		if (err || results) {
 		
@@ -39,6 +39,53 @@ exports.validate = function (req, res) {
 	});
 };
 
+exports.create = function(req, res){
+
+	var mUsuarios = mongoose.model('usuarios'),
+		cadastro = req.body.dados;
+
+	console.log('criando: ' + cadastro.nome);
+
+	u = new 	mUsuarios;
+	u.cpf = 	cadastro.cpf;
+	u.nome=		cadastro.nome;
+	u.sobrenome=cadastro.sobrenome;
+	u.email=	cadastro.email;
+	u.cep=		cadastro.cep;
+	
+	hash(cadastro.pwd, function(err, salt, hash){
+	
+	  	if (err) throw err;
+			
+		// store the salt & hash in the "db"
+		u.salt = salt;
+		u.hash = hash;
+
+		u.save(function(err){
+
+			if (!err) { 
+
+				// Regenerate session when signing in
+				// to prevent fixation
+				req.session.regenerate(function(){
+
+					// Store the user's primary key
+					// in the session store to be retrieved,
+					// or in this case the entire user object
+					req.session.user = cadastro.email;
+					res.send('success', 200);
+				});
+
+			}else{ 
+				throw err;
+			}
+
+		});
+
+	});
+};	
+
+
 
 exports.auth = function(req, res){
 
@@ -48,28 +95,7 @@ exports.auth = function(req, res){
 
 	console.log('Autenticando: ' + user + ' senha:' + pwd);
 
-	// u = new mUsuarios;
-	// u.usuario ='gherini';
-	// u.nome='rafael';
-	// u.sobrenome='de marchi';
-	// u.email='gherini@gmail.com';
-	// u.cep='05451130';
-	
-	// hash('123456', function(err, salt, hash){
-	//   	if (err) throw err;
-			
-	// 		// store the salt & hash in the "db"
-	// 		u.salt = salt;
-	// 		u.hash = hash;
-	// 		u.pwd = '123456';
-	// 		u.save(function(err){
-	// 								if (!err) { console.log('Usuario salvo.');}
-	// 								else{ throw err;}
-	// 							});
-	// });
-
- 
-   	mUsuarios.findOne({usuario: user}, {usuario:1, hash:1, salt:1}, function(err, results) {
+   	mUsuarios.findOne({email: user}, {email:1, hash:1, salt:1}, function(err, results) {
 
 		if (err) {
 
