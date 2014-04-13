@@ -122,21 +122,22 @@
 /* STYLE PROPERTIES */
 /* -------------------------------------------*/
 @mixin transitions {
-  transition: all 0.150s;
-  -webkit-transition: all 0.150s;
-  -moz-transition: all 0.150s;
-  -ms-transition: all 0.150s;
-  -o-transition: all 0.150s;
+  -webkit-transition: all .15s;
+     -moz-transition: all .15s;
+      -ms-transition: all .15s;
+       -o-transition: all .15s;
+          transition: all .15s;
 }
 
 @mixin noSelection {
-  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @mixin antialiased {
   font-smoothing: antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
 }

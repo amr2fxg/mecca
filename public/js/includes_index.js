@@ -3,18 +3,12 @@ var auth;
 
 function init() {
 
-	if ($('#user_info').html() == 'true'){
-		
+	if( $('#user_info').html() == 'true') {
 		auth = true;
-
-
-	}else{
-
+	} else {
 		auth = false;
-
 	}
 }
-
 
 init();
 
@@ -27,7 +21,6 @@ function loadMenu(){
        	url: '/menu',
 		cache: false,
        	success: function(data)	{
-
        		if (data) {
        			$('#menu').empty().append(data);
        			setupMenu();
@@ -37,7 +30,6 @@ function loadMenu(){
 }
 
 function setupMenu() {
-	//console.log(auth);
 
 	if(auth == true) {
 
@@ -113,7 +105,6 @@ function setupMenu() {
 
 	// LOGOUT
 	$('#menuLogout').click(function() {
-
 		$.ajax({	
 			type: 'GET',
 			url: 'user/logout',
@@ -122,7 +113,6 @@ function setupMenu() {
 				loadMenu();
 			}
 		});
-
 	});
 	} else if(auth == false) {
 
@@ -154,48 +144,40 @@ function setupMenu() {
 
 		// LOGIN
 		$('#menuSettingsLogin').click( function() {
+			$.ajax({	
+				type: 'GET',
+				url: 'user/login',
+				success: function (data) {
+					var tag = $('#modalLogin');
 
-				$.ajax({	
-						type: 'GET',
-						url: 'user/login',
-						success: function (data) {
+					if(tag.length > 0) {
+						tag.remove();
+					}
 
-								var tag = $('#modalLogin');
-
-								if(tag.length > 0) {
-									tag.remove();
-								}
-
-							$('#menu').append(data);
-							$('#modalLogin').modal("show");
-							$('#login_user').focus();
-
-						}
-						});
-
+					$('#menu').append(data);
+					$('#modalLogin').modal("show");
+					$('#login_user').focus();
+				}
+			});
 		});
 
 		// CADASTRO
 		$('#menuSettingsCadastro').click( function() {
+			$.ajax({	
+				type: 'GET',
+				url: 'user/new',
+				success: function (data) {
+					var tag = $('#modalCadastro');
 
-				$.ajax({	
-						type: 'GET',
-						url: 'user/new',
-						success: function (data) {
+					if(tag.length > 0) {
+						tag.remove();
+					}
 
-								var tag = $('#modalCadastro');
-
-								if(tag.length > 0) {
-									tag.remove();
-								}
-
-							$('#menu').append(data);
-							$('#modalCadastro').modal("show");
-							$('#signin_Email').focus();
-
-						}
-						});
-
+					$('#menu').append(data);
+					$('#modalCadastro').modal("show");
+					$('#signin_Email').focus();
+				}
+			});
 		});
 
 	}
@@ -204,12 +186,6 @@ function setupMenu() {
 	$('.menuBtnSell').tooltip();
 
 }
-
-
-
-
-
-$.getScript("/js/utils/device.min.js");
 
 $.when(
     $.getScript("/js/vendor/bootstrap/modal.js"),
@@ -221,180 +197,7 @@ $.when(
 	setupMenu();
 });
 
-
-// $.getScript("/js/vendor/bootstrap/tooltip.js", function() {
-
-	// if(auth == false) {
-	// 	// $('.menuBtnSettings').attr('title', 'Login & Cadastro');
-	// } else if (auth == true) {
-	// 	// $('.menuBtnSettings').attr('title', 'Menu');
-	// }
-
-	// $('.menuBtnSettings').tooltip();
-	// $('.menuBtnNotifications').tooltip();
-	// $('.menuBtnSell').tooltip();
-// });
-
-// $.getScript("/js/vendor/bootstrap/modal.js", function() {
-
-	// $('#modalLogin').modal("hide");
-	// $('#modalCadastro').modal("hide");
-
-	// // LOGIN
-	// $('#menuSettingsLogin').click(function() {
-
-	// 		$.ajax({	
-	// 				type: 'GET',
-	// 				url: 'user/login',
-	// 				success: function (data) {
-
-	// 						var tag = $('#modalLogin');
-
-	// 						if(tag.length > 0) {
-	// 							tag.remove();
-	// 						}
-
-	// 					$('#menu').append(data);
-	// 					$('#modalLogin').modal("show");
-	// 					$('#login_user').focus();
-
-	// 				}
-	// 				});
-
-	// });
-
-	// // LOGOUT
-	// $('#menuLogout').click(function() {
-
-	// 		$.ajax({	
-	// 				type: 'GET',
-	// 				url: 'user/logout',
-	// 				success: function (data) {
-	// 					alert('shiiiiiiit');
-	// 					$('#user_info').html('false');
-	// 					loadMenu();
-
-	// 				}
-	// 				});
-
-	// });
-
-	// // CADASTRO
-	// $('#menuSettingsCadastro').click(function() {
-	// 	$('#modalCadastro').modal("show");
-	// });
-	// $('#login_novo').click(function() {
-	// 	$('#modalLogin').modal("hide");
-	// 	$('#modalCadastro').modal("show");
-	// });
-
-	// if(auth == false) {       // --------------------------------- NO AUTH
-
-		// $('.menuSettingsSVG').hide();
-		// $('.menuLoginSignupSVG').show();
-		// $('.menuBtnNotifications').hide();
-
-		// var menuSettings = $('#menuSettings-noauth');
-
-		// // MENU SETTINGS
-		// $('.menuBtnSettings').click( function() {
-
-		// 	if( menuSettings.hasClass('hidden') ) {
-		// 		$('.menuBtnSettings').tooltip('destroy');
-		// 		menuSettings.removeClass('hidden').addClass('open');
-		// 		menuSettings.modal('show');
-		// 		$('.modal-backdrop').css('opacity', 0).css('top', '60px');
-				
-		// 	} else if( menuSettings.hasClass('open') ) {
-		// 		$('.menuBtnSettings').tooltip();
-		// 		menuSettings.removeClass('open').addClass('hidden');
-		// 		menuSettings.modal('hide');
-		// 	}
-
-		// 	$('.modal-backdrop').click(function() {
-		// 		$('.menuBtnSettings').tooltip();
-		// 		menuSettings.modal('hide');
-		// 		menuSettings.removeClass('open').addClass('hidden');
-		// 	});
-
-		// });
-
-	// } else if(auth == true) { // --------------------------------- AUTH
-
-		// $('.menuSettingsSVG').show();
-		// $('.menuLoginSignupSVG').hide();
-
-		// var menuSettings = $('#menuSettings-auth');
-		// var menuNotifications = $('#menuNotifications');
-
-		// // MENU SETTINGS
-		// $('.menuBtnSettings').click( function() {
-
-		// 	if( menuSettings.hasClass('hidden') ) {
-
-		// 		$('.menuBtnSettings').tooltip('destroy');
-				
-		// 		// close notifications
-		// 		if(menuNotifications.hasClass('open')) {
-		// 			$('.menuBtnNotifications').tooltip();
-		// 			menuNotifications.removeClass('open').addClass('hidden');
-		// 			menuNotifications.modal('hide');
-		// 		}
-
-		// 		menuSettings.removeClass('hidden').addClass('open');
-		// 		menuSettings.modal('show');
-		// 		$('.modal-backdrop').css('opacity', 0).css('top', '60px');
-				
-		// 	} else if( menuSettings.hasClass('open') ) {
-		// 		$('.menuBtnSettings').tooltip();
-		// 		menuSettings.removeClass('open').addClass('hidden');
-		// 		menuSettings.modal('hide');
-		// 	}
-
-		// 	$('.modal-backdrop').click(function() {
-		// 		$('.menuBtnSettings').tooltip();
-		// 		menuSettings.modal('hide');
-		// 		menuSettings.removeClass('open').addClass('hidden');
-		// 	});
-
-		// });
-
-		// NOTIFICATIONS
-		// $('.menuBtnNotifications').click( function() {
-
-		// 	if( menuNotifications.hasClass('hidden') ) {
-
-		// 		$('.menuBtnNotifications').tooltip('destroy');
-
-		// 		// close settings
-		// 		if(menuSettings.hasClass('open')) {
-		// 			$('.menuBtnSettings').tooltip();
-		// 			menuSettings.removeClass('open').addClass('hidden');
-		// 			menuSettings.modal('hide');
-		// 		}
-
-		// 		menuNotifications.removeClass('hidden').addClass('open');
-		// 		menuNotifications.modal('show');
-		// 		$('.modal-backdrop').css('opacity', 0).css('top', '60px');
-				
-		// 	} else if( menuNotifications.hasClass('open') ) {
-		// 		$('.menuBtnNotifications').tooltip();
-		// 		menuNotifications.removeClass('open').addClass('hidden');
-		// 		menuNotifications.modal('hide');
-		// 	}
-
-		// 	$('.modal-backdrop').click(function() {
-		// 		$('.menuBtnNotifications').tooltip();
-		// 		menuNotifications.modal('hide');
-		// 		menuNotifications.removeClass('open').addClass('hidden');
-		// 	});
-
-		// });
-
-	// }
-
-// });
-
+$.getScript("/js/utils/device.min.js");
 $.getScript("/js/utils/search.js");
 
 // ---------- gritter
