@@ -16,6 +16,11 @@ exports.new = function(req, res){
 	res.render('cadastro');
 };
 
+exports.recSenha = function(req, res){
+	res.render('recSenha');
+};
+
+
 exports.logout = function(req, res){
 	delete req.session.user;
 	res.send('', 200);

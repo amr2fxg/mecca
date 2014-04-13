@@ -5,9 +5,11 @@
 			<div class="fields">
 				<input type="text" placeholder="E-mail" id="login_user">
 				<input type="password" placeholder="Senha" id="login_senha">
-				<a href="javascript:void(0)" class="botao" id="login_btn">Entrar</a>
-				<a href="javascript:void(0)" id="login_novo">Novo Usuário</a>
-				<span id="msg" />
+				<a href="javascript:void(0)" class="botao disabled" id="login_btn">Entrar</a>
+				<div id="links">
+					<a href="javascript:void(0)" id="login_novo">Novo Usuário</a>
+					<a href="javascript:void(0)" id="login_recSenha">Recuperar Senha</a>
+				</div>
 			</div>
 			<div class="modalBar"></div>
 		</div>
@@ -23,37 +25,52 @@ function zeraCampos(){
 }
 
 
-// Vai pra novo cadastro
+// Novo Cadastro
 $('#login_novo').click(function() {
 	
 	$('#modalLogin').modal("hide");
 	$.ajax({	
-			type: 'GET',
-			url: 'user/new',
-			success: function (data) {
+		type: 'GET',
+		url: 'user/new',
+		success: function (data) {
+			var tag = $('#modalCadastro');
 
-					var tag = $('#modalCadastro');
-
-					if(tag.length > 0) {
-						tag.remove();
-					}
-
-				$('#menu').append(data);
-				$('#modalCadastro').modal("show");
-				$('#signin_User').focus();
-
+			if(tag.length > 0) {
+				tag.remove();
 			}
+
+			$('#menu').append(data);
+			$('#modalCadastro').modal("show");
+			$('#signin_User').focus();
+		}
 	});
 
 });
 
+// Recuperar Senha
+$('#login_recSenha').click(function() {
+	$('#modalLogin').modal("hide");
+	$.ajax({	
+		type: 'GET',
+		url: 'user/recSenha',
+		success: function (data) {
+			var tag = $('#modalRecSenha');
+
+			if(tag.length > 0) {
+				tag.remove();
+			}
+
+			$('#menu').append(data);
+			$('#modalRecSenha').modal("show");
+			$('#recSenha_Email').focus();
+		}
+	});
+});
 
 // Teclando ENTER chama login.click
 $('#login_user, #login_senha').keydown( function (event) {
-
 	if(event.which==13) $("#login_btn").click();
 });
-
 
 // Efetua validação e login
 $("#login_btn").click( function() {

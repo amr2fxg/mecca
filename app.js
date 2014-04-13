@@ -66,6 +66,7 @@ app.post('/user/auth', user.auth);
 app.get('/user/login', user.login);
 app.get('/user/logout', user.logout);
 app.get('/user/new', user.new);
+app.get('/user/recSenha', user.recSenha);
 app.post('/user/validate', user.validate);
 app.put('/user/create', user.create);
 
