@@ -31,20 +31,41 @@ $.getScript('/js/utils/jquery.inputmask.min.js', function () {
 
 });
 
+/* TODO
+1.Voltar o form como estava antes hide ja validado
+2.zerar campos de senha ao errar confirmação
+3.limitar tamanho dos campos
+4.telefone já acertar a mascara no blur seja 8 ou 9 digitos
+*/
+
 var libera = false;
+var cadastro = {
+	cpf:'',
+	nome: '',
+	sobrenome:'',
+	email: '',
+	email2:'',
+	telefone:'',
+	cep: '',
+	pwd:''
+};
 
-
-$('#modalCadastro').on('hide.bs.modal',function(){
+$('#modalCadastro').on('hidden.bs.modal',function(){
 
 	$('input[id^="signin"]').tooltip('hide');
+
 	// work on it !!!!
+	
 
 });
+
+$('#modalCadastro').on('shown.bs.modal', function(){
+	$('#signin_Nome').val(nome);
+} );
 
 // Valida os campos ao teclar TAB
 $('input[id^="signin"]').blur( function (obj) {
 	validaCampos(obj);
-
 });
 
 // Se apagou algum dado, desabilita botao e aguarda revalidação do campo pela perda do foco
