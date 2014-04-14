@@ -1,5 +1,16 @@
 // auth/noauth
 var auth;
+var cadastro = {
+	email: '',
+	email2: '',
+	cpf: '',
+	nome: '',
+	sobrenome: '',
+	telefone: '',
+	cep: '',
+	pwd: ''
+};
+
 
 function init() {
 

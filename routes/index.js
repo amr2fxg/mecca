@@ -78,12 +78,6 @@ exports.instant = function(req, res) {
 	  		//html ='',
 	  		//itens = [];
 
-	/*	i = new mInstant;
-		i.palavras = 'ipad';
-		i.score=1000;
-		i.save();  */
-
-
 		mInstant.find({ palavra: r }, { palavra:1, _id:0 }, {limit: 4}, function(err, results) {
 
 

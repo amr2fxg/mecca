@@ -22,13 +22,13 @@
 <script type="text/javascript" src="/js/utils/validator.min.js"></script>
 <script type="text/javascript">
 
+var libera = false;
 
 $.getScript('/js/utils/jquery.inputmask.min.js', function () {
 
-	$("#signin_Tel").inputmask("(99) 9999[9]-9999", {placeholder:"_"});
-	$("#signin_CPF").inputmask("999.999.999-99", {placeholder:"_"});
-	$("#signin_Cep").inputmask("99999-999", {placeholder:"_"});
-
+	$("#signin_Tel").inputmask({ mask: ["(99) 9999-9999","(99) 99999-9999"]}); 
+	$('#signin_CPF').inputmask('999.999.999-99');
+	$('#signin_Cep').inputmask('99999-999');
 });
 
 /* TODO
@@ -38,29 +38,27 @@ $.getScript('/js/utils/jquery.inputmask.min.js', function () {
 4.telefone já acertar a mascara no blur seja 8 ou 9 digitos
 */
 
-var libera = false;
-var cadastro = {
-	cpf:'',
-	nome: '',
-	sobrenome:'',
-	email: '',
-	email2:'',
-	telefone:'',
-	cep: '',
-	pwd:''
-};
 
-$('#modalCadastro').on('hidden.bs.modal',function(){
+$('#modalCadastro').on('hide.bs.modal', function(){
 
-	$('input[id^="signin"]').tooltip('hide');
-
-	// work on it !!!!
-	
-
+	cadastro.email 		=	$('#signin_Email').val();
+	cadastro.email2		=	$('#signin_Email2').val();
+	cadastro.cpf 		=	$('#signin_CPF').val();
+	cadastro.nome 		=	$('#signin_Nome').val();
+	cadastro.sobrenome 	=	$('#signin_Sobrenome').val();
+	cadastro.telefone 	=	$('#signin_Tel').val();
+	cadastro.cep 		=	$('#signin_Cep').val();
 });
 
 $('#modalCadastro').on('shown.bs.modal', function(){
-	$('#signin_Nome').val(nome);
+	
+	$('#signin_Email').val(cadastro.email);
+	$('#signin_Email2').val(cadastro.email2);
+	$('#signin_CPF').val(cadastro.cpf);
+	$('#signin_Nome').val(cadastro.nome);
+	$('#signin_Sobrenome').val(cadastro.sobrenome);
+	$('#signin_Tel').val(cadastro.telefone);
+	$('#signin_Cep').val(cadastro.cep);
 } );
 
 // Valida os campos ao teclar TAB
@@ -71,36 +69,19 @@ $('input[id^="signin"]').blur( function (obj) {
 // Se apagou algum dado, desabilita botao e aguarda revalidação do campo pela perda do foco
 $('input[id^="signin"]').keydown( function (obj) {
 	
-	// if(obj.which==27){
-	// 	console.log('ESC');
-	// 	$('input[id^="signin"]').tooltip('hide');
-	// }
+	var e = $('#'+obj.target.id);
+		
+	if(e.hasClass('form_ok')) e.removeClass('form_ok');
 
 	libera = false;
 	$('#signin_btn').addClass('disabled');
-});
 
-
-$('input[id^="signin"]').focus( function (obj) {
-	
-	var e 	= $('#'+obj.target.id),
-		name = e.attr('name'),
-		tam = e.val().length;
-
-	if(name=='signin_Tel'){
-
-		e.tooltip({	trigger:'manual', 
-		title:'Para telefone FIXO digite o traço "-"', 
-		placement:'right',
-		container: 'body',
-		});
-		e.tooltip('show');
-
-		setTimeout( function () {
-			e.tooltip('destroy');
-		}, 5000);
+	// Pressionou ENTER nos campos aciona botao Cadastrar
+	if(obj.which==13){
 
 	}
+
+
 });
 
 
@@ -313,7 +294,6 @@ function validaCampos(obj){
 				e.removeClass();
 
 				var pronto = e.val().replace(/[_.-]/g,'');
-				console.log(pronto);
 
 				if(pronto.length>=10 && validaCPF(pronto)){
 					
@@ -368,7 +348,6 @@ function validaCampos(obj){
 
 				if(pronto.length>=10){
 					
-
 					e.addClass('form_ok');
 
 				}else if(pronto.length>0){
