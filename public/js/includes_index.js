@@ -1,16 +1,6 @@
 // auth/noauth
 var auth;
-var cadastro = {
-	email: '',
-	email2: '',
-	cpf: '',
-	nome: '',
-	sobrenome: '',
-	telefone: '',
-	cep: '',
-	pwd: ''
-};
-
+var cadastro = new Array();
 
 function init() {
 
@@ -174,6 +164,7 @@ function setupMenu() {
 
 		// CADASTRO
 		$('#menuSettingsCadastro').click( function() {
+
 			$.ajax({	
 				type: 'GET',
 				url: 'user/new',
