@@ -775,22 +775,31 @@
 	.infos {
 		@include display-flex;
 		@include flex-direction('column');
-		
-		.titulo {
-			height: 85px;
-			padding: 15px 20px;
+		height: 130px;
+
+		.wrapper {
+			@include flex('1 0 auto');
+			@include align-self('stretch');
+			@include display-flex;
+			@include justify-content('center');
 			@include gWhiteGrey;
-			font: {
-				family: 'Oswald';
-				size: 16px;
+
+			.titulo {
+				@include align-self('center');
+				padding: 0px 25px;
+				line-height: 20px;
+				font: {
+					family: 'Oswald';
+					size: 16px;
+				}
+				text-transform: uppercase;
+				text-align: center;
+				@include noSelection;
+				@include antialiased;
+				color: $midGrey;
 			}
-			line-height: 20px;
-			text-transform: uppercase;
-			text-align: center;
-			@include noSelection;
-			@include antialiased;
-			color: $midGrey;
 		}
+		
 		.bar {
 			@include display-flex;
 			height: 45px;
