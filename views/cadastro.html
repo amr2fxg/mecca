@@ -24,7 +24,7 @@
 
 var liberado = false;
 
-$.getScript('/js/utils/jquery.inputmask.min.js', function () {
+$.getScript('/js/utils/jquery.inputmask.js', function () {
 
 	$("#signin_Tel").inputmask({ mask: ["(99) 9999-9999","(99) 99999-9999"]}); 
 	//$("#signin_Tel").inputmask({ mask: "(99) 9999[9]-9999", greedy:false}); 
@@ -51,7 +51,7 @@ $('#modalCadastro').on('shown.bs.modal', function(){
 
 			var pronto = item.val.replace(/[_() -]/g, '');
 			// $('#signin_Tel').inputmask('remove');
-			$('#signin_Tel').val('11 9999-9999');
+			$('#signin_Tel').val(item.val);
 			// $("#signin_Tel").inputmask({ mask: ["(99) 9999-9999","(99) 99999-9999"]}); 
 
 		}else{
